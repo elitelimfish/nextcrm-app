@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import Container from "@/app/[locale]/(routes)/components/ui/Container";
 import { getTranslations } from "next-intl/server";
 import { getInvoices } from "./data/get-invoices";
@@ -38,10 +39,12 @@ export default async function InvoicesPage() {
     <Container title={t("title")} description={t("description")}>
       <div className="flex justify-end mb-4">
         <Link href="/invoices/new">
-          <Button>
+          <SallyTarget id="t-new" label="{t(&quot;new&quot;)}">
+  <Button>
             <Plus className="mr-2 h-4 w-4" />
             {t("new")}
           </Button>
+</SallyTarget>
         </Link>
       </div>
       <InvoicesTable
