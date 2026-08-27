@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SallyTarget } from "@supportsally/react";
 import {
   Select,
   SelectContent,
@@ -153,14 +154,31 @@ export function LineItemsEditor({
               </SelectContent>
             </Select>
 
-            <Input
-              className="h-9 text-sm"
-              value={item.description}
-              onChange={(e) =>
-                updateItem(index, { description: e.target.value })
-              }
-              placeholder="Description"
-            />
+            {index === 0 ? (
+              <SallyTarget
+                id="invoice-line-description"
+                label="Line description"
+                completeWhen="lineItemCount"
+              >
+                <Input
+                  className="h-9 text-sm"
+                  value={item.description}
+                  onChange={(e) =>
+                    updateItem(index, { description: e.target.value })
+                  }
+                  placeholder="Description"
+                />
+              </SallyTarget>
+            ) : (
+              <Input
+                className="h-9 text-sm"
+                value={item.description}
+                onChange={(e) =>
+                  updateItem(index, { description: e.target.value })
+                }
+                placeholder="Description"
+              />
+            )}
 
             <Input
               className="h-9 text-sm"

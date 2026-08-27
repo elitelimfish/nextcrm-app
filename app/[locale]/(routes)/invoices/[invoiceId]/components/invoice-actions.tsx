@@ -19,6 +19,7 @@ import { issueInvoice } from "@/actions/invoices/issue-invoice";
 import { cancelInvoice } from "@/actions/invoices/cancel-invoice";
 import { duplicateInvoice } from "@/actions/invoices/duplicate-invoice";
 import { regenerateInvoicePdf } from "@/actions/invoices/regenerate-pdf";
+import { SallyTarget } from "@supportsally/react";
 
 interface InvoiceActionsProps {
   invoiceId: string;
@@ -92,15 +93,21 @@ export function InvoiceActions({
               Edit
             </Button>
           </Link>
-          <Button
-            variant="default"
-            size="sm"
-            onClick={() => handleAction("issue")}
-            disabled={loading === "issue"}
+          <SallyTarget
+            id="invoice-issue"
+            label="Issue invoice"
+            completeWhen="invoiceIssued"
           >
-            <CheckCircle className="mr-2 h-4 w-4" />
-            {loading === "issue" ? "Issuing..." : "Issue"}
-          </Button>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={() => handleAction("issue")}
+              disabled={loading === "issue"}
+            >
+              <CheckCircle className="mr-2 h-4 w-4" />
+              {loading === "issue" ? "Issuing..." : "Issue"}
+            </Button>
+          </SallyTarget>
           <Button
             variant="destructive"
             size="sm"
