@@ -14,6 +14,7 @@ import {
 import { getInvoiceById } from "../data/get-invoices";
 import { StatusBadge } from "../components/status-badge";
 import { InvoiceActions } from "./components/invoice-actions";
+import { InvoiceSallyDetailSync } from "./components/invoice-sally-detail-sync";
 import { PaymentList } from "./components/payment-list";
 import { ActivityLog } from "./components/activity-log";
 
@@ -66,6 +67,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
 
   return (
     <div className="space-y-6">
+      <InvoiceSallyDetailSync status={invoice.status} />
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-3">

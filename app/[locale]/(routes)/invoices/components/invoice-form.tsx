@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { toast } from "sonner";
@@ -21,6 +21,8 @@ import { AccountSearchCombobox } from "@/components/ui/account-search-combobox";
 import { INVOICE_TYPES } from "@/types/invoice";
 import { createInvoice } from "@/actions/invoices/create-invoice";
 import { updateInvoice } from "@/actions/invoices/update-invoice";
+import { SallyTarget } from "@supportsally/react";
+import { setInvoiceDraftContext } from "@/lib/sally-app-context";
 
 interface Product {
   id: string;
@@ -162,6 +164,16 @@ export function InvoiceForm({
     ];
   });
 
+  useEffect(() => {
+    setInvoiceDraftContext({
+      accountSelected: Boolean(accountId),
+      lineItemCount: lineItems.filter((l) => l.description.trim()).length,
+    });
+    return () => {
+      setInvoiceDraftContext({ accountSelected: false, lineItemCount: 0 });
+    };
+  }, [accountId, lineItems]);
+
   const getTaxRateValue = (taxRateId: string) => {
     const tr = taxRates.find((t) => t.id === taxRateId);
     return tr ? parseFloat(tr.rate) : 0;
@@ -250,11 +262,17 @@ export function InvoiceForm({
 
           <div className="space-y-2">
             <Label>{l.account ?? "Account"}</Label>
-            <AccountSearchCombobox
-              value={accountId}
-              onChange={setAccountId}
-              placeholder="Select account..."
-            />
+            <SallyTarget
+              id="invoice-account"
+              label="Account"
+              completeWhen="accountSelected"
+            >
+              <AccountSearchCombobox
+                value={accountId}
+                onChange={setAccountId}
+                placeholder="Select account..."
+              />
+            </SallyTarget>
           </div>
 
           <div className="space-y-2">
@@ -380,13 +398,19 @@ export function InvoiceForm({
         </div>
 
         <div className="flex gap-3">
-          <Button onClick={handleSubmit} disabled={saving}>
-            {saving
-              ? "Saving..."
-              : isEdit
-                ? "Update Draft"
-                : (l.save ?? "Save Draft")}
-          </Button>
+          <SallyTarget
+            id="invoice-save-draft"
+            label="Save draft"
+            completeWhen="onInvoiceDetail"
+          >
+            <Button onClick={handleSubmit} disabled={saving}>
+              {saving
+                ? "Saving..."
+                : isEdit
+                  ? "Update Draft"
+                  : (l.save ?? "Save Draft")}
+            </Button>
+          </SallyTarget>
           <Button
             variant="outline"
             onClick={() => router.back()}
