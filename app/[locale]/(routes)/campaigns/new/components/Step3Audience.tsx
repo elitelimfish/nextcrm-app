@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -55,11 +56,13 @@ export function Step3Audience({
 
   return (
     <div className="flex flex-col gap-4 max-w-lg">
-      <Input
+      <SallyTarget id="search-target-lists" label="Search target lists..." completeWhen="searchTargetListsFilled">
+  <Input
         placeholder="Search target lists..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+</SallyTarget>
       <div className="flex flex-col gap-1 max-h-64 overflow-y-auto border rounded-md p-2">
         {filtered.map((l) => (
           <label
@@ -90,10 +93,14 @@ export function Step3Audience({
       )}
       {error && <p className="text-sm text-destructive">{error}</p>}
       <div className="flex justify-between">
-        <Button variant="outline" onClick={onBack}>
+        <SallyTarget id="back-3" label="← Back">
+  <Button variant="outline" onClick={onBack}>
           ← Back
         </Button>
-        <Button onClick={handleNext}>Next →</Button>
+</SallyTarget>
+        <SallyTarget id="next-4" label="Next →">
+  <Button onClick={handleNext}>Next →</Button>
+</SallyTarget>
       </div>
     </div>
   );

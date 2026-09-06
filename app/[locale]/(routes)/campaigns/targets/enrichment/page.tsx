@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import { prismadb } from "@/lib/prisma";
 import { getSession } from "@/lib/auth-server";
 import { redirect } from "next/navigation";
@@ -58,10 +59,12 @@ export default async function TargetEnrichmentJobsPage() {
           <Sparkles className="h-5 w-5 text-orange-500" />
           <h1 className="text-2xl font-semibold">Target Enrichment Jobs</h1>
         </div>
-        <Link href="." className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+        <SallyTarget id="refresh" label="Refresh">
+  <Link href="." className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           <RefreshCw className="h-4 w-4" />
           Refresh
         </Link>
+</SallyTarget>
       </div>
 
       <Card>

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -137,7 +138,8 @@ export function Step4Schedule({
           <div key={i} className="border rounded-md p-3 flex flex-col gap-2">
             <div className="flex justify-between items-center">
               <span className="text-sm font-medium">Follow-up {i + 1}</span>
-              <Button
+              <SallyTarget id="remove" label="Remove">
+  <Button
                 type="button"
                 variant="ghost"
                 size="sm"
@@ -145,11 +147,13 @@ export function Step4Schedule({
               >
                 Remove
               </Button>
+</SallyTarget>
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <Label className="text-xs">Delay (days after previous)</Label>
-                <Input
+                <SallyTarget id="delay-days-after-previous" label="Delay (days after previous)" completeWhen="delayDaysAfterPreviousFilled">
+  <Input
                   type="number"
                   min={1}
                   value={fu.delay_days}
@@ -159,10 +163,12 @@ export function Step4Schedule({
                     })
                   }
                 />
+</SallyTarget>
               </div>
               <div>
                 <Label className="text-xs">Send to</Label>
-                <select
+                <SallyTarget id="send-to" label="Send to" completeWhen="sendToFilled">
+  <select
                   className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                   value={fu.send_to}
                   onChange={(e) =>
@@ -174,11 +180,13 @@ export function Step4Schedule({
                   <option value="all">All recipients</option>
                   <option value="non_openers">Non-openers only</option>
                 </select>
+</SallyTarget>
               </div>
             </div>
             <div>
               <Label className="text-xs">Template</Label>
-              <select
+              <SallyTarget id="template" label="Template" completeWhen="templateFilled">
+  <select
                 className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                 value={fu.template_id}
                 onChange={(e) =>
@@ -191,14 +199,17 @@ export function Step4Schedule({
                   </option>
                 ))}
               </select>
+</SallyTarget>
             </div>
             <div>
               <Label className="text-xs">Subject</Label>
-              <Input
+              <SallyTarget id="subject" label="Subject" completeWhen="subjectFilled">
+  <Input
                 value={fu.subject}
                 onChange={(e) => updateFollowUp(i, { subject: e.target.value })}
                 placeholder="Follow-up subject line..."
               />
+</SallyTarget>
             </div>
           </div>
         ))}

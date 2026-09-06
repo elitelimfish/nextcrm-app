@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import { getCampaigns } from "@/actions/campaigns/get-campaigns";
 import CampaignsView from "./components/CampaignsView";
 import { Button } from "@/components/ui/button";
@@ -12,8 +13,12 @@ export default async function CampaignsPage() {
           <h1 className="text-2xl font-bold">Campaigns</h1>
           <p className="text-muted-foreground">Manage your email campaigns</p>
         </div>
-        <Button asChild>
+        <SallyTarget id="new-campaign" label="+ New Campaign">
+  <Button asChild>
           <Link href="/campaigns/new">+ New Campaign</Link>
+        </Button>
+</SallyTarget>ef="/campaigns/new">+ New Campaign</Link>
+</SallyTarget>
         </Button>
       </div>
       <CampaignsView data={campaigns} />
