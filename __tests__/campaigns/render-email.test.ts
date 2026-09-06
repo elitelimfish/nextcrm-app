@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import { renderCampaignEmail } from "@/lib/campaigns/render-email";
 
 describe("renderCampaignEmail", () => {
@@ -23,7 +24,9 @@ describe("renderCampaignEmail", () => {
   it("strips script tags and event handlers while keeping formatting", async () => {
     const html = await renderCampaignEmail({
       contentHtml:
-        '<p>Hi <strong>there</strong></p><script>alert(1)</script><img src="x" onerror="alert(2)"><a href="javascript:alert(3)">click</a>',
+        '<p>Hi <strong>there</strong></p><script>alert(1)</script><img src="x" onerror="alert(2)"><SallyTarget id="click" label="click">
+  <a href="javascript:alert(3)">click</a>
+</SallyTarget>',
       unsubscribeUrl,
     });
 

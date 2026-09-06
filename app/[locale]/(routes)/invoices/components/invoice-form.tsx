@@ -246,7 +246,8 @@ export function InvoiceForm({
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>{l.type ?? "Type"}</Label>
-            <Select value={type} onValueChange={setType}>
+            <SallyTarget id="type" label="Type" completeWhen="typeFilled">
+  <Select value={type} onValueChange={setType}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -258,6 +259,7 @@ export function InvoiceForm({
                 ))}
               </SelectContent>
             </Select>
+</SallyTarget>
           </div>
 
           <div className="space-y-2">
@@ -277,7 +279,8 @@ export function InvoiceForm({
 
           <div className="space-y-2">
             <Label>{l.series ?? "Series"}</Label>
-            <Select
+            <SallyTarget id="series" label="Series" completeWhen="seriesFilled">
+  <Select
               value={seriesId || "none"}
               onValueChange={(v) => setSeriesId(v === "none" ? "" : v)}
             >
@@ -293,13 +296,15 @@ export function InvoiceForm({
                 ))}
               </SelectContent>
             </Select>
+</SallyTarget>
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>{l.currency ?? "Currency"}</Label>
-            <Select value={currency} onValueChange={setCurrency}>
+            <SallyTarget id="currency" label="Currency" completeWhen="currencyFilled">
+  <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -311,24 +316,29 @@ export function InvoiceForm({
                 ))}
               </SelectContent>
             </Select>
+</SallyTarget>
           </div>
 
           <div className="space-y-2">
             <Label>{l.dueDate ?? "Due Date"}</Label>
-            <Input
+            <SallyTarget id="due-date" label="Due Date" completeWhen="dueDateFilled">
+  <Input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
+</SallyTarget>
           </div>
 
           <div className="space-y-2">
             <Label>{l.variableSymbol ?? "Variable Symbol"}</Label>
-            <Input
+            <SallyTarget id="variable-symbol" label="Variable Symbol" completeWhen="variableSymbolFilled">
+  <Input
               value={variableSymbol}
               onChange={(e) => setVariableSymbol(e.target.value)}
               placeholder="Variable symbol"
             />
+</SallyTarget>
           </div>
         </div>
 

@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import React, { Suspense } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -61,12 +62,14 @@ const EmailRoute = async ({
           <p className="text-muted-foreground text-sm">
             You don&apos;t have any mailbox registered yet.
           </p>
-          <Link
+          <SallyTarget id="go-to-your-profile-to-set-up-your-first-mailbox" label="Go to your profile to set up your first mailbox">
+  <Link
             href="/profile"
             className="text-sm font-medium underline underline-offset-4"
           >
             Go to your profile to set up your first mailbox
           </Link>
+</SallyTarget>
         </div>
       </Container>
     );

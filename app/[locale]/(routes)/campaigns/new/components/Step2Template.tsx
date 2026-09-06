@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -96,13 +97,16 @@ export function Step2Template({
           <TabsTrigger value="existing">Choose Existing</TabsTrigger>
         </TabsList>
         <TabsContent value="ai" className="flex flex-col gap-3 pt-3">
-          <Textarea
+          <SallyTarget id="describe-your-email-campaign" label="Describe your email campaign..." completeWhen="describeYourEmailCampaignFilled">
+  <Textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Describe your email campaign..."
             rows={3}
           />
-          <Button
+</SallyTarget>
+          <SallyTarget id="generate" label="Generate">
+  <Button
             type="button"
             variant="secondary"
             onClick={handleGenerate}
@@ -110,6 +114,7 @@ export function Step2Template({
           >
             {isGenerating ? "Generating..." : "Generate"}
           </Button>
+</SallyTarget>
         </TabsContent>
         <TabsContent value="existing" className="pt-3">
           <div className="flex flex-col gap-1 max-h-48 overflow-y-auto border rounded-md p-2">
@@ -136,7 +141,8 @@ export function Step2Template({
 
       <div className="flex flex-col gap-1.5">
         <Label>Subject Line *</Label>
-        <Input
+        <SallyTarget id="subject-line" label="Subject Line *" completeWhen="subjectLineFilled">
+  <Input
           value={subject}
           onChange={(e) => {
             setSubject(e.target.value);
@@ -144,6 +150,7 @@ export function Step2Template({
           }}
           placeholder="Your email subject..."
         />
+</SallyTarget>
       </div>
 
       <div className="flex flex-col gap-1.5">
@@ -161,10 +168,14 @@ export function Step2Template({
       {error && <p className="text-sm text-destructive">{error}</p>}
 
       <div className="flex justify-between">
-        <Button variant="outline" onClick={onBack}>
+        <SallyTarget id="back" label="← Back">
+  <Button variant="outline" onClick={onBack}>
           ← Back
         </Button>
-        <Button onClick={handleNext}>Next →</Button>
+</SallyTarget>
+        <SallyTarget id="next-3" label="Next →">
+  <Button onClick={handleNext}>Next →</Button>
+</SallyTarget>
       </div>
     </div>
   );

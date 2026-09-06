@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,7 +47,8 @@ export function Step1Details({ initialData, onNext }: Props) {
     <div className="flex flex-col gap-4 max-w-lg">
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="name">Campaign Name *</Label>
-        <Input
+        <SallyTarget id="campaign-name" label="Campaign Name *" completeWhen="campaignNameFilled">
+  <Input
           id="name"
           value={name}
           onChange={(e) => {
@@ -55,37 +57,46 @@ export function Step1Details({ initialData, onNext }: Props) {
           }}
           placeholder="e.g. Q2 Product Outreach"
         />
+</SallyTarget>
         {error && <p className="text-sm text-destructive">{error}</p>}
       </div>
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="description">Description</Label>
-        <Textarea
+        <SallyTarget id="description" label="Description" completeWhen="descriptionFilled">
+  <Textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Optional description..."
         />
+</SallyTarget>
       </div>
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="fromName">From Name</Label>
-        <Input
+        <SallyTarget id="from-name" label="From Name" completeWhen="fromNameFilled">
+  <Input
           id="fromName"
           value={fromName}
           onChange={(e) => setFromName(e.target.value)}
           placeholder="e.g. Jane from Acme"
         />
+</SallyTarget>
       </div>
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="replyTo">Reply-to Email</Label>
-        <Input
+        <SallyTarget id="reply-to-email" label="Reply-to Email" completeWhen="replyToEmailFilled">
+  <Input
           id="replyTo"
           value={replyTo}
           onChange={(e) => setReplyTo(e.target.value)}
           placeholder="reply@yourcompany.com"
         />
+</SallyTarget>
       </div>
       <div className="flex justify-end">
-        <Button onClick={handleNext}>Next →</Button>
+        <SallyTarget id="next" label="Next →">
+  <Button onClick={handleNext}>Next →</Button>
+</SallyTarget>
       </div>
     </div>
   );

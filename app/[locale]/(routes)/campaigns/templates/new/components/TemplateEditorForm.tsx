@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -134,33 +135,39 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <Label htmlFor="name">Template Name *</Label>
-          <Input
+          <SallyTarget id="template-name" label="Template Name *" completeWhen="templateNameFilled">
+  <Input
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Welcome Email"
             required
           />
+</SallyTarget>
         </div>
         <div className="flex flex-col gap-2">
           <Label htmlFor="description">Description</Label>
-          <Textarea
+          <SallyTarget id="description-2" label="Description" completeWhen="description-2Filled">
+  <Textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Optional description"
             rows={2}
           />
+</SallyTarget>
         </div>
         <div className="flex flex-col gap-2">
           <Label htmlFor="subject">Subject Line *</Label>
-          <Input
+          <SallyTarget id="subject-line-2" label="Subject Line *" completeWhen="subjectLine-2Filled">
+  <Input
             id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             placeholder="e.g. Hi {{first_name}}, a quick note from us"
             required
           />
+</SallyTarget>
         </div>
       </div>
 
@@ -169,15 +176,18 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
         <h3 className="font-semibold text-sm">Generate with AI</h3>
         <div className="flex flex-col gap-2">
           <Label htmlFor="ai-prompt">Describe the email you want</Label>
-          <Textarea
+          <SallyTarget id="describe-the-email-you-want" label="Describe the email you want" completeWhen="describeTheEmailYouWantFilled">
+  <Textarea
             id="ai-prompt"
             value={aiPrompt}
             onChange={(e) => setAiPrompt(e.target.value)}
             placeholder="e.g. A warm outreach email introducing our SaaS product to a B2B prospect, focusing on ROI benefits"
             rows={3}
           />
+</SallyTarget>
         </div>
-        <Button
+        <SallyTarget id="generate-3" label="Generate">
+  <Button
           type="button"
           variant="secondary"
           onClick={handleGenerate}
@@ -185,6 +195,7 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
         >
           {isGenerating ? "Generating..." : "Generate"}
         </Button>
+</SallyTarget>
       </div>
 
       {/* TipTap Editor */}
