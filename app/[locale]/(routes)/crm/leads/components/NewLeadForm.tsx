@@ -116,11 +116,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("firstName")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="first-name-3" label="first name" completeWhen="firstName-3Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Johny"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -173,7 +175,9 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("jobTitle")}</FormLabel>
                     <FormControl>
-                      <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
+                      <SallyTarget id="jobtitle" label="jobTitle" completeWhen="jobtitleFilled">
+  <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -188,11 +192,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("email")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="email-5" label="email" completeWhen="email-5Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="johny@domain.com"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
