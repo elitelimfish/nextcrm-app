@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useEffect, useState } from "react";
 import { z } from "zod";
@@ -161,11 +162,13 @@ export function UpdateAccountForm({
                 <FormItem>
                   <FormLabel>{t("accountName")} <span className="text-destructive">*</span></FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="name-2" label="name" completeWhen="name-2Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="NextCRM Inc."
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -178,13 +181,15 @@ export function UpdateAccountForm({
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="office-phone-2" label="office phone" completeWhen="officePhone-2Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+420 ...."
                       //@ts-ignore
                       value={field.value}
                       onChange={field.onChange}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -197,11 +202,13 @@ export function UpdateAccountForm({
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="email-2" label="email" completeWhen="email-2Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="account@domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -214,11 +221,13 @@ export function UpdateAccountForm({
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="website-2" label="website" completeWhen="website-2Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="https://www.domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
