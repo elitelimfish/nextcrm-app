@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useEffect } from "react";
@@ -103,11 +104,13 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                     {t("accountName")} <span className="text-destructive">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="name" label="name" completeWhen="nameFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="NextCRM Inc."
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -120,11 +123,13 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="office-phone" label="office phone" completeWhen="officePhoneFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+420 ...."
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,11 +142,13 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="email" label="email" completeWhen="emailFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="account@domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -154,11 +161,13 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="website" label="website" completeWhen="websiteFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="https://www.domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
