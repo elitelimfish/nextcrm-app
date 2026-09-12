@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useEffect } from "react";
@@ -132,11 +133,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("lastName")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="last-name-3" label="last name" completeWhen="lastName-3Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Walker"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -151,11 +154,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("company")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="company" label="company" completeWhen="companyFilled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="NextCRM Inc."
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
