@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useEffect } from "react";
@@ -146,7 +147,9 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("firstName")}</FormLabel>
                   <FormControl>
-                    <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+                    <SallyTarget id="first-name" label="first name" completeWhen="firstNameFilled">
+  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -159,7 +162,9 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("lastName")}</FormLabel>
                   <FormControl>
-                    <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                    <SallyTarget id="last-name" label="last name" completeWhen="lastNameFilled">
+  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -172,11 +177,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("mobilePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="mobile-phone" label="mobile phone" completeWhen="mobilePhoneFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+11 1236 77 55"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
