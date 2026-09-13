@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -110,11 +111,13 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                   <FormItem>
                     <FormLabel>{t("firstName")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="firstname" label="firstName" completeWhen="firstnameFilled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Johny"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -127,11 +130,13 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                   <FormItem>
                     <FormLabel>{t("lastName")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="lastname" label="lastName" completeWhen="lastnameFilled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Walker"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>

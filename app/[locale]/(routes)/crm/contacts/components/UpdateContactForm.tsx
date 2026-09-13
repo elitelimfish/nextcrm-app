@@ -172,11 +172,13 @@ export function UpdateContactForm({
                 <FormItem>
                   <FormLabel>{t("mobilePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="mobile-phone-4" label="mobile phone" completeWhen="mobilePhone-4Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+11 1236 77 55"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -190,11 +192,13 @@ export function UpdateContactForm({
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="office-phone-6" label="office phone" completeWhen="officePhone-6Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+11 1236 77 55"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -207,11 +211,13 @@ export function UpdateContactForm({
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="email-9" label="email" completeWhen="email-9Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="john@domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

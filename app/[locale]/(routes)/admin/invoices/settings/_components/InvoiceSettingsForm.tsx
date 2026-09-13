@@ -157,7 +157,8 @@ export function InvoiceSettingsForm({
         </h3>
         <div className="space-y-2">
           <Label>Company Name <span className="text-destructive">*</span></Label>
-          <Input
+          <SallyTarget id="e-g-acme-s-r-o" label="e.g. Acme s.r.o." completeWhen="eGAcmeSROFilled">
+  <Input
             value={companyName}
             onChange={(e) => {
               setCompanyName(e.target.value);
@@ -166,13 +167,15 @@ export function InvoiceSettingsForm({
             placeholder="e.g. Acme s.r.o."
             aria-invalid={!!errors.companyName}
           />
+</SallyTarget>
           {errors.companyName && (
             <p className="text-xs text-destructive">{errors.companyName}</p>
           )}
         </div>
         <div className="space-y-2">
           <Label>Street Address <span className="text-destructive">*</span></Label>
-          <Input
+          <SallyTarget id="e-g-wenceslas-square-1" label="e.g. Wenceslas Square 1" completeWhen="eGWenceslasSquare-1Filled">
+  <Input
             value={companyAddress}
             onChange={(e) => {
               setCompanyAddress(e.target.value);
@@ -181,6 +184,7 @@ export function InvoiceSettingsForm({
             placeholder="e.g. Wenceslas Square 1"
             aria-invalid={!!errors.companyAddress}
           />
+</SallyTarget>
           {errors.companyAddress && (
             <p className="text-xs text-destructive">{errors.companyAddress}</p>
           )}
@@ -216,7 +220,8 @@ export function InvoiceSettingsForm({
           </div>
           <div className="space-y-2">
             <Label>Country <span className="text-destructive">*</span></Label>
-            <Input
+            <SallyTarget id="e-g-czech-republic" label="e.g. Czech Republic" completeWhen="eGCzechRepublicFilled">
+  <Input
               value={companyCountry}
               onChange={(e) => {
                 setCompanyCountry(e.target.value);
@@ -225,6 +230,7 @@ export function InvoiceSettingsForm({
               placeholder="e.g. Czech Republic"
               aria-invalid={!!errors.companyCountry}
             />
+</SallyTarget>
             {errors.companyCountry && (
               <p className="text-xs text-destructive">{errors.companyCountry}</p>
             )}
@@ -233,18 +239,22 @@ export function InvoiceSettingsForm({
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>VAT ID (DIČ)</Label>
-            <Input
+            <SallyTarget id="vat-id-di" label="VAT ID (DIČ)" completeWhen="vatIdDiFilled">
+  <Input
               value={companyVatId}
               onChange={(e) => setCompanyVatId(e.target.value)}
               placeholder="e.g. CZ12345678"
             />
+</SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Tax ID</Label>
-            <Input
+            <SallyTarget id="tax-id" label="Tax ID" completeWhen="taxIdFilled">
+  <Input
               value={companyTaxId}
               onChange={(e) => setCompanyTaxId(e.target.value)}
             />
+</SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Registration No. (IČO) <span className="text-destructive">*</span></Label>
@@ -293,11 +303,13 @@ export function InvoiceSettingsForm({
           </div>
           <div className="space-y-2">
             <Label>Website</Label>
-            <Input
+            <SallyTarget id="website-3" label="Website" completeWhen="website-3Filled">
+  <Input
               value={companyWebsite}
               onChange={(e) => setCompanyWebsite(e.target.value)}
               placeholder="e.g. https://acme.com"
             />
+</SallyTarget>
           </div>
         </div>
       </div>
@@ -309,7 +321,8 @@ export function InvoiceSettingsForm({
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label>Base Currency</Label>
-          <Select value={baseCurrency} onValueChange={setBaseCurrency}>
+          <SallyTarget id="base-currency" label="Base Currency" completeWhen="baseCurrencyFilled">
+  <Select value={baseCurrency} onValueChange={setBaseCurrency}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -321,6 +334,7 @@ export function InvoiceSettingsForm({
               ))}
             </SelectContent>
           </Select>
+</SallyTarget>
         </div>
 
         <div className="space-y-2">

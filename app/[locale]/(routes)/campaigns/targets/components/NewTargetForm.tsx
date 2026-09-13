@@ -142,7 +142,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>Mobile phone</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
+                  <SallyTarget id="mobile-phone-3" label="mobile phone" completeWhen="mobilePhone-3Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -157,7 +159,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>Office phone</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
+                  <SallyTarget id="office-phone-3" label="office phone" completeWhen="officePhone-3Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -170,7 +174,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>Position</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
+                  <SallyTarget id="position" label="position" completeWhen="positionFilled">
+  <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -197,11 +197,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="office-phone-5" label="office phone" completeWhen="officePhone-5Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="+11 1236 77 55"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -233,11 +235,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("personalEmail")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="personal-email" label="personal email" completeWhen="personalEmailFilled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="littlejohny@gmail.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -250,11 +254,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="website-4" label="website" completeWhen="website-4Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="https://www.domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

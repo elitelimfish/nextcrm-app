@@ -223,11 +223,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("phone")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="phone-2" label="phone" completeWhen="phone-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="+11 123 456 789"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -241,11 +243,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <SallyTarget id="description-3" label="description" completeWhen="description-3Filled">
+  <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -258,7 +262,8 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("leadSource")}</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <SallyTarget id="lead-source-id" label="lead source id" completeWhen="leadSourceIdFilled">
+  <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger><SelectValue placeholder="Select source…" /></SelectTrigger>
                       </FormControl>
@@ -268,6 +273,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                         ))}
                       </SelectContent>
                     </Select>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
