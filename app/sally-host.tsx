@@ -15,7 +15,6 @@ import {
   snapshotSallyContextVersion,
   subscribeSallyAppContext,
 } from "@/lib/sally-app-context";
-import { nextcrmInvoiceNavGraph } from "@/lib/sally-nav-graph";
 
 const LOCALE_PREFIX = /^\/(en|cs|de|uk)(?=\/|$)/;
 
@@ -76,7 +75,6 @@ export function SallyHost({ children }: { children: ReactNode }) {
       hosted={hosted}
       getAppContext={getAppContext}
       contextKey={contextKey}
-      navGraph={nextcrmInvoiceNavGraph}
       onNavigate={onNavigate}
     >
       {children}

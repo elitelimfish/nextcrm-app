@@ -4,7 +4,11 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { type LucideIcon, ChevronRight } from "lucide-react"
-import { SallyTarget } from "@supportsally/react"
+import {
+  SallyTarget,
+  groupNavTargetId,
+  navTargetId,
+} from "@supportsally/react"
 import { cn } from "@/lib/utils"
 import {
   SidebarGroup,
@@ -98,30 +102,46 @@ export function NavMain({ items, dict }: NavMainProps) {
                 className="group/collapsible"
               >
                 <SidebarMenuItem>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton
-                      tooltip={item.title}
-                      isActive={hasActive}
-                    >
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                      <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
+                  <SallyTarget
+                    id={groupNavTargetId({
+                      title: item.title,
+                      childUrls: item.items.map((s) => s.url),
+                    })}
+                    label={item.title}
+                  >
+                    <CollapsibleTrigger asChild>
+                      <SidebarMenuButton
+                        tooltip={item.title}
+                        isActive={hasActive}
+                      >
+                        {item.icon && <item.icon />}
+                        <span>{item.title}</span>
+                        <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                      </SidebarMenuButton>
+                    </CollapsibleTrigger>
+                  </SallyTarget>
                   <CollapsibleContent>
                     <SidebarMenuSub>
                       {item.items.map((subItem) => {
                         const isActive = isRouteActive(subItem.url, subItem.exact)
                         return (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              asChild
-                              isActive={isActive}
+                            <SallyTarget
+                              id={navTargetId({
+                                url: subItem.url,
+                                title: subItem.title,
+                              })}
+                              label={subItem.title}
                             >
-                              <Link href={subItem.url}>
-                                <span>{subItem.title}</span>
-                              </Link>
-                            </SidebarMenuSubButton>
+                              <SidebarMenuSubButton
+                                asChild
+                                isActive={isActive}
+                              >
+                                <Link href={subItem.url}>
+                                  <span>{subItem.title}</span>
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SallyTarget>
                           </SidebarMenuSubItem>
                         )
                       })}
@@ -149,13 +169,12 @@ export function NavMain({ items, dict }: NavMainProps) {
           )
           return (
             <SidebarMenuItem key={item.title}>
-              {item.url === "/invoices" ? (
-                <SallyTarget id="nav-invoices" label="Invoices">
-                  {button}
-                </SallyTarget>
-              ) : (
-                button
-              )}
+              <SallyTarget
+                id={navTargetId({ url: item.url, title: item.title })}
+                label={item.title}
+              >
+                {button}
+              </SallyTarget>
             </SidebarMenuItem>
           )
         })}
