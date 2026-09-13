@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
@@ -247,7 +248,8 @@ export function InvoiceSettingsForm({
           </div>
           <div className="space-y-2">
             <Label>Registration No. (IČO) <span className="text-destructive">*</span></Label>
-            <Input
+            <SallyTarget id="e-g-12345678" label="e.g. 12345678" completeWhen="eG-12345678Filled">
+  <Input
               value={companyRegNo}
               onChange={(e) => {
                 setCompanyRegNo(e.target.value);
@@ -256,6 +258,7 @@ export function InvoiceSettingsForm({
               placeholder="e.g. 12345678"
               aria-invalid={!!errors.companyRegNo}
             />
+</SallyTarget>
             {errors.companyRegNo && (
               <p className="text-xs text-destructive">{errors.companyRegNo}</p>
             )}
@@ -264,7 +267,8 @@ export function InvoiceSettingsForm({
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>Email</Label>
-            <Input
+            <SallyTarget id="email-3" label="Email" completeWhen="email-3Filled">
+  <Input
               type="email"
               value={companyEmail}
               onChange={(e) => {
@@ -273,16 +277,19 @@ export function InvoiceSettingsForm({
               }}
               aria-invalid={!!errors.companyEmail}
             />
+</SallyTarget>
             {errors.companyEmail && (
               <p className="text-xs text-destructive">{errors.companyEmail}</p>
             )}
           </div>
           <div className="space-y-2">
             <Label>Phone</Label>
-            <Input
+            <SallyTarget id="phone" label="Phone" completeWhen="phoneFilled">
+  <Input
               value={companyPhone}
               onChange={(e) => setCompanyPhone(e.target.value)}
             />
+</SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Website</Label>
@@ -411,9 +418,11 @@ export function InvoiceSettingsForm({
 
       </div>
 
-      <Button onClick={handleSave} disabled={isPending}>
+      <SallyTarget id="save-settings-3" label="Save Settings">
+  <Button onClick={handleSave} disabled={isPending}>
         {isPending ? "Saving..." : "Save Settings"}
       </Button>
+</SallyTarget>
     </div>
   );
 }

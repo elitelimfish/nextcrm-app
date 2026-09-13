@@ -214,11 +214,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="email-8" label="email" completeWhen="email-8Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="john@domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

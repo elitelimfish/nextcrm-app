@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -130,7 +131,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>First name</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+                  <SallyTarget id="first-name-5" label="first name" completeWhen="firstName-5Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -143,7 +146,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Last name *</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                  <SallyTarget id="last-name-5" label="last name" completeWhen="lastName-5Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -158,7 +163,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
+                  <SallyTarget id="email-7" label="email" completeWhen="email-7Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -171,7 +178,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Mobile phone</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
+                  <SallyTarget id="mobile-phone-2" label="mobile phone" completeWhen="mobilePhone-2Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -386,9 +395,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         ) : (
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button type="button" variant="outline" disabled={converting}>
+              <SallyTarget id="convert-to-account" label="Convert to Account">
+  <Button type="button" variant="outline" disabled={converting}>
                 Convert to Account
               </Button>
+</SallyTarget>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>

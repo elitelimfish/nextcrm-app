@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -85,7 +86,9 @@ export function InviteForm() {
             <FormItem className="w-1/3">
               <FormLabel>{t("inviteForm.name")}</FormLabel>
               <FormControl>
-                <Input disabled={isLoading} placeholder="jdoe" {...field} />
+                <SallyTarget id="name-3" label="name" completeWhen="name-3Filled">
+  <Input disabled={isLoading} placeholder="jdoe" {...field} />
+</SallyTarget>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -98,11 +101,13 @@ export function InviteForm() {
             <FormItem className="w-1/3">
               <FormLabel>{t("inviteForm.email")}</FormLabel>
               <FormControl>
-                <Input
+                <SallyTarget id="email-4" label="email" completeWhen="email-4Filled">
+  <Input
                   disabled={isLoading}
                   placeholder="name@domain.com"
                   {...field}
                 />
+</SallyTarget>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -114,7 +119,8 @@ export function InviteForm() {
           render={({ field }) => (
             <FormItem className="w-[250px]">
               <FormLabel>Language</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <SallyTarget id="language" label="language" completeWhen="languageFilled">
+  <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a user language" />
@@ -125,6 +131,7 @@ export function InviteForm() {
                   <SelectItem value="cz">Czech</SelectItem>
                 </SelectContent>
               </Select>
+</SallyTarget>
               <FormMessage />
             </FormItem>
           )}
