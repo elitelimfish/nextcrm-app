@@ -346,10 +346,12 @@ export function InvoiceForm({
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>{l.bankName ?? "Bank Name"}</Label>
-            <Input
+            <SallyTarget id="bank-name" label="Bank Name" completeWhen="bankNameFilled">
+  <Input
               value={bankName}
               onChange={(e) => setBankName(e.target.value)}
             />
+</SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>{l.iban ?? "IBAN"}</Label>
@@ -422,13 +424,15 @@ export function InvoiceForm({
                   : (l.save ?? "Save Draft")}
             </Button>
           </SallyTarget>
-          <Button
+          <SallyTarget id="cancel-4" label="Cancel">
+  <Button
             variant="outline"
             onClick={() => router.back()}
             disabled={saving}
           >
             Cancel
           </Button>
+</SallyTarget>
         </div>
       </div>
 

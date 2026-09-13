@@ -187,11 +187,13 @@ export function NewOpportunityForm({
                 <FormItem>
                   <FormLabel>{t("name")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="name-4" label="name" completeWhen="name-4Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
