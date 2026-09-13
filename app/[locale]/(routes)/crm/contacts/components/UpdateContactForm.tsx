@@ -247,11 +247,13 @@ export function UpdateContactForm({
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
                   <FormControl>
-                    <Input
+                    <SallyTarget id="website-3" label="website" completeWhen="website-3Filled">
+  <Input
                       disabled={form.formState.isSubmitting}
                       placeholder="https://www.domain.com"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
