@@ -195,7 +195,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Office phone</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
+                  <SallyTarget id="office-phone-4" label="office phone" completeWhen="officePhone-4Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -208,7 +210,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Position</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
+                  <SallyTarget id="position-2" label="position" completeWhen="position-2Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -223,7 +227,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <FormItem>
                 <FormLabel>Company</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
+                  <SallyTarget id="company-2" label="company" completeWhen="company-2Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
