@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import * as z from "zod";
 import { useState } from "react";
@@ -66,11 +67,13 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
             <FormItem>
               <FormLabel>Send us a feedback</FormLabel>
               <FormControl>
-                <Textarea
+                <SallyTarget id="feedback" label="feedback" completeWhen="feedbackFilled">
+  <Textarea
                   placeholder="Your feedback"
                   disabled={loading}
                   {...field}
                 />
+</SallyTarget>
               </FormControl>
               <FormDescription className="text-xs text-muted-foreground">
                 We appreciate every feedback. Thank you for helping us make this
@@ -81,13 +84,15 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
           )}
         />
         <div className="flex justify-end space-x-2">
-          <Button
+          <SallyTarget id="cancel-3" label="Cancel">
+  <Button
             variant={"outline"}
             onClick={() => setOpen(false)}
             disabled={loading}
           >
             Cancel
           </Button>
+</SallyTarget>
           <Button type="submit" variant={"secondary"} disabled={loading}>
             {loading ? (
               <div className="flex space-x-2">

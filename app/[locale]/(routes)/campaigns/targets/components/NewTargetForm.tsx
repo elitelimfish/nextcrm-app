@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -94,7 +95,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>First name</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+                  <SallyTarget id="first-name-4" label="first name" completeWhen="firstName-4Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -107,7 +110,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>Last name</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                  <SallyTarget id="last-name-4" label="last name" completeWhen="lastName-4Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -122,7 +127,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
+                  <SallyTarget id="email-6" label="email" completeWhen="email-6Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
+</SallyTarget>
                 </FormControl>
                 <FormMessage />
               </FormItem>
