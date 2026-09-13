@@ -34,6 +34,12 @@
     "seed": "ts-node ./prisma/seeds/seed.ts"
   },
   "dependencies": {
+    "@supportsally/core": "file:./.sally-pack/supportsally-core-0.1.0-alpha.0.tgz",
+    "@supportsally/react": "file:./.sally-pack/supportsally-react-0.1.0-alpha.0.tgz",
+    "@supportsally/telemetry": "file:./.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz",
+    "@supportsally/voice-realtime": "file:./.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz",
+    "@supportsally/web": "file:./.sally-pack/supportsally-web-0.1.0-alpha.0.tgz",
+    "@supportsally/workflows": "file:./.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz",
     "@aws-sdk/client-s3": "^3.1014.0",
     "@aws-sdk/s3-request-presigner": "^3.1014.0",
     "@aws-sdk/signature-v4-crt": "^3.997.0",

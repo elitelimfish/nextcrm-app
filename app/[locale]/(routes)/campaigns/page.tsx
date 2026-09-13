@@ -14,12 +14,10 @@ export default async function CampaignsPage() {
           <p className="text-muted-foreground">Manage your email campaigns</p>
         </div>
         <SallyTarget id="new-campaign" label="+ New Campaign">
-  <Button asChild>
-          <Link href="/campaigns/new">+ New Campaign</Link>
-        </Button>
-</SallyTarget>ef="/campaigns/new">+ New Campaign</Link>
-</SallyTarget>
-        </Button>
+          <Button asChild>
+            <Link href="/campaigns/new">+ New Campaign</Link>
+          </Button>
+        </SallyTarget>
       </div>
       <CampaignsView data={campaigns} />
     </div>
