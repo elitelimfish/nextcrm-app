@@ -30,6 +30,7 @@ interface AccountSearchComboboxProps {
   placeholder?: string;
   disabled?: boolean;
   name?: string;
+  required?: boolean;
 }
 
 const PAGE_SIZE = 50;
@@ -40,6 +41,7 @@ export function AccountSearchCombobox({
   placeholder = "Select account",
   disabled,
   name,
+  required,
 }: AccountSearchComboboxProps) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -117,13 +119,16 @@ export function AccountSearchCombobox({
             variant="outline"
             role="combobox"
             aria-expanded={open}
+            aria-required={required || undefined}
             className="w-full justify-between font-normal"
             disabled={disabled}
             type="button"
           >
             <span className="truncate text-sm">
               {displayAccount?.name ?? (
-                <span className="text-muted-foreground">{placeholder}</span>
+                <span className="text-muted-foreground" data-placeholder="">
+                  {placeholder}
+                </span>
               )}
             </span>
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

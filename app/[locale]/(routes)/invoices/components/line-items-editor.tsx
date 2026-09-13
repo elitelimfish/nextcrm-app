@@ -158,7 +158,7 @@ export function LineItemsEditor({
               <SallyTarget
                 id="invoice-line-description"
                 label="Line description"
-                completeWhen="lineItemCount"
+                completeWhen="lineItemCount>0"
               >
                 <Input
                   className="h-9 text-sm"
@@ -167,6 +167,7 @@ export function LineItemsEditor({
                     updateItem(index, { description: e.target.value })
                   }
                   placeholder="Description"
+                  required
                 />
               </SallyTarget>
             ) : (

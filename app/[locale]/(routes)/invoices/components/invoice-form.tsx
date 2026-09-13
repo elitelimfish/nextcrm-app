@@ -273,6 +273,7 @@ export function InvoiceForm({
                 value={accountId}
                 onChange={setAccountId}
                 placeholder="Select account..."
+                required
               />
             </SallyTarget>
           </div>
