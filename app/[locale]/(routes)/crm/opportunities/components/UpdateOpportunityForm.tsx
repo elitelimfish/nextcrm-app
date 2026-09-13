@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -229,11 +230,13 @@ export function UpdateOpportunityForm({
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <SallyTarget id="description-4" label="description" completeWhen="description-4Filled">
+  <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
