@@ -294,11 +294,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("billingPostalCode")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="billing-postal-code-2" label="billing postal code" completeWhen="billingPostalCode-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="252 18"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -311,11 +313,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("billingCity")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="billing-city-2" label="billing city" completeWhen="billingCity-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Prague"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -328,7 +332,9 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("billingState")}</FormLabel>
                     <FormControl>
-                      <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+                      <SallyTarget id="billing-state-2" label="billing state" completeWhen="billingState-2Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -341,11 +347,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("billingCountry")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="billing-country-2" label="billing country" completeWhen="billingCountry-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Czechia"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -360,11 +368,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("shippingStreet")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="shipping-street-2" label="shipping street" completeWhen="shippingStreet-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Švábova 772/18"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -377,11 +387,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("shippingPostalCode")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="shipping-postal-code-2" label="shipping postal code" completeWhen="shippingPostalCode-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="252 18"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -394,11 +406,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("shippingCity")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="shipping-city-2" label="shipping city" completeWhen="shippingCity-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Prague"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -411,7 +425,9 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("shippingState")}</FormLabel>
                     <FormControl>
-                      <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+                      <SallyTarget id="shipping-state-2" label="shipping state" completeWhen="shippingState-2Filled">
+  <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -424,11 +440,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("shippingCountry")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="shipping-country-2" label="shipping country" completeWhen="shippingCountry-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Czechia"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -445,11 +463,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{c("description")}</FormLabel>
                     <FormControl>
-                      <Textarea
+                      <SallyTarget id="description-7" label="description" completeWhen="description-7Filled">
+  <Textarea
                         disabled={form.formState.isSubmitting}
                         placeholder="Description"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -464,11 +484,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("annualRevenue")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="annual-revenue-2" label="annual revenue" completeWhen="annualRevenue-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="1.0000.000"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -481,11 +503,13 @@ export function UpdateAccountForm({
                   <FormItem>
                     <FormLabel>{t("isMemberOf")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="member-of-2" label="member of" completeWhen="memberOf-2Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Tesla Inc."
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -497,7 +521,8 @@ export function UpdateAccountForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("industry")}</FormLabel>
-                    <Select
+                    <SallyTarget id="industry-4" label="industry" completeWhen="industry-4Filled">
+  <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
@@ -514,6 +539,7 @@ export function UpdateAccountForm({
                         ))}
                       </SelectContent>
                     </Select>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}

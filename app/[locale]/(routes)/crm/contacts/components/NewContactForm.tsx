@@ -361,11 +361,13 @@ export function NewContactForm({
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <SallyTarget id="description-8" label="description" completeWhen="description-8Filled">
+  <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder={t("descriptionPlaceholder")}
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -397,7 +399,8 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("assignAccount")}</FormLabel>
-                      <Select
+                      <SallyTarget id="assigned-account" label="assigned account" completeWhen="assignedAccountFilled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                         disabled={!!accountId}
@@ -415,6 +418,7 @@ export function NewContactForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -426,11 +430,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("position")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="position-3" label="position" completeWhen="position-3Filled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="CTO"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -461,7 +467,8 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("contactType")}</FormLabel>
-                      <Select
+                      <SallyTarget id="type-2" label="type" completeWhen="type-2Filled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -478,6 +485,7 @@ export function NewContactForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -491,11 +499,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("twitter")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-twitter" label="social twitter" completeWhen="socialTwitterFilled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.twitter.com/john"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -508,11 +518,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("facebook")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-facebook-3" label="social facebook" completeWhen="socialFacebook-3Filled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.facebook.com/john"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -525,11 +537,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("linkedin")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-linkedin-3" label="social linkedin" completeWhen="socialLinkedin-3Filled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.linkedin.com/john"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -542,11 +556,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("skype")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-skype" label="social skype" completeWhen="socialSkypeFilled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.skype.com/john"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -559,11 +575,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("youtube")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-youtube" label="social youtube" completeWhen="socialYoutubeFilled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.youtube.com/nextcrmio"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -576,11 +594,13 @@ export function NewContactForm({
                     <FormItem>
                       <FormLabel>{t("tiktok")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="social-tiktok" label="social tiktok" completeWhen="socialTiktokFilled">
+  <Input
                           disabled={form.formState.isSubmitting}
                           placeholder="https://www.domain.com"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

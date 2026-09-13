@@ -200,11 +200,13 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                   <FormItem>
                     <FormLabel>{t("phone")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="phone-3" label="phone" completeWhen="phone-3Filled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="+11 123 456 789"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -218,11 +220,13 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <SallyTarget id="description-10" label="description" completeWhen="description-10Filled">
+  <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

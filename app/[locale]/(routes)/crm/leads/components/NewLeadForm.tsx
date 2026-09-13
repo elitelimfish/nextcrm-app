@@ -346,11 +346,13 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                   <FormItem>
                     <FormLabel>{t("campaign")}</FormLabel>
                     <FormControl>
-                      <Input
+                      <SallyTarget id="campaign" label="campaign" completeWhen="campaignFilled">
+  <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Social networks"
                         {...field}
                       />
+</SallyTarget>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -381,7 +383,8 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("assignAccount")}</FormLabel>
-                  <Select
+                  <SallyTarget id="accountids" label="accountIDs" completeWhen="accountidsFilled">
+  <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                     disabled={!!accountId}
@@ -399,6 +402,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                       ))}
                     </SelectContent>
                   </Select>
+</SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}

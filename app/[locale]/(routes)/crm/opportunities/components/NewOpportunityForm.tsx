@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useEffect, useMemo, useState } from "react";
@@ -285,11 +286,13 @@ export function NewOpportunityForm({
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <SallyTarget id="description-11" label="description" completeWhen="description-11Filled">
+  <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
+</SallyTarget>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -303,7 +306,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("salesType")}</FormLabel>
-                      <Select
+                      <SallyTarget id="type-3" label="type" completeWhen="type-3Filled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -320,6 +324,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -330,7 +335,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem hidden={selectedStage ? true : false}>
                       <FormLabel>{t("saleStage")}</FormLabel>
-                      <Select
+                      <SallyTarget id="sales-stage" label="sales stage" completeWhen="salesStageFilled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={selectedStage}
                       >
@@ -347,6 +353,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -358,12 +365,14 @@ export function NewOpportunityForm({
                     <FormItem>
                       <FormLabel>{t("budget")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="budget" label="budget" completeWhen="budgetFilled">
+  <Input
                           type="number"
                           disabled={form.formState.isSubmitting}
                           placeholder="1000000"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -375,7 +384,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("currency")}</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <SallyTarget id="currency-2" label="currency" completeWhen="currency-2Filled">
+  <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder={t("selectCurrency")} />
@@ -389,6 +399,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -400,12 +411,14 @@ export function NewOpportunityForm({
                     <FormItem>
                       <FormLabel>{t("expectedRevenue")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <SallyTarget id="expected-revenue" label="expected revenue" completeWhen="expectedRevenueFilled">
+  <Input
                           type="number"
                           disabled={form.formState.isSubmitting}
                           placeholder="500000"
                           {...field}
                         />
+</SallyTarget>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -454,7 +467,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("assignedAccount")}</FormLabel>
-                      <Select
+                      <SallyTarget id="account" label="account" completeWhen="accountFilled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                         disabled={!!accountId}
@@ -478,6 +492,10 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>lectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -488,7 +506,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Assigned Contact</FormLabel>
-                      <Select
+                      <SallyTarget id="contact" label="contact" completeWhen="contactFilled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -511,6 +530,10 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>lectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -521,7 +544,8 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>From campaign</FormLabel>
-                      <Select
+                      <SallyTarget id="campaign-3" label="campaign" completeWhen="campaign-3Filled">
+  <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -538,6 +562,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
