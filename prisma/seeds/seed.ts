@@ -156,15 +156,42 @@ async function main() {
       name: "Playwright Admin",
       userStatus: "ACTIVE",
       role: "admin",
+      emailVerified: true,
     },
     create: {
       email: testUserEmail,
       name: "Playwright Admin",
       userStatus: "ACTIVE",
       role: "admin",
+      emailVerified: true,
     },
   });
   console.log(`Test user seeded: ${testUserEmail}`);
+
+  if (process.env.NODE_ENV !== "production") {
+    const { hashPassword } = await import("better-auth/crypto");
+    const testUserPassword = process.env.TEST_USER_PASSWORD || "sally-local";
+    const hash = await hashPassword(testUserPassword);
+    const credential = await prisma.account.findFirst({
+      where: { userId: testUser.id, providerId: "credential" },
+    });
+    if (credential) {
+      await prisma.account.update({
+        where: { id: credential.id },
+        data: { password: hash },
+      });
+    } else {
+      await prisma.account.create({
+        data: {
+          accountId: testUser.id,
+          providerId: "credential",
+          userId: testUser.id,
+          password: hash,
+        },
+      });
+    }
+    console.log(`Test user password set for ${testUserEmail}`);
+  }
 
   // Demo CRM dataset for e2e tests — the update/detail specs act on the
   // first table row and need at least one record per entity. Idempotent:

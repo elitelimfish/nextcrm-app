@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { type LucideIcon, ChevronRight } from "lucide-react"
+import { SallyTarget } from "@supportsally/react"
 import { cn } from "@/lib/utils"
 import {
   SidebarGroup,
@@ -134,18 +135,27 @@ export function NavMain({ items, dict }: NavMainProps) {
           // Simple navigation item (no sub-items)
           if (!item.url) return null
           const isActive = isRouteActive(item.url)
+          const button = (
+            <SidebarMenuButton
+              asChild
+              tooltip={item.title}
+              isActive={isActive}
+            >
+              <Link href={item.url}>
+                {item.icon && <item.icon />}
+                <span>{item.title}</span>
+              </Link>
+            </SidebarMenuButton>
+          )
           return (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                asChild
-                tooltip={item.title}
-                isActive={isActive}
-              >
-                <Link href={item.url}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
+              {item.url === "/invoices" ? (
+                <SallyTarget id="nav-invoices" label="Invoices">
+                  {button}
+                </SallyTarget>
+              ) : (
+                button
+              )}
             </SidebarMenuItem>
           )
         })}

@@ -46,6 +46,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local Sally tarballs (alpha; public npm tabled)
+.sally-pack/
+
 # migration logs (may contain secrets)
 migration-errors.log
 

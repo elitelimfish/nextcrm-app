@@ -5,6 +5,19 @@ const withNextIntl = require("next-intl/plugin")(
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  // Home-dir package-lock.json made Turbopack infer the wrong root, so
+  // /api/sally/* compiled but 404'd as pages under app/[locale].
+  turbopack: {
+    root: __dirname,
+  },
+  transpilePackages: [
+    "@supportsally/react",
+    "@supportsally/core",
+    "@supportsally/telemetry",
+    "@supportsally/voice-realtime",
+    "@supportsally/web",
+    "@supportsally/workflows",
+  ],
   serverExternalPackages: ["pdf-parse", "pdfjs-dist"],
   images: {
     remotePatterns: [

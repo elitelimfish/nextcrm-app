@@ -39,7 +39,10 @@ export const auth = betterAuth({
       },
       userStatus: {
         type: "string",
-        defaultValue: isDemo ? "ACTIVE" : "PENDING",
+        defaultValue:
+          isDemo || process.env.NODE_ENV !== "production"
+            ? "ACTIVE"
+            : "PENDING",
         input: false,
       },
       userLanguage: {
@@ -63,7 +66,7 @@ export const auth = betterAuth({
   },
 
   emailAndPassword: {
-    enabled: false,
+    enabled: process.env.NODE_ENV !== "production",
   },
 
   plugins: [

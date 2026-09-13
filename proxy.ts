@@ -28,6 +28,11 @@ export async function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // Sally BYOK proxies — do not locale-prefix these
+  if (path.startsWith("/api/sally")) {
+    return NextResponse.next();
+  }
+
   const sessionCookie = getSessionCookie(req);
 
   // Admin-only routes — require session cookie (role checked server-side)
@@ -65,6 +70,8 @@ export const config = {
     "/api/admin/:path*",
     // better-auth API
     "/api/auth/:path*",
+    // Sally local proxies
+    "/api/sally/:path*",
     // All non-API routes (existing intl matcher)
     "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
   ],

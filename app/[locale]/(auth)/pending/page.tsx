@@ -57,13 +57,10 @@ const PendingPage = async () => {
       </div>
       <div className="flex flex-col md:flex-row space-x-2 justify-center items-center">
         <SallyTarget id="log-in-with-another-account-4" label="Log-in with another account">
-  <Button asChild>
-          <Link href="/sign-in">Log-in with another account</Link>
-        </Button>
-</SallyTarget> account">
-  <Link href="/sign-in">Log-in with another account</Link>
-</SallyTarget>
-        </Button>
+          <Button asChild>
+            <Link href="/sign-in">Log-in with another account</Link>
+          </Button>
+        </SallyTarget>
         <p>or</p>
         <TryAgain />
       </div>

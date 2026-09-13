@@ -1,4 +1,10 @@
 overrides:
+  "@supportsally/core": "file:./.sally-pack/supportsally-core-0.1.0-alpha.0.tgz"
+  "@supportsally/react": "file:./.sally-pack/supportsally-react-0.1.0-alpha.0.tgz"
+  "@supportsally/telemetry": "file:./.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz"
+  "@supportsally/voice-realtime": "file:./.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz"
+  "@supportsally/web": "file:./.sally-pack/supportsally-web-0.1.0-alpha.0.tgz"
+  "@supportsally/workflows": "file:./.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz"
   # better-auth 1.6.13's kysely-adapter imports DEFAULT_MIGRATION_TABLE /
   # DEFAULT_MIGRATION_LOCK_TABLE, removed in kysely 0.29 — pin to 0.28 line
   # until better-auth ships a 0.29-compatible adapter.
@@ -107,6 +113,7 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
+  - '@supportsally/*'
   - protobufjs@7.5.8 || 7.6.1 || 7.6.3 || 7.6.5
   - uuid@11.1.1
   - qs@6.15.2
