@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
+import { SallyTarget } from "@supportsally/react";
+
 import { createColumns } from "../contacts/table-components/columns";
 import { NewContactForm } from "../contacts/components/NewContactForm";
 import { ContactsDataTable } from "../contacts/table-components/data-table";
@@ -55,7 +57,9 @@ const ContactsView = ({ data, crmData, accountId }: ContactsViewProps) => {
           <div className="flex space-x-2">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button size="sm" aria-label={t("contacts.addNew")} data-testid="add-contact-btn">+</Button>
+                <SallyTarget id="new-contact" label="New contact">
+                  <Button size="sm" aria-label={t("contacts.addNew")} data-testid="add-contact-btn">+</Button>
+                </SallyTarget>
               </SheetTrigger>
               <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
                 <SheetHeader>

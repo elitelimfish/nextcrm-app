@@ -3888,11 +3888,11 @@ packages:
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
   '@supportsally/core@file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-wlj1kPK1djg5fgDm0wefvGTQ5NIwt6z1SqXTVfTQcPNX36/M+hqFIHxN0PMks8YXG318nWKKBtNjxCjDkCfDYg==, tarball: file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz}
+    resolution: {integrity: sha512-obFSj5tx56c59tAuxMYjkypnvVwzNuDOAEgL3TGGsvHhHT3IeHWzgpJ5K6rIJcnVS906cw9Pf9/uwD/RLpqzuA==, tarball: file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz}
     version: 0.1.0-alpha.0
 
   '@supportsally/react@file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-iHwUQEmdTDyeVZW71XpvpqGRi7LmX6Z78zL2pw0HSlxQXKN+uyDOxMubzacdX77ljpCxQVRMxM9oO0LVFUeeGg==, tarball: file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz}
+    resolution: {integrity: sha512-rEvARx2PRe+DJGFosyTFR+wzZlTZJ2sdNqb5YeaOl1u5W4EG7HSkEHhdNUQAhanp5omUUpG1KIwEMUS+Opr1kQ==, tarball: file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz}
     version: 0.1.0-alpha.0
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
@@ -3903,15 +3903,15 @@ packages:
     version: 0.1.0-alpha.0
 
   '@supportsally/voice-realtime@file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-hmc623UtoNg4PhB0h8pCbgWYGlRT/YqKmfwtYgfuHBFSqLOFLBd82q6GlvwWjyZc91aMb7AJdzbiKzxyH0ltWg==, tarball: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz}
+    resolution: {integrity: sha512-xiYQNlldQXkr8CAMSLKSSiCXq2nt3xzmN4wkwbSConpzq/YIM5agusuDxroJVoNZetTx6s5ZOgzRE02tkVkQTQ==, tarball: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz}
     version: 0.1.0-alpha.0
 
   '@supportsally/web@file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-L+mkqlNc61a6GMWrdbUqebMoN2cCbclcNZvTzIS89e/wSVeBMcopC3msM5imLSubcKi9t51SedyN85KrPfV3qQ==, tarball: file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz}
+    resolution: {integrity: sha512-D8pD1IcynTQy++tr4ghZlhd7aRT2NRp2joyeS1a1UEF1vBq68XX6J9+J86MJUgUnBU5otKVL5FIrvsBV34rqGQ==, tarball: file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz}
     version: 0.1.0-alpha.0
 
   '@supportsally/workflows@file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-pbmpk90Awc1MWIjesqswhqnuM4Cuu4C9gVtIu3St2UjroaoDaC+ogL4hIfQuc1sVIgIgK8e4ue4XlZtpJEjAYg==, tarball: file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz}
+    resolution: {integrity: sha512-KQd/EXWbIif/iBzwziqZjWVkti2W83OC05oGErwi2nU9C9gNr90MMlABvaSuClDqCg2R6eE7bBq/vIdARxbuWg==, tarball: file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz}
     version: 0.1.0-alpha.0
 
   '@swc/core-darwin-arm64@1.15.11':

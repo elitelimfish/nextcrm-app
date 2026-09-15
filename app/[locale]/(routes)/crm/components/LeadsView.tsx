@@ -21,6 +21,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+import { SallyTarget } from "@supportsally/react";
+
 import { NewLeadForm } from "../leads/components/NewLeadForm";
 import { LeadDataTable } from "../leads/table-components/data-table";
 
@@ -53,7 +55,9 @@ const LeadsView = ({ data, crmData, accountId }: LeadsViewProps) => {
           <div className="flex space-x-2">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button size="sm" aria-label={t("leads.addNew")} data-testid="add-lead-btn">+</Button>
+                <SallyTarget id="new-lead" label="New lead">
+                  <Button size="sm" aria-label={t("leads.addNew")} data-testid="add-lead-btn">+</Button>
+                </SallyTarget>
               </SheetTrigger>
               <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
                 <SheetHeader>
