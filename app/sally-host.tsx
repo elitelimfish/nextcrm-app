@@ -2,6 +2,8 @@
 
 import { SallyProvider } from "@supportsally/react";
 import "@supportsally/react/styles.css";
+import { patchSallyWorkflows } from "@/lib/sally-workflow-patch";
+import { SallyActions } from "@/app/sally-actions";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import {
@@ -40,7 +42,9 @@ function buildAppContext(pathname: string) {
 const studioUrl = (process.env.NEXT_PUBLIC_SALLY_STUDIO_URL ?? "").trim();
 const apiKey = (process.env.NEXT_PUBLIC_SALLY_EMBED_KEY ?? "").trim();
 const hosted =
-  studioUrl && apiKey ? { studioUrl, apiKey } : undefined;
+  studioUrl && apiKey
+    ? { studioUrl, apiKey, patchWorkflows: patchSallyWorkflows }
+    : undefined;
 
 export function SallyHost({ children }: { children: ReactNode }) {
   const pathname = usePathname() || "/";
@@ -77,6 +81,7 @@ export function SallyHost({ children }: { children: ReactNode }) {
       contextKey={contextKey}
       onNavigate={onNavigate}
     >
+      <SallyActions />
       {children}
     </SallyProvider>
   );

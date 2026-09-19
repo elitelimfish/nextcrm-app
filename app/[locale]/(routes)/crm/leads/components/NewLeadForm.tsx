@@ -115,15 +115,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("firstName")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="first-name-3" label="first name" completeWhen="firstName-3Filled">
-  <Input
+                    <SallyTarget id="first-name-3" label="first name" completeWhen="firstName-3Filled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Johny"
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -134,15 +134,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("lastName")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="last-name-3" label="last name" completeWhen="lastName-3Filled">
-  <Input
+                    <SallyTarget id="last-name-3" label="last name" completeWhen="lastName-3Filled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Walker"
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -155,15 +155,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("company")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="company" label="company" completeWhen="companyFilled">
-  <Input
+                    <SallyTarget id="company" label="company" completeWhen="companyFilled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="NextCRM Inc."
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -174,11 +174,11 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("jobTitle")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="jobtitle" label="jobTitle" completeWhen="jobtitleFilled">
-  <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
-</SallyTarget>
+                    <SallyTarget id="jobtitle" label="jobTitle" completeWhen="jobtitleFilled">
+  <FormControl>
+                      <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -191,15 +191,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("email")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="email-5" label="email" completeWhen="email-5Filled">
-  <Input
+                    <SallyTarget id="email-5" label="email" completeWhen="email-5Filled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="johny@domain.com"
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -210,15 +210,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("phone")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="phone-2" label="phone" completeWhen="phone-2Filled">
-  <Input
+                    <SallyTarget id="phone-2" label="phone" completeWhen="phone-2Filled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="+11 123 456 789"
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -230,15 +230,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="description-3" label="description" completeWhen="description-3Filled">
-  <Textarea
+                  <SallyTarget id="description-3" label="description" completeWhen="description-3Filled">
+  <FormControl>
+                    <Textarea
                       disabled={form.formState.isSubmitting}
                       placeholder="New NextCRM functionality"
                       {...field}
                     />
-</SallyTarget>
                   </FormControl>
+</SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -333,15 +333,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("campaign")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="campaign" label="campaign" completeWhen="campaignFilled">
-  <Input
+                    <SallyTarget id="campaign" label="campaign" completeWhen="campaignFilled">
+  <FormControl>
+                      <Input
                         disabled={form.formState.isSubmitting}
                         placeholder="Social networks"
                         {...field}
                       />
-</SallyTarget>
                     </FormControl>
+</SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -403,15 +403,21 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
               {form.formState.errors.root.serverError.message}
             </p>
           )}
-          <Button disabled={form.formState.isSubmitting} type="submit" data-testid="lead-submit-btn">
-            {form.formState.isSubmitting ? (
-              <span className="flex items-center animate-pulse">
-                {c("savingData")}
-              </span>
-            ) : (
-              t("createButton")
-            )}
-          </Button>
+          <SallyTarget id="save-lead" label="Save lead">
+            <Button
+              disabled={form.formState.isSubmitting}
+              type="submit"
+              data-testid="lead-submit-btn"
+            >
+              {form.formState.isSubmitting ? (
+                <span className="flex items-center animate-pulse">
+                  {c("savingData")}
+                </span>
+              ) : (
+                t("createButton")
+              )}
+            </Button>
+          </SallyTarget>
         </div>
       </form>
     </Form>
