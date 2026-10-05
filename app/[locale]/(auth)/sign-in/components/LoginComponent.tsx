@@ -29,17 +29,15 @@ export function LoginComponent({
   googleLogin = false,
   passwordLogin = false,
   demoEmail = "test@nextcrm.app",
-  demoPassword = "sally-local",
 }: {
   googleLogin?: boolean;
   passwordLogin?: boolean;
   demoEmail?: string;
-  demoPassword?: string;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState(passwordLogin ? demoEmail : "");
-  const [password, setPassword] = useState(passwordLogin ? demoPassword : "");
+  const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
   const [devOtp, setDevOtp] = useState<string | null>(null);
   const showGoogle = googleLogin && !passwordLogin;
@@ -148,7 +146,7 @@ export function LoginComponent({
   };
 
   const description = passwordLogin
-    ? "Use the demo account to sign in."
+    ? "Enter the CRM password you were provided."
     : showGoogle
       ? "Continue with Google, or we'll email you a code."
       : "We'll email you a 6-digit code.";
@@ -160,13 +158,6 @@ export function LoginComponent({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        {passwordLogin && (
-          <p className="rounded-md border bg-muted/50 p-3 text-sm text-muted-foreground">
-            Demo account: <strong>{demoEmail}</strong> /{" "}
-            <strong>{demoPassword}</strong>
-          </p>
-        )}
-
         {showGoogle && (
           <>
             <SallyTarget id="continue-with-google" label="Continue with Google">
@@ -202,14 +193,14 @@ export function LoginComponent({
             }}
           >
             <div className="grid gap-1.5">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">Username</Label>
               <SallyTarget id="email3" label="Email" completeWhen="email3Filled">
                 <Input
                   id="email"
                   type="email"
                   autoComplete="username"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  readOnly
                   disabled={isLoading}
                 />
               </SallyTarget>
@@ -220,6 +211,8 @@ export function LoginComponent({
                 id="password"
                 type="password"
                 autoComplete="current-password"
+                autoFocus
+                placeholder="CRM password you were provided"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isLoading}

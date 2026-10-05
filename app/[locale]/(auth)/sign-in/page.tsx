@@ -22,11 +22,6 @@ const SignInPage = async () => {
             process.env.TEST_USER_EMAIL ||
             "test@nextcrm.app"
           }
-          demoPassword={
-            process.env.NEXT_PUBLIC_TEST_USER_PASSWORD ||
-            process.env.TEST_USER_PASSWORD ||
-            "sally-local"
-          }
         />
       </div>
     </div>
