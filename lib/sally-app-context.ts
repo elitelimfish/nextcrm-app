@@ -21,7 +21,7 @@ let detail: InvoiceDetailContext = {
 const listeners = new Set<() => void>();
 
 function emit(): void {
-  for (const listener of listeners) listener();
+  listeners.forEach((listener) => listener());
 }
 
 export function subscribeSallyAppContext(listener: () => void): () => void {

@@ -10,8 +10,6 @@ import { getTranslations, getMessages } from "next-intl/server";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/app/providers/ThemeProvider";
-import { SallyHost } from "@/app/sally-host";
-
 const inter = Inter({ subsets: ["latin"] });
 
 type Props = {
@@ -64,7 +62,7 @@ export default async function RootLayout(props: Props) {
       <body className={inter.className + " min-h-screen"}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SallyHost>{children}</SallyHost>
+            {children}
           </ThemeProvider>
         </NextIntlClientProvider>
         <Toaster />
