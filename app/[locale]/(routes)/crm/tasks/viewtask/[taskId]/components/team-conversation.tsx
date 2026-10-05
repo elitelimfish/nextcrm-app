@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -90,21 +91,25 @@ export function TeamConversations({
             name="comment"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormControl>
-                  <Input
-                    disabled={isLoading}
-                    placeholder="Your comment ..."
-                    {...field}
-                  />
-                </FormControl>
+                <SallyTarget id="comment" label="comment" completeWhen="commentFilled">
+                  <FormControl>
+                    <Input
+                      disabled={isLoading}
+                      placeholder="Your comment ..."
+                      {...field}
+                    />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <Button className="w-[80px]" disabled={isLoading} type="submit">
-            Add
-          </Button>
+          <SallyTarget id="add3" label="Add">
+            <Button className="w-[80px]" disabled={isLoading} type="submit">
+              Add
+            </Button>
+          </SallyTarget>
         </form>
       </Form>
       <Card className="w-full">

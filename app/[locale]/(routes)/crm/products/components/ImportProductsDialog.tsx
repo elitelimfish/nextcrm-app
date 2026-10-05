@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useRef } from "react";
 import { Upload, Download, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
@@ -131,12 +132,14 @@ export function ImportProductsDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Upload className="mr-2 h-4 w-4" />
-          Import
-        </Button>
-      </DialogTrigger>
+      <SallyTarget id="import" label="Import">
+        <DialogTrigger asChild>
+          <Button variant="outline" size="sm">
+            <Upload className="mr-2 h-4 w-4" />
+            Import
+          </Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Import Products from CSV</DialogTitle>
@@ -148,10 +151,12 @@ export function ImportProductsDialog() {
 
         <div className="space-y-4">
           {/* Template download */}
-          <Button variant="outline" size="sm" onClick={downloadTemplate}>
-            <Download className="mr-2 h-4 w-4" />
-            Download CSV Template
-          </Button>
+          <SallyTarget id="download-csv-template" label="Download CSV Template">
+            <Button variant="outline" size="sm" onClick={downloadTemplate}>
+              <Download className="mr-2 h-4 w-4" />
+              Download CSV Template
+            </Button>
+          </SallyTarget>
 
           {/* File input */}
           <div>
@@ -197,9 +202,11 @@ export function ImportProductsDialog() {
 
           {/* Import button */}
           {file && !result && (
-            <Button onClick={handleImport} disabled={isImporting}>
-              {isImporting ? "Importing..." : "Confirm Import"}
-            </Button>
+            <SallyTarget id="confirm-import" label={isImporting ? "Importing..." : "Confirm Import"}>
+              <Button onClick={handleImport} disabled={isImporting}>
+                {isImporting ? "Importing..." : "Confirm Import"}
+              </Button>
+            </SallyTarget>
           )}
 
           {/* Result display */}
@@ -239,9 +246,11 @@ export function ImportProductsDialog() {
                 </div>
               )}
 
-              <Button variant="outline" onClick={handleClose}>
-                Done
-              </Button>
+              <SallyTarget id="done" label="Done">
+                <Button variant="outline" onClick={handleClose}>
+                  Done
+                </Button>
+              </SallyTarget>
             </div>
           )}
         </div>

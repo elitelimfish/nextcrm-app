@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -89,12 +90,14 @@ const LineItemsSection = ({
             <div className="flex space-x-2">
               {opportunities.length > 0 && (
                 <Dialog open={copyDialogOpen} onOpenChange={setCopyDialogOpen}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm" className="mb-5">
-                      <Copy className="h-4 w-4 mr-1" />
-                      Copy from Opportunity
-                    </Button>
-                  </DialogTrigger>
+                  <SallyTarget id="copy-from-opportunity" label="Copy from Opportunity">
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="sm" className="mb-5">
+                        <Copy className="h-4 w-4 mr-1" />
+                        Copy from Opportunity
+                      </Button>
+                    </DialogTrigger>
+                  </SallyTarget>
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle>Copy Line Items from Opportunity</DialogTitle>
@@ -108,29 +111,33 @@ const LineItemsSection = ({
                         <label className="text-sm font-medium">
                           Opportunity
                         </label>
-                        <select
-                          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                          value={selectedOpportunityId}
-                          onChange={(e) =>
-                            setSelectedOpportunityId(e.target.value)
-                          }
-                        >
-                          <option value="">-- Select an opportunity --</option>
-                          {opportunities.map((opp) => (
-                            <option key={opp.id} value={opp.id}>
-                              {opp.name}
-                            </option>
-                          ))}
-                        </select>
+                        <SallyTarget id="opportunity" label="Opportunity" completeWhen="opportunityFilled">
+                          <select
+                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                            value={selectedOpportunityId}
+                            onChange={(e) =>
+                              setSelectedOpportunityId(e.target.value)
+                            }
+                          >
+                            <option value="">-- Select an opportunity --</option>
+                            {opportunities.map((opp) => (
+                              <option key={opp.id} value={opp.id}>
+                                {opp.name}
+                              </option>
+                            ))}
+                          </select>
+                        </SallyTarget>
                       </div>
                     </div>
                     <DialogFooter>
-                      <Button
-                        variant="outline"
-                        onClick={() => setCopyDialogOpen(false)}
-                      >
-                        Cancel
-                      </Button>
+                      <SallyTarget id="cancel8" label="Cancel">
+                        <Button
+                          variant="outline"
+                          onClick={() => setCopyDialogOpen(false)}
+                        >
+                          Cancel
+                        </Button>
+                      </SallyTarget>
                       <Button onClick={handleCopy} disabled={isCopying}>
                         {isCopying ? (
                           <Loader2 className="h-4 w-4 animate-spin" />

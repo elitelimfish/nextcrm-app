@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -58,12 +59,14 @@ export function SendEmailDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Send className="mr-2 h-4 w-4" />
-          Send by Email
-        </Button>
-      </DialogTrigger>
+      <SallyTarget id="send-by-email" label="Send by Email">
+        <DialogTrigger asChild>
+          <Button variant="outline" size="sm">
+            <Send className="mr-2 h-4 w-4" />
+            Send by Email
+          </Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Send Invoice by Email</DialogTitle>
@@ -71,33 +74,41 @@ export function SendEmailDialog({
         <div className="space-y-4">
           <div className="space-y-2">
             <Label>To</Label>
-            <Input
-              type="email"
-              value={to}
-              onChange={(e) => setTo(e.target.value)}
-              placeholder="recipient@example.com"
-            />
+            <SallyTarget id="to2" label="To" completeWhen="to2Filled">
+              <Input
+                type="email"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                placeholder="recipient@example.com"
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Subject (optional)</Label>
-            <Input
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              placeholder="Custom subject line"
-            />
+            <SallyTarget id="subject-optional" label="Subject (optional)" completeWhen="subjectOptionalFilled">
+              <Input
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="Custom subject line"
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Message (optional)</Label>
-            <Textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Optional message to include"
-              rows={3}
-            />
+            <SallyTarget id="message-optional" label="Message (optional)" completeWhen="messageOptionalFilled">
+              <Textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Optional message to include"
+                rows={3}
+              />
+            </SallyTarget>
           </div>
-          <Button onClick={handleSend} disabled={sending || !to}>
-            {sending ? "Sending..." : "Send"}
-          </Button>
+          <SallyTarget id="send3" label={sending ? "Sending..." : "Send"}>
+            <Button onClick={handleSend} disabled={sending || !to}>
+              {sending ? "Sending..." : "Send"}
+            </Button>
+          </SallyTarget>
         </div>
       </DialogContent>
     </Dialog>

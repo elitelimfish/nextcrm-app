@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
@@ -70,11 +71,13 @@ export function DataTableRowActions<TData>({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          <DropdownMenuItem
-            onClick={() => router.push(`/crm/products/${product.id}`)}
-          >
-            Edit
-          </DropdownMenuItem>
+          <SallyTarget id="edit-table-component" label="Edit">
+            <DropdownMenuItem
+              onClick={() => router.push(`/crm/products/${product.id}`)}
+            >
+              Edit
+            </DropdownMenuItem>
+          </SallyTarget>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
             Delete

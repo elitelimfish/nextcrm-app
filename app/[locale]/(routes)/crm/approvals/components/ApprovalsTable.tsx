@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -121,20 +122,24 @@ const ApprovalsTable = ({ rows }: { rows: PendingApproval[] }) => {
           <DialogHeader>
             <DialogTitle>Reject quote — {rejecting?.name ?? ""}</DialogTitle>
           </DialogHeader>
-          <Textarea
-            placeholder="What needs to change? (sent to the rep)"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            maxLength={1000}
-          />
+          <SallyTarget id="what-needs-to-change-sent-to-the-rep" label="What needs to change? (sent to the rep)" completeWhen="whatNeedsToChangeSentToTheRepFilled">
+            <Textarea
+              placeholder="What needs to change? (sent to the rep)"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              maxLength={1000}
+            />
+          </SallyTarget>
           <DialogFooter>
-            <Button
-              variant="destructive"
-              disabled={busy}
-              onClick={() => rejecting && decide(rejecting.id, "REJECTED", note)}
-            >
-              Reject quote
-            </Button>
+            <SallyTarget id="reject-quote" label="Reject quote">
+              <Button
+                variant="destructive"
+                disabled={busy}
+                onClick={() => rejecting && decide(rejecting.id, "REJECTED", note)}
+              >
+                Reject quote
+              </Button>
+            </SallyTarget>
           </DialogFooter>
         </DialogContent>
       </Dialog>

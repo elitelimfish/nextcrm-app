@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -52,12 +53,14 @@ const InvoicesView = ({
             <CardDescription></CardDescription>
           </div>
           {accountId && (
-            <Link href={`/invoices/new?accountId=${accountId}`}>
-              <Button size="sm">
-                <Plus className="mr-2 h-4 w-4" />
-                New invoice
-              </Button>
-            </Link>
+            <SallyTarget id="new-invoice2" label="New invoice">
+              <Link href={`/invoices/new?accountId=${accountId}`}>
+                <Button size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  New invoice
+                </Button>
+              </Link>
+            </SallyTarget>
           )}
         </div>
         <Separator />

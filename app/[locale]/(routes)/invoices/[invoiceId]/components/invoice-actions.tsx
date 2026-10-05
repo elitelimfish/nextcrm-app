@@ -87,40 +87,40 @@ export function InvoiceActions({
     <div className="flex flex-wrap gap-2">
       {isDraft && (
         <>
-          <Link href={`/invoices/${invoiceId}/edit`}>
-            <Button variant="outline" size="sm">
-              <Pencil className="mr-2 h-4 w-4" />
-              Edit
-            </Button>
-          </Link>
-          <SallyTarget
-            id="invoice-issue"
-            label="Issue invoice"
-            completeWhen="invoiceIssued"
-          >
+          <SallyTarget id="edit4" label="Edit">
+            <Link href={`/invoices/${invoiceId}/edit`}>
+              <Button variant="outline" size="sm">
+                <Pencil className="mr-2 h-4 w-4" />
+                Edit
+              </Button>
+            </Link>
+          </SallyTarget>
+          <SallyTarget id="invoice-issue" label={loading === "issue" ? "Issuing..." : "Issue"} completeWhen="invoiceIssued">
+                        <Button
+                variant="default"
+                size="sm"
+                onClick={() => handleAction("issue")}
+                disabled={loading === "issue"}
+              >
+                <CheckCircle className="mr-2 h-4 w-4" />
+                {loading === "issue" ? "Issuing..." : "Issue"}
+              </Button>
+          </SallyTarget>
+          <SallyTarget id="cancel9" label="Cancel">
             <Button
-              variant="default"
+              variant="destructive"
               size="sm"
-              onClick={() => handleAction("issue")}
-              disabled={loading === "issue"}
+              onClick={() => {
+                if (confirm("Cancel this draft invoice?")) {
+                  handleAction("cancel");
+                }
+              }}
+              disabled={loading === "cancel"}
             >
-              <CheckCircle className="mr-2 h-4 w-4" />
-              {loading === "issue" ? "Issuing..." : "Issue"}
+              <Ban className="mr-2 h-4 w-4" />
+              Cancel
             </Button>
           </SallyTarget>
-          <Button
-            variant="destructive"
-            size="sm"
-            onClick={() => {
-              if (confirm("Cancel this draft invoice?")) {
-                handleAction("cancel");
-              }
-            }}
-            disabled={loading === "cancel"}
-          >
-            <Ban className="mr-2 h-4 w-4" />
-            Cancel
-          </Button>
         </>
       )}
 
@@ -139,38 +139,44 @@ export function InvoiceActions({
         />
       )}
 
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => handleAction("duplicate")}
-        disabled={loading === "duplicate"}
-      >
-        <Copy className="mr-2 h-4 w-4" />
-        Duplicate
-      </Button>
-
-      <a
-        href={`/api/invoices/${invoiceId}/pdf`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button variant="outline" size="sm">
-          <FileDown className="mr-2 h-4 w-4" />
-          Download PDF
-        </Button>
-      </a>
-
-      {!isDraft && (
+      <SallyTarget id="duplicate" label="Duplicate">
         <Button
           variant="outline"
           size="sm"
-          onClick={handleRegenerate}
-          disabled={loading === "regenerate"}
-          title="Re-render PDF using current company settings"
+          onClick={() => handleAction("duplicate")}
+          disabled={loading === "duplicate"}
         >
-          <RefreshCw className="mr-2 h-4 w-4" />
-          {loading === "regenerate" ? "Regenerating..." : "Regenerate PDF"}
+          <Copy className="mr-2 h-4 w-4" />
+          Duplicate
         </Button>
+      </SallyTarget>
+
+      <SallyTarget id="download-pdf" label="Download PDF">
+        <a
+          href={`/api/invoices/${invoiceId}/pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="outline" size="sm">
+            <FileDown className="mr-2 h-4 w-4" />
+            Download PDF
+          </Button>
+        </a>
+      </SallyTarget>
+
+      {!isDraft && (
+        <SallyTarget id="regenerate-pdf" label={loading === "regenerate" ? "Regenerating..." : "Regenerate PDF"}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleRegenerate}
+            disabled={loading === "regenerate"}
+            title="Re-render PDF using current company settings"
+          >
+            <RefreshCw className="mr-2 h-4 w-4" />
+            {loading === "regenerate" ? "Regenerating..." : "Regenerate PDF"}
+          </Button>
+        </SallyTarget>
       )}
     </div>
   );

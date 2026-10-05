@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { ColumnDef } from "@tanstack/react-table";
 
@@ -29,20 +30,24 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   /* {
     id: "select",
     header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className="translate-y-[2px]"
-      />
+      <SallyTarget id="select-all3" label="Select all" completeWhen="selectAll3Filled">
+        <Checkbox
+          checked={table.getIsAllPageRowsSelected()}
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+          className="translate-y-[2px]"
+        />
+      </SallyTarget>
     ), 
     cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className="translate-y-[2px]"
-      />
+      <SallyTarget id="select-row3" label="Select row" completeWhen="selectRow3Filled">
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          className="translate-y-[2px]"
+        />
+      </SallyTarget>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -106,9 +111,11 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
     ),
 
     cell: ({ row }) => (
-      <Link href={`/crm/opportunities/${row.original.id}`} data-testid="opportunity-row-name">
-        <div className="w-[250px] overflow-hidden">{row.getValue("name")}</div>
-      </Link>
+      <SallyTarget id="row-getvalue-name4" label={row.getValue("name")}>
+        <Link href={`/crm/opportunities/${row.original.id}`} data-testid="opportunity-row-name">
+          <div className="w-[250px] overflow-hidden">{row.getValue("name")}</div>
+        </Link>
+      </SallyTarget>
     ),
     enableSorting: true,
     enableHiding: true,

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -26,16 +27,18 @@ export function EnrichButton({ contactId, contactEmail, contactCurrentData }: En
 
   return (
     <>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setOpen(true)}
-        disabled={!contactEmail}
-        title={!contactEmail ? "Add an email to enable enrichment" : "Enrich with AI"}
-      >
-        <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
-        Enrich with AI
-      </Button>
+      <SallyTarget id="enrich-with-ai3" label="Enrich with AI">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setOpen(true)}
+          disabled={!contactEmail}
+          title={!contactEmail ? "Add an email to enable enrichment" : "Enrich with AI"}
+        >
+          <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
+          Enrich with AI
+        </Button>
+      </SallyTarget>
       <EnrichContactDrawer
         contactId={contactId}
         contactEmail={contactEmail}
