@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { ColumnDef } from "@tanstack/react-table";
 
@@ -12,19 +13,23 @@ export const columns: ColumnDef<Target>[] = [
   {
     id: "select",
     header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
+      <SallyTarget id="select-all" label="Select all" completeWhen="selectAllFilled">
+        <Checkbox
+          checked={table.getIsAllPageRowsSelected()}
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      </SallyTarget>
     ),
     cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        onClick={(e) => e.stopPropagation()}
-      />
+      <SallyTarget id="select-row" label="Select row" completeWhen="selectRowFilled">
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </SallyTarget>
     ),
     enableSorting: false,
     enableHiding: false,

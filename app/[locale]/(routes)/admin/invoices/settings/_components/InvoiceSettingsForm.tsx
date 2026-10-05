@@ -339,104 +339,120 @@ export function InvoiceSettingsForm({
 
         <div className="space-y-2">
           <Label>Default Due Days</Label>
-          <Input
-            type="number"
-            value={defaultDueDays}
-            onChange={(e) => setDefaultDueDays(e.target.value)}
-            min={1}
-          />
+          <SallyTarget id="default-due-days" label="Default Due Days" completeWhen="defaultDueDaysFilled">
+            <Input
+              type="number"
+              value={defaultDueDays}
+              onChange={(e) => setDefaultDueDays(e.target.value)}
+              min={1}
+            />
+          </SallyTarget>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label>Default Series</Label>
-          <Select value={defaultSeriesId} onValueChange={setDefaultSeriesId}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select series..." />
-            </SelectTrigger>
-            <SelectContent>
-              {series.map((s) => (
-                <SelectItem key={s.id} value={s.id}>
-                  {s.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SallyTarget id="default-series" label="Default Series" completeWhen="defaultSeriesFilled">
+            <Select value={defaultSeriesId} onValueChange={setDefaultSeriesId}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select series..." />
+              </SelectTrigger>
+              <SelectContent>
+                {series.map((s) => (
+                  <SelectItem key={s.id} value={s.id}>
+                    {s.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </SallyTarget>
         </div>
 
         <div className="space-y-2">
           <Label>Default Tax Rate</Label>
-          <Select value={defaultTaxRateId} onValueChange={setDefaultTaxRateId}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select tax rate..." />
-            </SelectTrigger>
-            <SelectContent>
-              {taxRates.map((t) => (
-                <SelectItem key={t.id} value={t.id}>
-                  {t.name} ({t.rate}%)
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SallyTarget id="default-tax-rate" label="Default Tax Rate" completeWhen="defaultTaxRateFilled">
+            <Select value={defaultTaxRateId} onValueChange={setDefaultTaxRateId}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select tax rate..." />
+              </SelectTrigger>
+              <SelectContent>
+                {taxRates.map((t) => (
+                  <SelectItem key={t.id} value={t.id}>
+                    {t.name} ({t.rate}%)
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </SallyTarget>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label>Bank Name</Label>
-          <Input
-            value={bankName}
-            onChange={(e) => setBankName(e.target.value)}
-            placeholder="e.g. Komercni banka"
-          />
+          <SallyTarget id="bank-name2" label="Bank Name" completeWhen="bankName2Filled">
+            <Input
+              value={bankName}
+              onChange={(e) => setBankName(e.target.value)}
+              placeholder="e.g. Komercni banka"
+            />
+          </SallyTarget>
         </div>
         <div className="space-y-2">
           <Label>Bank Account</Label>
-          <Input
-            value={bankAccount}
-            onChange={(e) => setBankAccount(e.target.value)}
-            placeholder="e.g. 123456789/0100"
-          />
+          <SallyTarget id="bank-account" label="Bank Account" completeWhen="bankAccountFilled">
+            <Input
+              value={bankAccount}
+              onChange={(e) => setBankAccount(e.target.value)}
+              placeholder="e.g. 123456789/0100"
+            />
+          </SallyTarget>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label>IBAN</Label>
-          <Input
-            value={iban}
-            onChange={(e) => setIban(e.target.value)}
-            placeholder="e.g. CZ6508000000192000145399"
-          />
+          <SallyTarget id="iban" label="IBAN" completeWhen="ibanFilled">
+            <Input
+              value={iban}
+              onChange={(e) => setIban(e.target.value)}
+              placeholder="e.g. CZ6508000000192000145399"
+            />
+          </SallyTarget>
         </div>
         <div className="space-y-2">
           <Label>SWIFT</Label>
-          <Input
-            value={swift}
-            onChange={(e) => setSwift(e.target.value)}
-            placeholder="e.g. KOMBCZPP"
-          />
+          <SallyTarget id="swift" label="SWIFT" completeWhen="swiftFilled">
+            <Input
+              value={swift}
+              onChange={(e) => setSwift(e.target.value)}
+              placeholder="e.g. KOMBCZPP"
+            />
+          </SallyTarget>
         </div>
       </div>
 
       <div className="space-y-2">
         <Label>Footer Text</Label>
-        <Textarea
-          value={footerText}
-          onChange={(e) => setFooterText(e.target.value)}
-          placeholder="Text displayed at the bottom of invoices"
-          rows={3}
-        />
+        <SallyTarget id="footer-text" label="Footer Text" completeWhen="footerTextFilled">
+          <Textarea
+            value={footerText}
+            onChange={(e) => setFooterText(e.target.value)}
+            placeholder="Text displayed at the bottom of invoices"
+            rows={3}
+          />
+        </SallyTarget>
       </div>
 
       </div>
 
-      <SallyTarget id="save-settings-3" label="Save Settings">
-  <Button onClick={handleSave} disabled={isPending}>
-        {isPending ? "Saving..." : "Save Settings"}
-      </Button>
-</SallyTarget>
+      <SallyTarget id="save-settings-3" label={"Save Settings"}>
+          <Button onClick={handleSave} disabled={isPending}>
+          {isPending ? "Saving..." : "Save Settings"}
+        </Button>
+      </SallyTarget>
     </div>
   );
 }

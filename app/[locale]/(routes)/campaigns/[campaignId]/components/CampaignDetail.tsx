@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import { pauseCampaign } from "@/actions/campaigns/pause-campaign";
 import StepsTimeline from "./StepsTimeline";
 import RecipientsTable from "./RecipientsTable";
@@ -48,12 +49,14 @@ export default function CampaignDetail({ campaign }: { campaign: CampaignWithDat
               await pauseCampaign(campaign.id);
             }}
           >
-            <button
-              type="submit"
-              className="px-3 py-1.5 text-sm border rounded-md hover:bg-muted"
-            >
-              Pause
-            </button>
+            <SallyTarget id="pause" label="Pause">
+              <button
+                type="submit"
+                className="px-3 py-1.5 text-sm border rounded-md hover:bg-muted"
+              >
+                Pause
+              </button>
+            </SallyTarget>
           </form>
         )}
       </div>

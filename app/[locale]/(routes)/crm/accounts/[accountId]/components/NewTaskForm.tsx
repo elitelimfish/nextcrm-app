@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -113,13 +114,15 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>New task name</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder="Enter task name"
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="title" label="title" completeWhen="titleFilled">
+                        <FormControl>
+                          <Input
+                            disabled={isLoading}
+                            placeholder="Enter task name"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -130,13 +133,15 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Task description</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          disabled={isLoading}
-                          placeholder="Enter task description"
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="content" label="content" completeWhen="contentFilled">
+                        <FormControl>
+                          <Textarea
+                            disabled={isLoading}
+                            placeholder="Enter task description"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -203,32 +208,38 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Choose task priority</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select tasks priority" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                          <SelectItem value="critical">Critical</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="choose-task-priority" label="Choose task priority" completeWhen="chooseTaskPriorityFilled">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select tasks priority" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="low">Low</SelectItem>
+                            <SelectItem value="medium">Medium</SelectItem>
+                            <SelectItem value="high">High</SelectItem>
+                            <SelectItem value="critical">Critical</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
               <div className="flex w-full justify-end space-x-2 pt-2">
-                <SheetTrigger asChild>
-                  <Button variant={"destructive"}>Close</Button>
-                </SheetTrigger>
-                <Button type="submit">Create</Button>
+                <SallyTarget id="close" label="Close">
+                  <SheetTrigger asChild>
+                    <Button variant={"destructive"}>Close</Button>
+                  </SheetTrigger>
+                </SallyTarget>
+                <SallyTarget id="create" label="Create">
+                  <Button type="submit">Create</Button>
+                </SallyTarget>
               </div>
             </form>
           </Form>

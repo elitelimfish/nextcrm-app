@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -155,11 +156,13 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
           if (!v) resetForm();
         }}
       >
-        <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="mt-4">
-            + Add Tax Rate
-          </Button>
-        </DialogTrigger>
+        <SallyTarget id="add-tax-rate" label="+ Add Tax Rate">
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="mt-4">
+              + Add Tax Rate
+            </Button>
+          </DialogTrigger>
+        </SallyTarget>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
@@ -169,21 +172,25 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label>Name</Label>
-              <Input
-                placeholder="e.g. Standard VAT"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <SallyTarget id="name4" label="Name" completeWhen="name4Filled">
+                <Input
+                  placeholder="e.g. Standard VAT"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </SallyTarget>
             </div>
             <div className="space-y-2">
               <Label>Rate %</Label>
-              <Input
-                type="number"
-                step="0.01"
-                placeholder="e.g. 21"
-                value={rate}
-                onChange={(e) => setRate(e.target.value)}
-              />
+              <SallyTarget id="rate" label="Rate %" completeWhen="rateFilled">
+                <Input
+                  type="number"
+                  step="0.01"
+                  placeholder="e.g. 21"
+                  value={rate}
+                  onChange={(e) => setRate(e.target.value)}
+                />
+              </SallyTarget>
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
@@ -193,12 +200,14 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
               <Switch checked={active} onCheckedChange={setActive} />
               <Label>Active</Label>
             </div>
-            <Button
-              onClick={handleSave}
-              disabled={!name || !rate}
-            >
-              {editId ? "Update" : "Create"}
-            </Button>
+            <SallyTarget id="create5" label={editId ? "Update" : "Create"}>
+              <Button
+                onClick={handleSave}
+                disabled={!name || !rate}
+              >
+                {editId ? "Update" : "Create"}
+              </Button>
+            </SallyTarget>
           </div>
         </DialogContent>
       </Dialog>

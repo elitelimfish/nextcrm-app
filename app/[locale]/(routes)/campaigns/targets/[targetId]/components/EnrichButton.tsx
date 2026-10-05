@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -30,15 +31,17 @@ export function EnrichButton({ targetId }: EnrichButtonProps) {
   }
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={handleEnrich}
-      disabled={loading}
-      title="Enrich with AI"
-    >
-      <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
-      {loading ? "Starting…" : "Enrich with AI"}
-    </Button>
+    <SallyTarget id="enrich-with-ai" label={loading ? "Starting…" : "Enrich with AI"}>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleEnrich}
+        disabled={loading}
+        title="Enrich with AI"
+      >
+        <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
+        {loading ? "Starting…" : "Enrich with AI"}
+      </Button>
+    </SallyTarget>
   );
 }
