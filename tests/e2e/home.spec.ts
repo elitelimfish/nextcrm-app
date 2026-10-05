@@ -19,15 +19,14 @@ test.describe("Home Page", () => {
     
     await page.goto("/");
     
-    // Check for sign-in related elements (OTP email flow)
-    await expect(page.getByRole("textbox", { name: "Email" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Continue with Google" })).toHaveCount(0);
     const passwordLogin =
       process.env.NEXT_PUBLIC_PASSWORD_LOGIN === "true" ||
       process.env.DEMO_PASSWORD_LOGIN === "1";
     if (passwordLogin) {
+      await expect(page.getByRole("textbox", { name: "Username" })).toBeVisible();
       await expect(page.getByRole("button", { name: "Sign in" })).toBeVisible();
     } else {
+      await expect(page.getByRole("textbox", { name: "Email" })).toBeVisible();
       await expect(page.getByRole("button", { name: "Send verification code" })).toBeVisible();
     }
     

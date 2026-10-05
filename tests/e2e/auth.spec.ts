@@ -12,18 +12,23 @@ test.describe("Authentication", () => {
   }) => {
     await page.goto("/sign-in");
 
-    await expect(page.getByLabel("Email")).toBeVisible();
     await expect(
       page.getByRole("button", { name: /continue with google/i }),
     ).toHaveCount(0);
 
     if (passwordLogin) {
+      await expect(page.getByLabel("Username")).toBeVisible();
       await expect(page.getByLabel("Password")).toBeVisible();
       await expect(page.getByRole("button", { name: /^sign in$/i })).toBeVisible();
       await expect(
         page.getByRole("button", { name: /send verification code/i }),
       ).toHaveCount(0);
+      await expect(
+        page.getByText(/enter the crm password you were provided/i),
+      ).toBeVisible();
+      await expect(page.getByText(/demo account:/i)).toHaveCount(0);
     } else {
+      await expect(page.getByLabel("Email")).toBeVisible();
       await expect(page.getByLabel("Password")).not.toBeVisible();
       await expect(
         page.getByRole("button", { name: /send verification code/i }),
