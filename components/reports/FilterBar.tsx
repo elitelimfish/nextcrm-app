@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
@@ -40,15 +41,17 @@ export function FilterBar({ category, filterOptions = [] }: FilterBarProps) {
 
   return (
     <div className="border rounded-lg p-3 bg-muted/30">
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full justify-between"
-      >
-        {t("filters")}
-        {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-      </Button>
+      <SallyTarget id="filters" label={t("filters")}>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full justify-between"
+        >
+          {t("filters")}
+          {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+        </Button>
+      </SallyTarget>
       {isExpanded && (
         <div className="mt-3 flex gap-4 flex-wrap">
           {filterOptions.map((filter) => (

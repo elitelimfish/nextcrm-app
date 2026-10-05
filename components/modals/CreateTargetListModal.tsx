@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -47,9 +48,11 @@ const CreateTargetListModal = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm">+ New List</Button>
-      </DialogTrigger>
+      <SallyTarget id="new-list" label="+ New List">
+        <DialogTrigger asChild>
+          <Button size="sm">+ New List</Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create Target List</DialogTitle>
@@ -60,32 +63,40 @@ const CreateTargetListModal = () => {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name *</Label>
-            <Input
-              id="name"
-              placeholder="Q1 Outreach List"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              disabled={isLoading}
-            />
+            <SallyTarget id="name8" label="Name *" completeWhen="name8Filled">
+              <Input
+                id="name"
+                placeholder="Q1 Outreach List"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                disabled={isLoading}
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              placeholder="A list of targets for Q1 outreach campaign"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              disabled={isLoading}
-            />
+            <SallyTarget id="description6" label="Description" completeWhen="description6Filled">
+              <Textarea
+                id="description"
+                placeholder="A list of targets for Q1 outreach campaign"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                disabled={isLoading}
+              />
+            </SallyTarget>
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)} disabled={isLoading}>
-            Cancel
-          </Button>
-          <Button onClick={handleCreate} disabled={isLoading || !name.trim()}>
-            {isLoading ? "Creating..." : "Create"}
-          </Button>
+          <SallyTarget id="cancel19" label="Cancel">
+            <Button variant="outline" onClick={() => setOpen(false)} disabled={isLoading}>
+              Cancel
+            </Button>
+          </SallyTarget>
+          <SallyTarget id="create7" label={isLoading ? "Creating..." : "Create"}>
+            <Button onClick={handleCreate} disabled={isLoading || !name.trim()}>
+              {isLoading ? "Creating..." : "Create"}
+            </Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>

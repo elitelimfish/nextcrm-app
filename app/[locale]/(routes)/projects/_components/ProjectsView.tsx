@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import React from "react";
 import Link from "next/link";
 import { getSession } from "@/lib/auth-server";
@@ -29,15 +30,21 @@ const ProjectsView = async () => {
       <div className="flex gap-2 py-10">
         <NewProjectDialog />
         <NewTaskDialog boards={boards} />
-        <Button asChild>
-          <Link href="/projects/tasks">{t("allTasks")}</Link>
-        </Button>
-        <Button asChild>
-          <Link href={`/projects/tasks/${userId}`}>{t("myTasks")}</Link>
-        </Button>
-        <Button asChild>
-          <Link href="/projects/dashboard">{t("dashboard")}</Link>
-        </Button>
+        <SallyTarget id="alltasks" label={t("allTasks")}>
+          <Button asChild>
+            <Link href="/projects/tasks">{t("allTasks")}</Link>
+          </Button>
+        </SallyTarget>
+        <SallyTarget id="mytasks" label={t("myTasks")}>
+          <Button asChild>
+            <Link href={`/projects/tasks/${userId}`}>{t("myTasks")}</Link>
+          </Button>
+        </SallyTarget>
+        <SallyTarget id="dashboard" label={t("dashboard")}>
+          <Button asChild>
+            <Link href="/projects/dashboard">{t("dashboard")}</Link>
+          </Button>
+        </SallyTarget>
       </div>
       <div className="pt-2 space-y-3">
         <H2Title>{t("projects")}</H2Title>

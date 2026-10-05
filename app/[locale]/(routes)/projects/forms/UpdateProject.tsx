@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Button } from "@/components/ui/button";
 import { DialogTrigger } from "@/components/ui/dialog";
@@ -99,13 +100,15 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Project name</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={isLoading}
-                      placeholder="Enter project name"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="title8" label="title" completeWhen="title8Filled">
+                    <FormControl>
+                      <Input
+                        disabled={isLoading}
+                        placeholder="Enter project name"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -116,14 +119,16 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Project description</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      rows={10}
-                      disabled={isLoading}
-                      placeholder="Enter project description"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="description5" label="description" completeWhen="description5Filled">
+                    <FormControl>
+                      <Textarea
+                        rows={10}
+                        disabled={isLoading}
+                        placeholder="Enter project description"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -134,29 +139,33 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Project visibility</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select projects visibility" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value={"public"}>{`Public`}</SelectItem>
-                      <SelectItem value={"private"}>{`Private`}</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <SallyTarget id="project-visibility" label="Project visibility" completeWhen="projectVisibilityFilled">
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select projects visibility" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value={"public"}>{`Public`}</SelectItem>
+                        <SelectItem value={"private"}>{`Private`}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
           <div className="flex w-full justify-end space-x-2 pt-2">
-            <DialogTrigger asChild>
-              <Button variant={"destructive"}>Cancel</Button>
-            </DialogTrigger>
+            <SallyTarget id="cancel10" label="Cancel">
+              <DialogTrigger asChild>
+                <Button variant={"destructive"}>Cancel</Button>
+              </DialogTrigger>
+            </SallyTarget>
             <Button type="submit" disabled={isLoading}>
               {isLoading ? (
                 <Icons.spinner className="animate-spin" />

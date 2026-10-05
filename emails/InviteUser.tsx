@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import {
   Body,
   Button,
@@ -76,12 +77,14 @@ export const InviteUserEmail = ({
             </Text>
 
             <Section className="text-center mt-[32px] mb-[32px]">
-              <Button
-                className="bg-slate-800 rounded-md text-white  py-3 px-4 text-xs font-semibold no-underline text-center"
-                href={process.env.NEXT_PUBLIC_APP_URL}
-              >
-                {userLanguage === "en" ? "Join the team" : "Připojit se"}
-              </Button>
+              <SallyTarget id="p-ipojit-se" label={userLanguage === "en" ? "Join the team" : "Připojit se"}>
+                <Button
+                  className="bg-slate-800 rounded-md text-white  py-3 px-4 text-xs font-semibold no-underline text-center"
+                  href={process.env.NEXT_PUBLIC_APP_URL}
+                >
+                  {userLanguage === "en" ? "Join the team" : "Připojit se"}
+                </Button>
+              </SallyTarget>
             </Section>
             <Text className="text-black text-sm leading-[24px]">
               {userLanguage === "en"

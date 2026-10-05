@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -119,13 +120,15 @@ const NewProjectDialog = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("newProject.nameLabel")}</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder={t("newProject.namePlaceholder")}
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="title5" label="title" completeWhen="title5Filled">
+                        <FormControl>
+                          <Input
+                            disabled={isLoading}
+                            placeholder={t("newProject.namePlaceholder")}
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -136,13 +139,15 @@ const NewProjectDialog = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("newProject.descLabel")}</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          disabled={isLoading}
-                          placeholder={t("newProject.descPlaceholder")}
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="description4" label="description" completeWhen="description4Filled">
+                        <FormControl>
+                          <Textarea
+                            disabled={isLoading}
+                            placeholder={t("newProject.descPlaceholder")}
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -157,11 +162,13 @@ const NewProjectDialog = () => {
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t("newProject.visibilityLabel")} />
-                          </SelectTrigger>
-                        </FormControl>
+                        <SallyTarget id="visibility" label="visibility" completeWhen="visibilityFilled">
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={t("newProject.visibilityLabel")} />
+                            </SelectTrigger>
+                          </FormControl>
+                        </SallyTarget>
                         <SelectContent>
                           <SelectItem value={"public"}>{t("newProject.public")}</SelectItem>
                           <SelectItem value={"private"}>{t("newProject.private")}</SelectItem>

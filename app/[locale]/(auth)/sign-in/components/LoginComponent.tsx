@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import React, { useState } from "react";
 import { authClient } from "@/lib/auth-client";
@@ -157,15 +158,17 @@ export function LoginComponent() {
           </p>
         )}
 
-        <Button
-          variant="outline"
-          onClick={loginWithGoogle}
-          disabled={isLoading}
-          className="w-full"
-        >
-          <Icons.google className="mr-2 h-4 w-4" />
-          Continue with Google
-        </Button>
+        <SallyTarget id="continue-with-google" label="Continue with Google">
+          <Button
+            variant="outline"
+            onClick={loginWithGoogle}
+            disabled={isLoading}
+            className="w-full"
+          >
+            <Icons.google className="mr-2 h-4 w-4" />
+            Continue with Google
+          </Button>
+        </SallyTarget>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
@@ -182,18 +185,20 @@ export function LoginComponent() {
           <div className="grid gap-3">
             <div className="grid gap-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="name@domain.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isLoading}
-                onKeyDown={(e) =>
-                  e.key === "Enter" &&
-                  (passwordLogin ? loginWithPassword() : sendOtp())
-                }
-              />
+              <SallyTarget id="email3" label="Email" completeWhen="email3Filled">
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@domain.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" &&
+                    (passwordLogin ? loginWithPassword() : sendOtp())
+                  }
+                />
+              </SallyTarget>
             </div>
             {passwordLogin && (
               <div className="grid gap-1.5">
@@ -209,21 +214,25 @@ export function LoginComponent() {
               </div>
             )}
             {passwordLogin && (
-              <Button
-                onClick={loginWithPassword}
-                disabled={isLoading || !email || !password}
-              >
-                Sign in
-              </Button>
+              <SallyTarget id="sign-in" label="Sign in">
+                <Button
+                  onClick={loginWithPassword}
+                  disabled={isLoading || !email || !password}
+                >
+                  Sign in
+                </Button>
+              </SallyTarget>
             )}
-            <Button
-              variant={passwordLogin ? "outline" : "default"}
-              onClick={sendOtp}
-              disabled={isLoading || !email}
-            >
-              <MailIcon className="mr-2 h-4 w-4" />
-              Send verification code
-            </Button>
+            <SallyTarget id="send-verification-code" label="Send verification code">
+              <Button
+                variant={passwordLogin ? "outline" : "default"}
+                onClick={sendOtp}
+                disabled={isLoading || !email}
+              >
+                <MailIcon className="mr-2 h-4 w-4" />
+                Send verification code
+              </Button>
+            </SallyTarget>
           </div>
         )}
 
@@ -254,21 +263,25 @@ export function LoginComponent() {
                 </InputOTPGroup>
               </InputOTP>
             </div>
-            <Button onClick={verifyOtp} disabled={isLoading || otp.length !== 6}>
-              Verify and sign in
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setStep("email");
-                setOtp("");
-                setDevOtp(null);
-              }}
-              disabled={isLoading}
-            >
-              Use a different email
-            </Button>
+            <SallyTarget id="verify-and-sign-in" label="Verify and sign in">
+              <Button onClick={verifyOtp} disabled={isLoading || otp.length !== 6}>
+                Verify and sign in
+              </Button>
+            </SallyTarget>
+            <SallyTarget id="use-a-different-email" label="Use a different email">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setStep("email");
+                  setOtp("");
+                  setDevOtp(null);
+                }}
+                disabled={isLoading}
+              >
+                Use a different email
+              </Button>
+            </SallyTarget>
           </div>
         )}
       </CardContent>

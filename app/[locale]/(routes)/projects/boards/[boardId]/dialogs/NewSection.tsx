@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -114,13 +115,15 @@ const NewSectionDialog = ({ boardId }: Props) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("newSection.nameLabel")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={isLoading}
-                        placeholder={t("newSection.namePlaceholder")}
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="title2" label="title" completeWhen="title2Filled">
+                      <FormControl>
+                        <Input
+                          disabled={isLoading}
+                          placeholder={t("newSection.namePlaceholder")}
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}

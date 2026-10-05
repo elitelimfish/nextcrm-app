@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -84,22 +85,26 @@ const NewSectionForm = ({ boardId, onClose }: NewSectionFormProps) => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormControl>
-                  <Input
-                    disabled={isLoading}
-                    placeholder="Enter section name"
-                    {...field}
-                  />
-                </FormControl>
+                <SallyTarget id="title4" label="title" completeWhen="title4Filled">
+                  <FormControl>
+                    <Input
+                      disabled={isLoading}
+                      placeholder="Enter section name"
+                      {...field}
+                    />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
         <div className="flex w-full justify-end space-x-2 pt-2">
-          <DialogClose asChild>
-            <Button variant={"destructive"}>Cancel</Button>
-          </DialogClose>
+          <SallyTarget id="cancel5" label="Cancel">
+            <DialogClose asChild>
+              <Button variant={"destructive"}>Cancel</Button>
+            </DialogClose>
+          </SallyTarget>
           <Button type="submit" disabled={isLoading}>
             {isLoading ? (
               <div className="flex space-x-5">

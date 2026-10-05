@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -62,12 +63,14 @@ const DeleteProjectDialog = ({ boardId, boardName }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Button className="px-2" variant={"destructive"} asChild>
-          <div className="px-3 gap-2">
-            Delete project
-            <TrashIcon size={15} />
-          </div>
-        </Button>
+        <SallyTarget id="delete-project" label="Delete project">
+          <Button className="px-2" variant={"destructive"} asChild>
+            <div className="px-3 gap-2">
+              Delete project
+              <TrashIcon size={15} />
+            </div>
+          </Button>
+        </SallyTarget>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
@@ -78,15 +81,19 @@ const DeleteProjectDialog = ({ boardId, boardName }: Props) => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button
-            variant="outline"
-            onClick={() => setOpen(false)}
-          >
-            Cancel
-          </Button>
-          <Button variant="destructive" onClick={onDelete}>
-            {isLoading ? "Deleting..." : "Delete"}
-          </Button>
+          <SallyTarget id="cancel14" label="Cancel">
+            <Button
+              variant="outline"
+              onClick={() => setOpen(false)}
+            >
+              Cancel
+            </Button>
+          </SallyTarget>
+          <SallyTarget id="delete3" label={isLoading ? "Deleting..." : "Delete"}>
+            <Button variant="destructive" onClick={onDelete}>
+              {isLoading ? "Deleting..." : "Delete"}
+            </Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>

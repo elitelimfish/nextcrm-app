@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -143,13 +144,15 @@ const UpdateTaskDialog = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Task - Id: {initialData.id}</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={isLoading}
-                      placeholder="Enter task name"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="title9" label="title" completeWhen="title9Filled">
+                    <FormControl>
+                      <Input
+                        disabled={isLoading}
+                        placeholder="Enter task name"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -160,13 +163,15 @@ const UpdateTaskDialog = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Task description</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      disabled={isLoading}
-                      placeholder="Enter task description"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="content4" label="content" completeWhen="content4Filled">
+                    <FormControl>
+                      <Textarea
+                        disabled={isLoading}
+                        placeholder="Enter task description"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -237,22 +242,24 @@ const UpdateTaskDialog = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Choose task priority</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select tasks priority" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="low">Low</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="high">High</SelectItem>
-                      <SelectItem value="critical">Critical</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <SallyTarget id="choose-task-priority3" label="Choose task priority" completeWhen="chooseTaskPriority3Filled">
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select tasks priority" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="low">Low</SelectItem>
+                        <SelectItem value="medium">Medium</SelectItem>
+                        <SelectItem value="high">High</SelectItem>
+                        <SelectItem value="critical">Critical</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}

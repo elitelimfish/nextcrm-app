@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import React from "react";
 import Container from "../../components/ui/Container";
 import { getTasks } from "@/actions/projects/get-tasks";
@@ -17,7 +18,9 @@ const TasksPage = async () => {
       description={t("tasks.description")}
     >
       <div className="py-5">
-        <Button>{t("tasks.newTask")}</Button>
+        <SallyTarget id="tasks-newtask" label={t("tasks.newTask")}>
+          <Button>{t("tasks.newTask")}</Button>
+        </SallyTarget>
       </div>
       <div>
         <TasksDataTable data={tasks} columns={columns} />
