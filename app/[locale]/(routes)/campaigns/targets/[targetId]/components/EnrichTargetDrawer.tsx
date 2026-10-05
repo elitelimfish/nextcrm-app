@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useRef } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -251,9 +252,11 @@ export function EnrichTargetDrawer({
               ))}
               <div ref={scrollRef} />
             </ScrollArea>
-            <Button variant="outline" size="sm" onClick={handleCancel}>
-              Cancel
-            </Button>
+            <SallyTarget id="cancel12" label="Cancel">
+              <Button variant="outline" size="sm" onClick={handleCancel}>
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         )}
 
@@ -316,18 +319,22 @@ export function EnrichTargetDrawer({
             </ScrollArea>
 
             <div className="flex gap-2">
-              <Button
-                className="flex-1"
-                disabled={selectedApply.size === 0 || applying}
-                onClick={handleApply}
-              >
-                <CheckCircle className="h-4 w-4 mr-1" />
-                {applying ? "Applying…" : `Apply ${selectedApply.size} fields`}
-              </Button>
-              <Button variant="outline" onClick={() => handleClose(false)}>
-                <XCircle className="h-4 w-4 mr-1" />
-                Discard
-              </Button>
+              <SallyTarget id="applying" label={applying ? "Applying…" : `Apply ${selectedApply.size} fields`}>
+                <Button
+                  className="flex-1"
+                  disabled={selectedApply.size === 0 || applying}
+                  onClick={handleApply}
+                >
+                  <CheckCircle className="h-4 w-4 mr-1" />
+                  {applying ? "Applying…" : `Apply ${selectedApply.size} fields`}
+                </Button>
+              </SallyTarget>
+              <SallyTarget id="discard" label="Discard">
+                <Button variant="outline" onClick={() => handleClose(false)}>
+                  <XCircle className="h-4 w-4 mr-1" />
+                  Discard
+                </Button>
+              </SallyTarget>
             </div>
           </div>
         )}

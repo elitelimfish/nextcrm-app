@@ -105,16 +105,16 @@ export function Step2Template({
             rows={3}
           />
 </SallyTarget>
-          <SallyTarget id="generate" label="Generate">
-  <Button
-            type="button"
-            variant="secondary"
-            onClick={handleGenerate}
-            disabled={isGenerating || !prompt.trim()}
-          >
-            {isGenerating ? "Generating..." : "Generate"}
-          </Button>
-</SallyTarget>
+          <SallyTarget id="generate" label={isGenerating ? "Generating..." : "Generate"}>
+              <Button
+              type="button"
+              variant="secondary"
+              onClick={handleGenerate}
+              disabled={isGenerating || !prompt.trim()}
+            >
+              {isGenerating ? "Generating..." : "Generate"}
+            </Button>
+          </SallyTarget>
         </TabsContent>
         <TabsContent value="existing" className="pt-3">
           <div className="flex flex-col gap-1 max-h-48 overflow-y-auto border rounded-md p-2">

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -108,30 +109,38 @@ export function EnrichFieldSelector({
 
       <div className="border rounded-md p-3 space-y-2 bg-muted/30">
         <p className="text-xs font-medium text-muted-foreground">Add custom field</p>
-        <Input
-          placeholder="Field name (e.g. Number of employees)"
-          value={customName}
-          onChange={(e) => setCustomName(e.target.value)}
-          className="h-8 text-sm"
-        />
-        <Input
-          placeholder="Description (optional)"
-          value={customDesc}
-          onChange={(e) => setCustomDesc(e.target.value)}
-          className="h-8 text-sm"
-        />
-        <Button variant="outline" size="sm" onClick={addCustom} disabled={!customName.trim()}>
-          <Plus className="h-3 w-3 mr-1" /> Add field
-        </Button>
+        <SallyTarget id="field-name-e-g-number-of-employees" label="Field name (e.g. Number of employees)" completeWhen="fieldNameEGNumberOfEmployeesFilled">
+          <Input
+            placeholder="Field name (e.g. Number of employees)"
+            value={customName}
+            onChange={(e) => setCustomName(e.target.value)}
+            className="h-8 text-sm"
+          />
+        </SallyTarget>
+        <SallyTarget id="description-optional" label="Description (optional)" completeWhen="descriptionOptionalFilled">
+          <Input
+            placeholder="Description (optional)"
+            value={customDesc}
+            onChange={(e) => setCustomDesc(e.target.value)}
+            className="h-8 text-sm"
+          />
+        </SallyTarget>
+        <SallyTarget id="add-field" label="Add field">
+          <Button variant="outline" size="sm" onClick={addCustom} disabled={!customName.trim()}>
+            <Plus className="h-3 w-3 mr-1" /> Add field
+          </Button>
+        </SallyTarget>
       </div>
 
-      <Button
-        className="w-full"
-        disabled={selectedFields.length === 0 || loading}
-        onClick={() => onStart(selectedFields)}
-      >
-        {loading ? "Starting…" : `Start Enrichment (${selectedFields.length} fields)`}
-      </Button>
+      <SallyTarget id="starting" label={loading ? "Starting…" : `Start Enrichment (${selectedFields.length} fields)`}>
+        <Button
+          className="w-full"
+          disabled={selectedFields.length === 0 || loading}
+          onClick={() => onStart(selectedFields)}
+        >
+          {loading ? "Starting…" : `Start Enrichment (${selectedFields.length} fields)`}
+        </Button>
+      </SallyTarget>
     </div>
   );
 }

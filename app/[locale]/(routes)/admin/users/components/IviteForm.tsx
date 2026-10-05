@@ -85,11 +85,11 @@ export function InviteForm() {
           render={({ field }) => (
             <FormItem className="w-1/3">
               <FormLabel>{t("inviteForm.name")}</FormLabel>
-              <FormControl>
-                <SallyTarget id="name-3" label="name" completeWhen="name-3Filled">
-  <Input disabled={isLoading} placeholder="jdoe" {...field} />
-</SallyTarget>
-              </FormControl>
+              <SallyTarget id="name-3" label="name" completeWhen="name-3Filled">
+                <FormControl>
+                  <Input disabled={isLoading} placeholder="jdoe" {...field} />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}
@@ -100,15 +100,15 @@ export function InviteForm() {
           render={({ field }) => (
             <FormItem className="w-1/3">
               <FormLabel>{t("inviteForm.email")}</FormLabel>
-              <FormControl>
-                <SallyTarget id="email-4" label="email" completeWhen="email-4Filled">
-  <Input
-                  disabled={isLoading}
-                  placeholder="name@domain.com"
-                  {...field}
-                />
-</SallyTarget>
-              </FormControl>
+              <SallyTarget id="email-4" label="email" completeWhen="email-4Filled">
+                <FormControl>
+                  <Input
+                    disabled={isLoading}
+                    placeholder="name@domain.com"
+                    {...field}
+                  />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}

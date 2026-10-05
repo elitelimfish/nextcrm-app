@@ -130,11 +130,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>First name</FormLabel>
-                <FormControl>
-                  <SallyTarget id="first-name-5" label="first name" completeWhen="firstName-5Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="first-name-5" label="first name" completeWhen="firstName-5Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -145,11 +145,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Last name *</FormLabel>
-                <FormControl>
-                  <SallyTarget id="last-name-5" label="last name" completeWhen="lastName-5Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="last-name-5" label="last name" completeWhen="lastName-5Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -162,11 +162,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <SallyTarget id="email-7" label="email" completeWhen="email-7Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="email-7" label="email" completeWhen="email-7Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -177,11 +177,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Mobile phone</FormLabel>
-                <FormControl>
-                  <SallyTarget id="mobile-phone-2" label="mobile phone" completeWhen="mobilePhone-2Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="mobile-phone-2" label="mobile phone" completeWhen="mobilePhone-2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -194,11 +194,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Office phone</FormLabel>
-                <FormControl>
-                  <SallyTarget id="office-phone-4" label="office phone" completeWhen="officePhone-4Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="office-phone-4" label="office phone" completeWhen="officePhone-4Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -209,11 +209,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Position</FormLabel>
-                <FormControl>
-                  <SallyTarget id="position-2" label="position" completeWhen="position-2Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="position-2" label="position" completeWhen="position-2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -226,11 +226,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Company</FormLabel>
-                <FormControl>
-                  <SallyTarget id="company-2" label="company" completeWhen="company-2Filled">
-  <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
-</SallyTarget>
-                </FormControl>
+                <SallyTarget id="company-2" label="company" completeWhen="company-2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -241,9 +241,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Company website</FormLabel>
-                <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="https://acme.com" {...field} />
-                </FormControl>
+                <SallyTarget id="company-website2" label="company website" completeWhen="companyWebsite2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="https://acme.com" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -255,9 +257,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
           render={({ field }) => (
             <FormItem>
               <FormLabel>Personal website</FormLabel>
-              <FormControl>
-                <Input disabled={form.formState.isSubmitting} placeholder="https://johndoe.com" {...field} />
-              </FormControl>
+              <SallyTarget id="personal-website2" label="personal website" completeWhen="personalWebsite2Filled">
+                <FormControl>
+                  <Input disabled={form.formState.isSubmitting} placeholder="https://johndoe.com" {...field} />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}
@@ -269,9 +273,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>LinkedIn</FormLabel>
-                <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="https://linkedin.com/in/john" {...field} />
-                </FormControl>
+                <SallyTarget id="social-linkedin2" label="social linkedin" completeWhen="socialLinkedin2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="https://linkedin.com/in/john" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -282,9 +288,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>X (Twitter)</FormLabel>
-                <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="https://x.com/john" {...field} />
-                </FormControl>
+                <SallyTarget id="social-x2" label="social x" completeWhen="socialX2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="https://x.com/john" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -297,9 +305,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Instagram</FormLabel>
-                <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="https://instagram.com/john" {...field} />
-                </FormControl>
+                <SallyTarget id="social-instagram2" label="social instagram" completeWhen="socialInstagram2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="https://instagram.com/john" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -310,9 +320,11 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Facebook</FormLabel>
-                <FormControl>
-                  <Input disabled={form.formState.isSubmitting} placeholder="https://facebook.com/john" {...field} />
-                </FormControl>
+                <SallyTarget id="social-facebook2" label="social facebook" completeWhen="socialFacebook2Filled">
+                  <FormControl>
+                    <Input disabled={form.formState.isSubmitting} placeholder="https://facebook.com/john" {...field} />
+                  </FormControl>
+                </SallyTarget>
                 <FormMessage />
               </FormItem>
             )}
@@ -321,33 +333,43 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="personal_email" render={({ field }) => (
             <FormItem><FormLabel>Personal Email</FormLabel>
-              <FormControl><Input placeholder="john@personal.com" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="personal-email3" label="personal email" completeWhen="personalEmail3Filled">
+                <FormControl><Input placeholder="john@personal.com" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="company_email" render={({ field }) => (
             <FormItem><FormLabel>Company Email</FormLabel>
-              <FormControl><Input placeholder="info@company.com" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="company-email2" label="company email" completeWhen="companyEmail2Filled">
+                <FormControl><Input placeholder="info@company.com" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="company_phone" render={({ field }) => (
           <FormItem><FormLabel>Company Phone</FormLabel>
-            <FormControl><Input placeholder="+1 800 000 0000" {...field} value={field.value ?? ''} /></FormControl>
+            <SallyTarget id="company-phone2" label="company phone" completeWhen="companyPhone2Filled">
+              <FormControl><Input placeholder="+1 800 000 0000" {...field} value={field.value ?? ''} /></FormControl>
+            </SallyTarget>
             <FormMessage />
           </FormItem>
         )} />
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="city" render={({ field }) => (
             <FormItem><FormLabel>City</FormLabel>
-              <FormControl><Input placeholder="Prague" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="city2" label="city" completeWhen="city2Filled">
+                <FormControl><Input placeholder="Prague" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="country" render={({ field }) => (
             <FormItem><FormLabel>Country</FormLabel>
-              <FormControl><Input placeholder="Czech Republic" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="country2" label="country" completeWhen="country2Filled">
+                <FormControl><Input placeholder="Czech Republic" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
@@ -355,20 +377,26 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="industry" render={({ field }) => (
             <FormItem><FormLabel>Industry</FormLabel>
-              <FormControl><Input placeholder="SaaS" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="industry2" label="industry" completeWhen="industry2Filled">
+                <FormControl><Input placeholder="SaaS" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="employees" render={({ field }) => (
             <FormItem><FormLabel>Employees</FormLabel>
-              <FormControl><Input placeholder="50-200" {...field} value={field.value ?? ''} /></FormControl>
+              <SallyTarget id="employees2" label="employees" completeWhen="employees2Filled">
+                <FormControl><Input placeholder="50-200" {...field} value={field.value ?? ''} /></FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="description" render={({ field }) => (
           <FormItem><FormLabel>Description</FormLabel>
-            <FormControl><Input placeholder="Short company description" {...field} value={field.value ?? ''} /></FormControl>
+            <SallyTarget id="description3" label="description" completeWhen="description3Filled">
+              <FormControl><Input placeholder="Short company description" {...field} value={field.value ?? ''} /></FormControl>
+            </SallyTarget>
             <FormMessage />
           </FormItem>
         )} />
@@ -380,12 +408,14 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
               <div className="space-y-0.5">
                 <FormLabel className="text-base">Is target active?</FormLabel>
               </div>
-              <FormControl>
-                <Switch
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
+              <SallyTarget id="status2" label="status" completeWhen="status2Filled">
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </SallyTarget>
             </FormItem>
           )}
         />

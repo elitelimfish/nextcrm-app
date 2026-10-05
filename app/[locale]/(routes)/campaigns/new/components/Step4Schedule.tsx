@@ -213,20 +213,26 @@ export function Step4Schedule({
             </div>
           </div>
         ))}
-        <Button type="button" variant="outline" onClick={addFollowUp}>
-          + Add follow-up
-        </Button>
+        <SallyTarget id="add-follow-up" label="+ Add follow-up">
+          <Button type="button" variant="outline" onClick={addFollowUp}>
+            + Add follow-up
+          </Button>
+        </SallyTarget>
       </div>
 
       {error && <p className="text-sm text-destructive">{error}</p>}
 
       <div className="flex justify-between">
-        <Button variant="outline" onClick={onBack}>
-          ← Back
-        </Button>
-        <Button onClick={handleSubmit} disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit Campaign"}
-        </Button>
+        <SallyTarget id="back2" label="← Back">
+          <Button variant="outline" onClick={onBack}>
+            ← Back
+          </Button>
+        </SallyTarget>
+        <SallyTarget id="submit-campaign" label={isSubmitting ? "Submitting..." : "Submit Campaign"}>
+          <Button onClick={handleSubmit} disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Submit Campaign"}
+          </Button>
+        </SallyTarget>
       </div>
     </div>
   );

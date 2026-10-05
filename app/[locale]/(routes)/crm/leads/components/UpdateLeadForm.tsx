@@ -110,15 +110,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("firstName")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="firstname" label="firstName" completeWhen="firstnameFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Johny"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="firstname" label="firstName" completeWhen="firstnameFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Johny"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -129,15 +129,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("lastName")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="lastname" label="lastName" completeWhen="lastnameFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Walker"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="lastname" label="lastName" completeWhen="lastnameFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Walker"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -150,13 +150,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("company")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="NextCRM Inc."
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="company3" label="company" completeWhen="company3Filled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="NextCRM Inc."
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -167,9 +169,11 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("jobTitle")}</FormLabel>
-                    <FormControl>
-                      <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
-                    </FormControl>
+                    <SallyTarget id="jobtitle2" label="jobTitle" completeWhen="jobtitle2Filled">
+                      <FormControl>
+                        <Input disabled={form.formState.isSubmitting} placeholder="CTO" {...field} />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -182,13 +186,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("email")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="johny@domain.com"
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="email2" label="email" completeWhen="email2Filled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="johny@domain.com"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -199,15 +205,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("phone")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="phone-3" label="phone" completeWhen="phone-3Filled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="+11 123 456 789"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="phone-3" label="phone" completeWhen="phone-3Filled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="+11 123 456 789"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -219,15 +225,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="description-10" label="description" completeWhen="description-10Filled">
-  <Textarea
-                      disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="description-10" label="description" completeWhen="description-10Filled">
+                    <FormControl>
+                      <Textarea
+                        disabled={form.formState.isSubmitting}
+                        placeholder="New NextCRM functionality"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -240,9 +246,11 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                   <FormItem>
                     <FormLabel>{t("leadSource")}</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value ?? ""}>
-                      <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select source…" /></SelectTrigger>
-                      </FormControl>
+                      <SallyTarget id="lead-source-id2" label="lead source id" completeWhen="leadSourceId2Filled">
+                        <FormControl>
+                          <SelectTrigger><SelectValue placeholder="Select source…" /></SelectTrigger>
+                        </FormControl>
+                      </SallyTarget>
                       <SelectContent>
                         {leadSources.map((s) => (
                           <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
@@ -259,13 +267,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("referredBy")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Johny Walker"
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="refered-by2" label="refered by" completeWhen="referedBy2Filled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Johny Walker"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -278,13 +288,15 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("campaign")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Social networks"
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="campaign2" label="campaign" completeWhen="campaign2Filled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Social networks"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -295,16 +307,18 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Lead Type</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value ?? ""}>
-                      <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {leadTypes.map((lt) => (
-                          <SelectItem key={lt.id} value={lt.id}>{lt.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <SallyTarget id="lead-type2" label="Lead Type" completeWhen="leadType2Filled">
+                      <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                        <FormControl>
+                          <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {leadTypes.map((lt) => (
+                            <SelectItem key={lt.id} value={lt.id}>{lt.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -335,16 +349,18 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Lead Status</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value ?? ""}>
-                      <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select status…" /></SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {leadStatuses.map((s) => (
-                          <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <SallyTarget id="lead-status2" label="Lead Status" completeWhen="leadStatus2Filled">
+                      <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                        <FormControl>
+                          <SelectTrigger><SelectValue placeholder="Select status…" /></SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {leadStatuses.map((s) => (
+                            <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}

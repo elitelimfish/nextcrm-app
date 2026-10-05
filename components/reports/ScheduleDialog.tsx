@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
@@ -54,25 +55,29 @@ export function ScheduleDialog({ open, onOpenChange }: ScheduleDialogProps) {
         <div className="space-y-4 py-4">
           <div className="space-y-2">
             <Label>{t("savedReport")}</Label>
-            <Select value={selectedConfigId} onValueChange={setSelectedConfigId}>
-              <SelectTrigger><SelectValue placeholder={t("selectReport")} /></SelectTrigger>
-              <SelectContent>
-                {configs.map((c) => (<SelectItem key={c.id} value={c.id}>{c.name} ({c.category})</SelectItem>))}
-              </SelectContent>
-            </Select>
+            <SallyTarget id="savedreport" label={t("savedReport")} completeWhen="savedreportFilled">
+              <Select value={selectedConfigId} onValueChange={setSelectedConfigId}>
+                <SelectTrigger><SelectValue placeholder={t("selectReport")} /></SelectTrigger>
+                <SelectContent>
+                  {configs.map((c) => (<SelectItem key={c.id} value={c.id}>{c.name} ({c.category})</SelectItem>))}
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>{t("frequency")}</Label>
-            <Select value={frequency} onValueChange={setFrequency}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="daily">{t("daily")}</SelectItem>
-                <SelectItem value="weekly_mon">{t("weeklyMon")}</SelectItem>
-                <SelectItem value="weekly_fri">{t("weeklyFri")}</SelectItem>
-                <SelectItem value="monthly">{t("monthly")}</SelectItem>
-                <SelectItem value="custom">{t("custom")}</SelectItem>
-              </SelectContent>
-            </Select>
+            <SallyTarget id="frequency" label={t("frequency")} completeWhen="frequencyFilled">
+              <Select value={frequency} onValueChange={setFrequency}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="daily">{t("daily")}</SelectItem>
+                  <SelectItem value="weekly_mon">{t("weeklyMon")}</SelectItem>
+                  <SelectItem value="weekly_fri">{t("weeklyFri")}</SelectItem>
+                  <SelectItem value="monthly">{t("monthly")}</SelectItem>
+                  <SelectItem value="custom">{t("custom")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
           {frequency === "custom" && (
             <div className="space-y-2">
@@ -82,23 +87,31 @@ export function ScheduleDialog({ open, onOpenChange }: ScheduleDialogProps) {
           )}
           <div className="space-y-2">
             <Label>{t("recipients")}</Label>
-            <Input value={recipients} onChange={(e) => setRecipients(e.target.value)} placeholder={t("recipientsPlaceholder")} />
+            <SallyTarget id="recipients" label={t("recipients")} completeWhen="recipientsFilled">
+              <Input value={recipients} onChange={(e) => setRecipients(e.target.value)} placeholder={t("recipientsPlaceholder")} />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>{t("format")}</Label>
-            <Select value={format} onValueChange={(v) => setFormat(v as ExportFormat)}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="csv">CSV</SelectItem>
-                <SelectItem value="pdf">PDF</SelectItem>
-                <SelectItem value="both">{t("both")}</SelectItem>
-              </SelectContent>
-            </Select>
+            <SallyTarget id="format" label={t("format")} completeWhen="formatFilled">
+              <Select value={format} onValueChange={(v) => setFormat(v as ExportFormat)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="csv">CSV</SelectItem>
+                  <SelectItem value="pdf">PDF</SelectItem>
+                  <SelectItem value="both">{t("both")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>{t("cancel")}</Button>
-          <Button onClick={handleCreate} disabled={loading || !selectedConfigId}>{t("create")}</Button>
+          <SallyTarget id="cancel17" label={t("cancel")}>
+            <Button variant="outline" onClick={() => onOpenChange(false)}>{t("cancel")}</Button>
+          </SallyTarget>
+          <SallyTarget id="create6" label={t("create")}>
+            <Button onClick={handleCreate} disabled={loading || !selectedConfigId}>{t("create")}</Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>

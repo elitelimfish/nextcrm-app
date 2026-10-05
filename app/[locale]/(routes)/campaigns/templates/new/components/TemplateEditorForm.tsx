@@ -186,16 +186,16 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
           />
 </SallyTarget>
         </div>
-        <SallyTarget id="generate-3" label="Generate">
-  <Button
-          type="button"
-          variant="secondary"
-          onClick={handleGenerate}
-          disabled={isGenerating || !aiPrompt.trim()}
-        >
-          {isGenerating ? "Generating..." : "Generate"}
-        </Button>
-</SallyTarget>
+        <SallyTarget id="generate-3" label={isGenerating ? "Generating..." : "Generate"}>
+            <Button
+            type="button"
+            variant="secondary"
+            onClick={handleGenerate}
+            disabled={isGenerating || !aiPrompt.trim()}
+          >
+            {isGenerating ? "Generating..." : "Generate"}
+          </Button>
+        </SallyTarget>
       </div>
 
       {/* TipTap Editor */}
@@ -228,16 +228,20 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
 
       {/* Actions */}
       <div className="flex gap-3">
-        <Button onClick={handleSave} disabled={isSaving}>
-          {isSaving ? "Saving..." : isEditing ? "Update Template" : "Save Template"}
-        </Button>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => router.push("/campaigns/templates")}
-        >
-          Cancel
-        </Button>
+        <SallyTarget id="save-template" label={isEditing ? "Update Template" : "Save Template"}>
+          <Button onClick={handleSave} disabled={isSaving}>
+            {isSaving ? "Saving..." : isEditing ? "Update Template" : "Save Template"}
+          </Button>
+        </SallyTarget>
+        <SallyTarget id="cancel" label="Cancel">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => router.push("/campaigns/templates")}
+          >
+            Cancel
+          </Button>
+        </SallyTarget>
       </div>
     </div>
   );
