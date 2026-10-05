@@ -168,7 +168,10 @@ async function main() {
   });
   console.log(`Test user seeded: ${testUserEmail}`);
 
-  if (process.env.NODE_ENV !== "production") {
+  if (
+    process.env.NODE_ENV !== "production" ||
+    process.env.DEMO_PASSWORD_LOGIN === "1"
+  ) {
     const { hashPassword } = await import("better-auth/crypto");
     const testUserPassword = process.env.TEST_USER_PASSWORD || "sally-local";
     const hash = await hashPassword(testUserPassword);

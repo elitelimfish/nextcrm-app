@@ -9,6 +9,19 @@ import resendHelper from "@/lib/resend";
 
 const isDemo = process.env.NEXT_PUBLIC_APP_URL === "https://demo.nextcrm.io";
 
+export function isGoogleOAuthConfigured() {
+  const id = process.env.GOOGLE_ID ?? "";
+  const secret = process.env.GOOGLE_SECRET ?? "";
+  return id.endsWith(".apps.googleusercontent.com") && secret.length > 0;
+}
+
+export function isPasswordLoginEnabled() {
+  return (
+    process.env.NEXT_PUBLIC_PASSWORD_LOGIN === "true" ||
+    process.env.DEMO_PASSWORD_LOGIN === "1"
+  );
+}
+
 export const auth = betterAuth({
   database: prismaAdapter(prismadb, { provider: "postgresql" }),
   secret: process.env.BETTER_AUTH_SECRET,
@@ -59,15 +72,20 @@ export const auth = betterAuth({
   },
 
   socialProviders: {
-    google: {
-      clientId: process.env.GOOGLE_ID!,
-      clientSecret: process.env.GOOGLE_SECRET!,
-    },
+    ...(isGoogleOAuthConfigured()
+      ? {
+          google: {
+            clientId: process.env.GOOGLE_ID!,
+            clientSecret: process.env.GOOGLE_SECRET!,
+          },
+        }
+      : {}),
   },
 
   emailAndPassword: {
     enabled:
-      process.env.DEMO_PASSWORD_LOGIN === "1" || process.env.NODE_ENV !== "production",
+      process.env.DEMO_PASSWORD_LOGIN === "1" ||
+      process.env.NODE_ENV !== "production",
   },
 
   plugins: [
