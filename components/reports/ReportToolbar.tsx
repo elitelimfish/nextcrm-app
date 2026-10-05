@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -39,18 +40,26 @@ export function ReportToolbar({ category, currentFilters }: ReportToolbarProps) 
 
   return (
     <div className="flex items-center gap-2">
-      <Button variant="outline" size="sm" onClick={handleExportCSV}>
-        <Download className="mr-2 h-4 w-4" />{t("exportCSV")}
-      </Button>
-      <Button variant="outline" size="sm" onClick={handleExportPDF}>
-        <FileText className="mr-2 h-4 w-4" />{t("exportPDF")}
-      </Button>
-      <Button variant="outline" size="sm" onClick={() => setShowSave(true)}>
-        <Save className="mr-2 h-4 w-4" />{t("saveConfig")}
-      </Button>
-      <Button variant="outline" size="sm" onClick={() => setShowSchedule(true)}>
-        <Clock className="mr-2 h-4 w-4" />{t("schedule")}
-      </Button>
+      <SallyTarget id="exportcsv" label={t("exportCSV")}>
+        <Button variant="outline" size="sm" onClick={handleExportCSV}>
+          <Download className="mr-2 h-4 w-4" />{t("exportCSV")}
+        </Button>
+      </SallyTarget>
+      <SallyTarget id="exportpdf" label={t("exportPDF")}>
+        <Button variant="outline" size="sm" onClick={handleExportPDF}>
+          <FileText className="mr-2 h-4 w-4" />{t("exportPDF")}
+        </Button>
+      </SallyTarget>
+      <SallyTarget id="saveconfig" label={t("saveConfig")}>
+        <Button variant="outline" size="sm" onClick={() => setShowSave(true)}>
+          <Save className="mr-2 h-4 w-4" />{t("saveConfig")}
+        </Button>
+      </SallyTarget>
+      <SallyTarget id="schedule" label={t("schedule")}>
+        <Button variant="outline" size="sm" onClick={() => setShowSchedule(true)}>
+          <Clock className="mr-2 h-4 w-4" />{t("schedule")}
+        </Button>
+      </SallyTarget>
       <SaveConfigDialog open={showSave} onOpenChange={setShowSave} category={category} currentFilters={currentFilters} />
       <ScheduleDialog open={showSchedule} onOpenChange={setShowSchedule} />
     </div>

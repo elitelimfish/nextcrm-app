@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -93,9 +94,11 @@ export function ProfileForm({ data }: ProfileFormProps) {
           render={({ field }) => (
             <FormItem className="w-1/3">
               <FormLabel>{t("fullName")}</FormLabel>
-              <FormControl>
-                <Input disabled={isLoading} placeholder="John Doe" {...field} />
-              </FormControl>
+              <SallyTarget id="name2" label="name" completeWhen="name2Filled">
+                <FormControl>
+                  <Input disabled={isLoading} placeholder="John Doe" {...field} />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}
@@ -106,9 +109,11 @@ export function ProfileForm({ data }: ProfileFormProps) {
           render={({ field }) => (
             <FormItem className="w-1/3">
               <FormLabel>{t("username")}</FormLabel>
-              <FormControl>
-                <Input disabled={isLoading} placeholder="jdoe" {...field} />
-              </FormControl>
+              <SallyTarget id="username" label="username" completeWhen="usernameFilled">
+                <FormControl>
+                  <Input disabled={isLoading} placeholder="jdoe" {...field} />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}
@@ -119,13 +124,15 @@ export function ProfileForm({ data }: ProfileFormProps) {
           render={({ field }) => (
             <FormItem className="w-1/3">
               <FormLabel>{t("company")}</FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isLoading}
-                  placeholder="Tesla Inc.,"
-                  {...field}
-                />
-              </FormControl>
+              <SallyTarget id="account-name" label="account name" completeWhen="accountNameFilled">
+                <FormControl>
+                  <Input
+                    disabled={isLoading}
+                    placeholder="Tesla Inc.,"
+                    {...field}
+                  />
+                </FormControl>
+              </SallyTarget>
               <FormMessage />
             </FormItem>
           )}

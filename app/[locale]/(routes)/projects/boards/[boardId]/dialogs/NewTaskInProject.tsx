@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -114,9 +115,11 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button className="px-2">Create new task</Button>
-      </DialogTrigger>
+      <SallyTarget id="create-new-task" label="Create new task">
+        <DialogTrigger asChild>
+          <Button className="px-2">Create new task</Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Create New Task</DialogTitle>
@@ -143,13 +146,15 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>New task name</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder="Enter task name"
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="title3" label="title" completeWhen="title3Filled">
+                        <FormControl>
+                          <Input
+                            disabled={isLoading}
+                            placeholder="Enter task name"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -160,13 +165,15 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Task description</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          disabled={isLoading}
-                          placeholder="Enter task description"
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="content2" label="content" completeWhen="content2Filled">
+                        <FormControl>
+                          <Textarea
+                            disabled={isLoading}
+                            placeholder="Enter task description"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -236,23 +243,25 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Choose section</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select tasks section" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {sections.map((section: any) => (
-                            <SelectItem key={section.id} value={section.id}>
-                              {section.title}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="choose-section" label="Choose section" completeWhen="chooseSectionFilled">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select tasks section" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {sections.map((section: any) => (
+                              <SelectItem key={section.id} value={section.id}>
+                                {section.title}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -263,36 +272,42 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Choose task priority</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select tasks priority" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                          <SelectItem value="critical">Critical</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="choose-task-priority2" label="Choose task priority" completeWhen="chooseTaskPriority2Filled">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select tasks priority" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="low">Low</SelectItem>
+                            <SelectItem value="medium">Medium</SelectItem>
+                            <SelectItem value="high">High</SelectItem>
+                            <SelectItem value="critical">Critical</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
               <DialogFooter>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setOpen(false)}
-                >
-                  Cancel
-                </Button>
-                <Button type="submit">Create</Button>
+                <SallyTarget id="cancel4" label="Cancel">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                </SallyTarget>
+                <SallyTarget id="create3" label="Create">
+                  <Button type="submit">Create</Button>
+                </SallyTarget>
               </DialogFooter>
             </form>
           </Form>

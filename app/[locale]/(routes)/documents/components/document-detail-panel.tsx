@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -64,9 +65,11 @@ export function DocumentDetailPanel({
           <div className="flex items-center gap-2">
             <ProcessingStatusBadge status={document.processing_status} />
             {document.processing_status === "FAILED" && (
-              <Button variant="outline" size="sm" onClick={handleRetry}>
-                Retry
-              </Button>
+              <SallyTarget id="retry4" label="Retry">
+                <Button variant="outline" size="sm" onClick={handleRetry}>
+                  Retry
+                </Button>
+              </SallyTarget>
             )}
           </div>
 

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
@@ -127,11 +128,13 @@ export function CalendarConnectionsList() {
       )}
       <div className="flex items-center justify-between">
         <h3 className="font-medium">Calendar connections</h3>
-        <Button asChild size="sm">
-          <a href={`/api/profile/calendar-connections/google/authorize?level=${connectLevel}`}>
-            Connect Google Calendar
-          </a>
-        </Button>
+        <SallyTarget id="connect-google-calendar" label="Connect Google Calendar">
+          <Button asChild size="sm">
+            <a href={`/api/profile/calendar-connections/google/authorize?level=${connectLevel}`}>
+              Connect Google Calendar
+            </a>
+          </Button>
+        </SallyTarget>
       </div>
       {error && <p className="text-sm text-destructive">{error}</p>}
       {loading ? (

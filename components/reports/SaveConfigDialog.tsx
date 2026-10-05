@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
@@ -36,16 +37,24 @@ export function SaveConfigDialog({ open, onOpenChange, category, currentFilters 
         <div className="space-y-4 py-4">
           <div className="space-y-2">
             <Label htmlFor="config-name">{t("nameLabel")}</Label>
-            <Input id="config-name" value={name} onChange={(e) => setName(e.target.value)} placeholder={t("namePlaceholder")} />
+            <SallyTarget id="namelabel" label={t("nameLabel")} completeWhen="namelabelFilled">
+              <Input id="config-name" value={name} onChange={(e) => setName(e.target.value)} placeholder={t("namePlaceholder")} />
+            </SallyTarget>
           </div>
           <div className="flex items-center justify-between">
             <Label htmlFor="share-toggle">{t("shareLabel")}</Label>
-            <Switch id="share-toggle" checked={isShared} onCheckedChange={setIsShared} />
+            <SallyTarget id="sharelabel" label={t("shareLabel")} completeWhen="sharelabelFilled">
+              <Switch id="share-toggle" checked={isShared} onCheckedChange={setIsShared} />
+            </SallyTarget>
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>{t("cancel")}</Button>
-          <Button onClick={handleSave} disabled={loading || !name.trim()}>{t("save")}</Button>
+          <SallyTarget id="cancel16" label={t("cancel")}>
+            <Button variant="outline" onClick={() => onOpenChange(false)}>{t("cancel")}</Button>
+          </SallyTarget>
+          <SallyTarget id="save7" label={t("save")}>
+            <Button onClick={handleSave} disabled={loading || !name.trim()}>{t("save")}</Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -147,13 +148,15 @@ const NewTaskDialog = ({ boards }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("newTask.nameLabel")}</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder={t("newTask.namePlaceholder")}
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="title6" label="title" completeWhen="title6Filled">
+                        <FormControl>
+                          <Input
+                            disabled={isLoading}
+                            placeholder={t("newTask.namePlaceholder")}
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -164,13 +167,15 @@ const NewTaskDialog = ({ boards }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("newTask.descLabel")}</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          disabled={isLoading}
-                          placeholder={t("newTask.descPlaceholder")}
-                          {...field}
-                        />
-                      </FormControl>
+                      <SallyTarget id="content3" label="content" completeWhen="content3Filled">
+                        <FormControl>
+                          <Textarea
+                            disabled={isLoading}
+                            placeholder={t("newTask.descPlaceholder")}
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -244,11 +249,13 @@ const NewTaskDialog = ({ boards }: Props) => {
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t("newTask.projectPlaceholder")} />
-                          </SelectTrigger>
-                        </FormControl>
+                        <SallyTarget id="board" label="board" completeWhen="boardFilled">
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={t("newTask.projectPlaceholder")} />
+                            </SelectTrigger>
+                          </FormControl>
+                        </SallyTarget>
                         <SelectContent>
                           {boards.map((board: any) => (
                             <SelectItem key={board.id} value={board.id}>
@@ -267,22 +274,24 @@ const NewTaskDialog = ({ boards }: Props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{c("priorityLabel")}</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={c("priorityPlaceholder")} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="low">{c("low")}</SelectItem>
-                          <SelectItem value="medium">{c("medium")}</SelectItem>
-                          <SelectItem value="high">{c("high")}</SelectItem>
-                          <SelectItem value="critical">{c("critical")}</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="priority" label="priority" completeWhen="priorityFilled">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={c("priorityPlaceholder")} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="low">{c("low")}</SelectItem>
+                            <SelectItem value="medium">{c("medium")}</SelectItem>
+                            <SelectItem value="high">{c("high")}</SelectItem>
+                            <SelectItem value="critical">{c("critical")}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}

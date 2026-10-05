@@ -411,18 +411,14 @@ export function InvoiceForm({
         </div>
 
         <div className="flex gap-3">
-          <SallyTarget
-            id="invoice-save-draft"
-            label="Save draft"
-            completeWhen="onInvoiceDetail"
-          >
-            <Button onClick={handleSubmit} disabled={saving}>
-              {saving
-                ? "Saving..."
-                : isEdit
-                  ? "Update Draft"
-                  : (l.save ?? "Save Draft")}
-            </Button>
+          <SallyTarget id="invoice-save-draft" label={"Update Draft"} completeWhen="onInvoiceDetail">
+                        <Button onClick={handleSubmit} disabled={saving}>
+                {saving
+                  ? "Saving..."
+                  : isEdit
+                    ? "Update Draft"
+                    : (l.save ?? "Save Draft")}
+              </Button>
           </SallyTarget>
           <SallyTarget id="cancel-4" label="Cancel">
   <Button

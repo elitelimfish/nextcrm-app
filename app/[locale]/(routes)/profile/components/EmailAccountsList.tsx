@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -198,11 +199,13 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
           }
         }}
       >
-        <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
-            Add Email Account
-          </Button>
-        </DialogTrigger>
+        <SallyTarget id="add-email-account" label="Add Email Account">
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm">
+              Add Email Account
+            </Button>
+          </DialogTrigger>
+        </SallyTarget>
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>
@@ -212,40 +215,44 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
           <div className="space-y-3">
             {/* Provider quick-select */}
             <div className="flex gap-2 pb-1">
-              <Button
-                type="button"
-                variant={provider === "gmail" ? "default" : "outline"}
-                size="sm"
-                className="gap-1.5"
-                onClick={applyGmailPreset}
-              >
-                <svg width="14" height="14" viewBox="0 0 48 48" aria-hidden="true">
-                  <path fill="#EA4335" d="M24 9.5c3.2 0 5.9 1.1 8.1 2.9l6-6C34.5 3.1 29.6 1 24 1 14.8 1 7 6.7 3.7 14.7l7 5.4C12.4 14 17.7 9.5 24 9.5z"/>
-                  <path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.4c-.5 2.8-2.1 5.2-4.5 6.8l7 5.4C42.9 37.1 46.1 31.3 46.1 24.5z"/>
-                  <path fill="#FBBC05" d="M10.7 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.7-4.5l-7-5.4A23.5 23.5 0 0 0 .5 24c0 3.8.9 7.3 2.7 10.4l7-5.9z"/>
-                  <path fill="#34A853" d="M24 46.5c5.6 0 10.3-1.8 13.7-5l-7-5.4c-1.9 1.2-4.2 2-6.7 2-6.3 0-11.6-4.5-13.3-10.5l-7 5.4C7 41.8 14.8 46.5 24 46.5z"/>
-                </svg>
-                Connect Gmail
-              </Button>
-              <Button
-                type="button"
-                variant={provider === "generic" ? "default" : "outline"}
-                size="sm"
-                onClick={() => {
-                  setProvider("generic");
-                  setFolders([]);
-                  setDiscoverError(null);
-                  setForm((f) => ({
-                    ...f,
-                    label: f.label === "Gmail" ? "" : f.label,
-                    imapHost: f.imapHost === "imap.gmail.com" ? "" : f.imapHost,
-                    smtpHost: f.smtpHost === "smtp.gmail.com" ? "" : f.smtpHost,
-                    sentFolderName: f.sentFolderName === "[Gmail]/Sent Mail" ? "Sent" : f.sentFolderName,
-                  }));
-                }}
-              >
-                Other IMAP
-              </Button>
+              <SallyTarget id="connect-gmail" label="Connect Gmail">
+                <Button
+                  type="button"
+                  variant={provider === "gmail" ? "default" : "outline"}
+                  size="sm"
+                  className="gap-1.5"
+                  onClick={applyGmailPreset}
+                >
+                  <svg width="14" height="14" viewBox="0 0 48 48" aria-hidden="true">
+                    <path fill="#EA4335" d="M24 9.5c3.2 0 5.9 1.1 8.1 2.9l6-6C34.5 3.1 29.6 1 24 1 14.8 1 7 6.7 3.7 14.7l7 5.4C12.4 14 17.7 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.4c-.5 2.8-2.1 5.2-4.5 6.8l7 5.4C42.9 37.1 46.1 31.3 46.1 24.5z"/>
+                    <path fill="#FBBC05" d="M10.7 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.7-4.5l-7-5.4A23.5 23.5 0 0 0 .5 24c0 3.8.9 7.3 2.7 10.4l7-5.9z"/>
+                    <path fill="#34A853" d="M24 46.5c5.6 0 10.3-1.8 13.7-5l-7-5.4c-1.9 1.2-4.2 2-6.7 2-6.3 0-11.6-4.5-13.3-10.5l-7 5.4C7 41.8 14.8 46.5 24 46.5z"/>
+                  </svg>
+                  Connect Gmail
+                </Button>
+              </SallyTarget>
+              <SallyTarget id="other-imap" label="Other IMAP">
+                <Button
+                  type="button"
+                  variant={provider === "generic" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => {
+                    setProvider("generic");
+                    setFolders([]);
+                    setDiscoverError(null);
+                    setForm((f) => ({
+                      ...f,
+                      label: f.label === "Gmail" ? "" : f.label,
+                      imapHost: f.imapHost === "imap.gmail.com" ? "" : f.imapHost,
+                      smtpHost: f.smtpHost === "smtp.gmail.com" ? "" : f.smtpHost,
+                      sentFolderName: f.sentFolderName === "[Gmail]/Sent Mail" ? "Sent" : f.sentFolderName,
+                    }));
+                  }}
+                >
+                  Other IMAP
+                </Button>
+              </SallyTarget>
             </div>
 
             {/* All fields except sentFolderName and password */}
@@ -307,16 +314,18 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
             <div className="space-y-1">
               <div className="flex items-center justify-between">
                 <Label htmlFor="sentFolderName">Sent Folder Name</Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="h-6 px-2 text-xs"
-                  disabled={discovering || !form.imapHost || !form.username || !form.password}
-                  onClick={handleDiscover}
-                >
-                  {discovering ? "Discovering…" : "Discover folders"}
-                </Button>
+                <SallyTarget id="sent-folder-name" label="Sent Folder Name">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 px-2 text-xs"
+                    disabled={discovering || !form.imapHost || !form.username || !form.password}
+                    onClick={handleDiscover}
+                  >
+                    {discovering ? "Discovering…" : "Discover folders"}
+                  </Button>
+                </SallyTarget>
               </div>
               {folders.length > 0 ? (
                 <select
@@ -345,29 +354,35 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
 
             {/* SSL toggles */}
             <div className="flex items-center gap-2">
-              <Switch
-                id="imapSsl"
-                checked={form.imapSsl}
-                onCheckedChange={(v) => setForm((f) => ({ ...f, imapSsl: v }))}
-              />
+              <SallyTarget id="imapssl" label="imapSsl" completeWhen="imapsslFilled">
+                <Switch
+                  id="imapSsl"
+                  checked={form.imapSsl}
+                  onCheckedChange={(v) => setForm((f) => ({ ...f, imapSsl: v }))}
+                />
+              </SallyTarget>
               <Label htmlFor="imapSsl">IMAP SSL</Label>
-              <Switch
-                id="smtpSsl"
-                checked={form.smtpSsl}
-                onCheckedChange={(v) => setForm((f) => ({ ...f, smtpSsl: v }))}
-                className="ml-4"
-              />
+              <SallyTarget id="imap-ssl" label="IMAP SSL" completeWhen="imapSslFilled">
+                <Switch
+                  id="smtpSsl"
+                  checked={form.smtpSsl}
+                  onCheckedChange={(v) => setForm((f) => ({ ...f, smtpSsl: v }))}
+                  className="ml-4"
+                />
+              </SallyTarget>
               <Label htmlFor="smtpSsl">SMTP SSL</Label>
             </div>
 
             {/* Self-signed TLS opt-out */}
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <Switch
-                  id="allowSelfSignedTls"
-                  checked={form.allowSelfSignedTls}
-                  onCheckedChange={(v) => setForm((f) => ({ ...f, allowSelfSignedTls: v }))}
-                />
+                <SallyTarget id="allowselfsignedtls" label="allowSelfSignedTls" completeWhen="allowselfsignedtlsFilled">
+                  <Switch
+                    id="allowSelfSignedTls"
+                    checked={form.allowSelfSignedTls}
+                    onCheckedChange={(v) => setForm((f) => ({ ...f, allowSelfSignedTls: v }))}
+                  />
+                </SallyTarget>
                 <Label htmlFor="allowSelfSignedTls">
                   Allow self-signed TLS certificates
                 </Label>
@@ -386,12 +401,16 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
               </p>
             )}
             <div className="flex gap-2 pt-2">
-              <Button variant="outline" size="sm" onClick={handleTest} disabled={testing}>
-                {testing ? "Testing…" : "Test Connection"}
-              </Button>
-              <Button size="sm" onClick={handleCreate}>
-                Save
-              </Button>
+              <SallyTarget id="test-connection" label={testing ? "Testing…" : "Test Connection"}>
+                <Button variant="outline" size="sm" onClick={handleTest} disabled={testing}>
+                  {testing ? "Testing…" : "Test Connection"}
+                </Button>
+              </SallyTarget>
+              <SallyTarget id="save4" label="Save">
+                <Button size="sm" onClick={handleCreate}>
+                  Save
+                </Button>
+              </SallyTarget>
             </div>
           </div>
         </DialogContent>

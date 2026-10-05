@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import {
@@ -76,7 +77,9 @@ export function ComposeModal({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {trigger ?? <Button size="sm">Compose</Button>}
+        {trigger ?? <SallyTarget id="compose" label="Compose">
+          <Button size="sm">Compose</Button>
+        </SallyTarget>}
       </DialogTrigger>
       <DialogContent className="max-w-lg">
         <DialogHeader>
@@ -87,24 +90,34 @@ export function ComposeModal({
         <div className="space-y-3">
           <div className="space-y-1">
             <Label>To</Label>
-            <Input value={to} onChange={(e) => setTo(e.target.value)} placeholder="recipient@example.com" />
+            <SallyTarget id="to" label="To" completeWhen="toFilled">
+              <Input value={to} onChange={(e) => setTo(e.target.value)} placeholder="recipient@example.com" />
+            </SallyTarget>
           </div>
           <div className="space-y-1">
             <Label>CC</Label>
-            <Input value={cc} onChange={(e) => setCc(e.target.value)} placeholder="cc@example.com" />
+            <SallyTarget id="cc" label="CC" completeWhen="ccFilled">
+              <Input value={cc} onChange={(e) => setCc(e.target.value)} placeholder="cc@example.com" />
+            </SallyTarget>
           </div>
           <div className="space-y-1">
             <Label>Subject</Label>
-            <Input value={subject} onChange={(e) => setSubject(e.target.value)} />
+            <SallyTarget id="subject2" label="Subject" completeWhen="subject2Filled">
+              <Input value={subject} onChange={(e) => setSubject(e.target.value)} />
+            </SallyTarget>
           </div>
           <div className="space-y-1">
             <Label>Message</Label>
-            <Textarea value={body} onChange={(e) => setBody(e.target.value)} rows={8} />
+            <SallyTarget id="message" label="Message" completeWhen="messageFilled">
+              <Textarea value={body} onChange={(e) => setBody(e.target.value)} rows={8} />
+            </SallyTarget>
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button onClick={handleSend} disabled={sending} className="w-full">
-            {sending ? "Sending…" : "Send"}
-          </Button>
+          <SallyTarget id="send" label={sending ? "Sending…" : "Send"}>
+            <Button onClick={handleSend} disabled={sending} className="w-full">
+              {sending ? "Sending…" : "Send"}
+            </Button>
+          </SallyTarget>
         </div>
       </DialogContent>
     </Dialog>
