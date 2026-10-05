@@ -272,13 +272,15 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("referredBy")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Johny Walker"
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="refered-by" label="refered by" completeWhen="referedByFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Johny Walker"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -291,16 +293,18 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Lead Status</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select status…" /></SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {leadStatuses.map((s) => (
-                          <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <SallyTarget id="lead-status" label="Lead Status" completeWhen="leadStatusFilled">
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger><SelectValue placeholder="Select status…" /></SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {leadStatuses.map((s) => (
+                            <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -311,16 +315,18 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Lead Type</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {leadTypes.map((lt) => (
-                          <SelectItem key={lt.id} value={lt.id}>{lt.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <SallyTarget id="lead-type" label="Lead Type" completeWhen="leadTypeFilled">
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {leadTypes.map((lt) => (
+                            <SelectItem key={lt.id} value={lt.id}>{lt.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -403,20 +409,20 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, ac
               {form.formState.errors.root.serverError.message}
             </p>
           )}
-          <SallyTarget id="save-lead" label="Save lead">
-            <Button
-              disabled={form.formState.isSubmitting}
-              type="submit"
-              data-testid="lead-submit-btn"
-            >
-              {form.formState.isSubmitting ? (
-                <span className="flex items-center animate-pulse">
-                  {c("savingData")}
-                </span>
-              ) : (
-                t("createButton")
-              )}
-            </Button>
+          <SallyTarget id="save-lead" label={t("createButton")}>
+                        <Button
+                disabled={form.formState.isSubmitting}
+                type="submit"
+                data-testid="lead-submit-btn"
+              >
+                {form.formState.isSubmitting ? (
+                  <span className="flex items-center animate-pulse">
+                    {c("savingData")}
+                  </span>
+                ) : (
+                  t("createButton")
+                )}
+              </Button>
           </SallyTarget>
         </div>
       </form>

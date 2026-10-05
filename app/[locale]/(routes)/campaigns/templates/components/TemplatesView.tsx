@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import * as React from "react";
 import { useState } from "react";
@@ -100,15 +101,17 @@ function TemplateRowActions({ row }: { row: { original: Template } }) {
         loading={loading}
       />
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-          >
-            <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
+        <SallyTarget id="open-menu3" label="Open menu">
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+            >
+              <DotsHorizontalIcon className="h-4 w-4" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+        </SallyTarget>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() =>
@@ -133,12 +136,14 @@ const columns: ColumnDef<Template>[] = [
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => (
-      <Link
-        href={`/campaigns/templates/${row.original.id}`}
-        className="font-medium hover:underline"
-      >
-        {row.getValue("name")}
-      </Link>
+      <SallyTarget id="row-getvalue-name3" label={row.getValue("name")}>
+        <Link
+          href={`/campaigns/templates/${row.original.id}`}
+          className="font-medium hover:underline"
+        >
+          {row.getValue("name")}
+        </Link>
+      </SallyTarget>
     ),
     enableSorting: true,
     enableHiding: true,
@@ -228,12 +233,14 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
             <CardDescription></CardDescription>
           </div>
           <div className="flex space-x-2">
-            <Button
-              size="sm"
-              onClick={() => router.push("/campaigns/templates/new")}
-            >
-              + New Template
-            </Button>
+            <SallyTarget id="new-template" label="+ New Template">
+              <Button
+                size="sm"
+                onClick={() => router.push("/campaigns/templates/new")}
+              >
+                + New Template
+              </Button>
+            </SallyTarget>
           </div>
         </div>
         <Separator />
@@ -247,25 +254,29 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
             {/* Toolbar */}
             <div className="flex items-center justify-between">
               <div className="flex flex-1 items-center space-x-2">
-                <Input
-                  placeholder="Filter by name ..."
-                  value={
-                    (table.getColumn("name")?.getFilterValue() as string) ?? ""
-                  }
-                  onChange={(event) =>
-                    table.getColumn("name")?.setFilterValue(event.target.value)
-                  }
-                  className="h-8 w-[150px] lg:w-[250px]"
-                />
+                <SallyTarget id="filter-by-name2" label="Filter by name ..." completeWhen="filterByName2Filled">
+                  <Input
+                    placeholder="Filter by name ..."
+                    value={
+                      (table.getColumn("name")?.getFilterValue() as string) ?? ""
+                    }
+                    onChange={(event) =>
+                      table.getColumn("name")?.setFilterValue(event.target.value)
+                    }
+                    className="h-8 w-[150px] lg:w-[250px]"
+                  />
+                </SallyTarget>
                 {isFiltered && (
-                  <Button
-                    variant="ghost"
-                    onClick={() => table.resetColumnFilters()}
-                    className="h-8 px-2 lg:px-3"
-                  >
-                    Reset
-                    <Cross2Icon className="ml-2 h-4 w-4" />
-                  </Button>
+                  <SallyTarget id="reset3" label="Reset">
+                    <Button
+                      variant="ghost"
+                      onClick={() => table.resetColumnFilters()}
+                      className="h-8 px-2 lg:px-3"
+                    >
+                      Reset
+                      <Cross2Icon className="ml-2 h-4 w-4" />
+                    </Button>
+                  </SallyTarget>
                 )}
               </div>
             </div>
@@ -354,44 +365,52 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                   {table.getPageCount()}
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Button
-                    variant="outline"
-                    className="hidden h-8 w-8 p-0 lg:flex"
-                    onClick={() => table.setPageIndex(0)}
-                    disabled={!table.getCanPreviousPage()}
-                  >
-                    <span className="sr-only">Go to first page</span>
-                    <DoubleArrowLeftIcon className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-8 w-8 p-0"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                  >
-                    <span className="sr-only">Go to previous page</span>
-                    <ChevronLeftIcon className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-8 w-8 p-0"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                  >
-                    <span className="sr-only">Go to next page</span>
-                    <ChevronRightIcon className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="hidden h-8 w-8 p-0 lg:flex"
-                    onClick={() =>
-                      table.setPageIndex(table.getPageCount() - 1)
-                    }
-                    disabled={!table.getCanNextPage()}
-                  >
-                    <span className="sr-only">Go to last page</span>
-                    <DoubleArrowRightIcon className="h-4 w-4" />
-                  </Button>
+                  <SallyTarget id="go-to-first-page3" label="Go to first page">
+                    <Button
+                      variant="outline"
+                      className="hidden h-8 w-8 p-0 lg:flex"
+                      onClick={() => table.setPageIndex(0)}
+                      disabled={!table.getCanPreviousPage()}
+                    >
+                      <span className="sr-only">Go to first page</span>
+                      <DoubleArrowLeftIcon className="h-4 w-4" />
+                    </Button>
+                  </SallyTarget>
+                  <SallyTarget id="go-to-previous-page3" label="Go to previous page">
+                    <Button
+                      variant="outline"
+                      className="h-8 w-8 p-0"
+                      onClick={() => table.previousPage()}
+                      disabled={!table.getCanPreviousPage()}
+                    >
+                      <span className="sr-only">Go to previous page</span>
+                      <ChevronLeftIcon className="h-4 w-4" />
+                    </Button>
+                  </SallyTarget>
+                  <SallyTarget id="go-to-next-page3" label="Go to next page">
+                    <Button
+                      variant="outline"
+                      className="h-8 w-8 p-0"
+                      onClick={() => table.nextPage()}
+                      disabled={!table.getCanNextPage()}
+                    >
+                      <span className="sr-only">Go to next page</span>
+                      <ChevronRightIcon className="h-4 w-4" />
+                    </Button>
+                  </SallyTarget>
+                  <SallyTarget id="go-to-last-page3" label="Go to last page">
+                    <Button
+                      variant="outline"
+                      className="hidden h-8 w-8 p-0 lg:flex"
+                      onClick={() =>
+                        table.setPageIndex(table.getPageCount() - 1)
+                      }
+                      disabled={!table.getCanNextPage()}
+                    >
+                      <span className="sr-only">Go to last page</span>
+                      <DoubleArrowRightIcon className="h-4 w-4" />
+                    </Button>
+                  </SallyTarget>
                 </div>
               </div>
             </div>

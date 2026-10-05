@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -33,9 +34,11 @@ export function RetryEnrichmentButton({ contactId, fields }: RetryEnrichmentButt
   };
 
   return (
-    <Button variant="ghost" size="sm" onClick={handleRetry} disabled={loading}>
-      <RotateCcw className={`h-3 w-3 mr-1 ${loading ? "animate-spin" : ""}`} />
-      Retry
-    </Button>
+    <SallyTarget id="retry3" label="Retry">
+      <Button variant="ghost" size="sm" onClick={handleRetry} disabled={loading}>
+        <RotateCcw className={`h-3 w-3 mr-1 ${loading ? "animate-spin" : ""}`} />
+        Retry
+      </Button>
+    </SallyTarget>
   );
 }

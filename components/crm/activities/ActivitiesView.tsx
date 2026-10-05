@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState, useTransition } from "react";
 import { Plus } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -50,10 +51,12 @@ export function ActivitiesView({ entityType, entityId, initialData }: Props) {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between py-3">
           <CardTitle className="text-base">Activities</CardTitle>
-          <Button size="sm" variant="outline" onClick={() => setCreateOpen(true)}>
-            <Plus className="h-4 w-4 mr-1" />
-            Log activity
-          </Button>
+          <SallyTarget id="log-activity3" label="Log activity">
+            <Button size="sm" variant="outline" onClick={() => setCreateOpen(true)}>
+              <Plus className="h-4 w-4 mr-1" />
+              Log activity
+            </Button>
+          </SallyTarget>
         </CardHeader>
         <CardContent className="pt-0">
           {activities.length === 0 ? (

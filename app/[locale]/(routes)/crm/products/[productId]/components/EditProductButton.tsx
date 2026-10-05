@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -36,10 +37,12 @@ export function EditProductButton({
 
   return (
     <>
-      <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
-        <Pencil className="mr-2 h-4 w-4" />
-        Edit
-      </Button>
+      <SallyTarget id="edit3" label="Edit">
+        <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+          <Pencil className="mr-2 h-4 w-4" />
+          Edit
+        </Button>
+      </SallyTarget>
       <UpdateProductForm
         onOpen={open}
         setOpen={setOpen}

@@ -103,15 +103,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                   <FormLabel>
                     {t("accountName")} <span className="text-destructive">*</span>
                   </FormLabel>
-                  <FormControl>
-                    <SallyTarget id="name" label="name" completeWhen="nameFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="NextCRM Inc."
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="name" label="name" completeWhen="nameFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="NextCRM Inc."
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -122,15 +122,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="office-phone" label="office phone" completeWhen="officePhoneFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="+420 ...."
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="office-phone" label="office phone" completeWhen="officePhoneFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="+420 ...."
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -141,15 +141,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="email" label="email" completeWhen="emailFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="account@domain.com"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="email" label="email" completeWhen="emailFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="account@domain.com"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -160,15 +160,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="website" label="website" completeWhen="websiteFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="https://www.domain.com"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="website" label="website" completeWhen="websiteFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="https://www.domain.com"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -179,13 +179,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("accountId")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="1234567890"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="company-id" label="company id" completeWhen="companyIdFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="1234567890"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -196,13 +198,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("vatNumber")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="CZ1234567890"
-                      {...field}
-                    />
-                  </FormControl>
+                  <SallyTarget id="vat" label="vat" completeWhen="vatFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="CZ1234567890"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -216,13 +220,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("billingStreet")}</FormLabel>
-                    <FormControl>
-                      <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Švábova 772/18"
-                        {...field}
-                      />
-                    </FormControl>
+                    <SallyTarget id="billing-street" label="billing street" completeWhen="billingStreetFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Švábova 772/18"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -233,15 +239,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("billingPostalCode")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="billing-postal-code" label="billing postal code" completeWhen="billingPostalCodeFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="252 18"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="billing-postal-code" label="billing postal code" completeWhen="billingPostalCodeFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="252 18"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -252,15 +258,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("billingCity")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="billing-city" label="billing city" completeWhen="billingCityFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Prague"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="billing-city" label="billing city" completeWhen="billingCityFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Prague"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -271,11 +277,11 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("billingState")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="billing-state" label="billing state" completeWhen="billingStateFilled">
-  <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="billing-state" label="billing state" completeWhen="billingStateFilled">
+                      <FormControl>
+                        <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -286,15 +292,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("billingCountry")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="billing-country" label="billing country" completeWhen="billingCountryFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Czechia"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="billing-country" label="billing country" completeWhen="billingCountryFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Czechia"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -307,15 +313,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("shippingStreet")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="shipping-street" label="shipping street" completeWhen="shippingStreetFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Švábova 772/18"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="shipping-street" label="shipping street" completeWhen="shippingStreetFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Švábova 772/18"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -326,15 +332,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("shippingPostalCode")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="shipping-postal-code" label="shipping postal code" completeWhen="shippingPostalCodeFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="252 18"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="shipping-postal-code" label="shipping postal code" completeWhen="shippingPostalCodeFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="252 18"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -345,15 +351,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("shippingCity")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="shipping-city" label="shipping city" completeWhen="shippingCityFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Prague"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="shipping-city" label="shipping city" completeWhen="shippingCityFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Prague"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -364,11 +370,11 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("shippingState")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="shipping-state" label="shipping state" completeWhen="shippingStateFilled">
-  <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="shipping-state" label="shipping state" completeWhen="shippingStateFilled">
+                      <FormControl>
+                        <Input disabled={form.formState.isSubmitting} placeholder="" {...field} />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -379,15 +385,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("shippingCountry")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="shipping-country" label="shipping country" completeWhen="shippingCountryFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Czechia"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="shipping-country" label="shipping country" completeWhen="shippingCountryFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Czechia"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -402,15 +408,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{c("description")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="description-6" label="description" completeWhen="description-6Filled">
-  <Textarea
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Description"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="description-6" label="description" completeWhen="description-6Filled">
+                      <FormControl>
+                        <Textarea
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Description"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -423,15 +429,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("annualRevenue")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="annual-revenue" label="annual revenue" completeWhen="annualRevenueFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="1.0000.000"
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="annual-revenue" label="annual revenue" completeWhen="annualRevenueFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="1.0000.000"
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -442,15 +448,15 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("isMemberOf")}</FormLabel>
-                    <FormControl>
-                      <SallyTarget id="member-of" label="member of" completeWhen="memberOfFilled">
-  <Input
-                        disabled={form.formState.isSubmitting}
-                        placeholder="Tesla Inc."
-                        {...field}
-                      />
-</SallyTarget>
-                    </FormControl>
+                    <SallyTarget id="member-of" label="member of" completeWhen="memberOfFilled">
+                      <FormControl>
+                        <Input
+                          disabled={form.formState.isSubmitting}
+                          placeholder="Tesla Inc."
+                          {...field}
+                        />
+                      </FormControl>
+                    </SallyTarget>
                     <FormMessage />
                   </FormItem>
                 )}

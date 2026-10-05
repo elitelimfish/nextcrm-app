@@ -146,11 +146,11 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("firstName")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="first-name" label="first name" completeWhen="firstNameFilled">
-  <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="first-name" label="first name" completeWhen="firstNameFilled">
+                    <FormControl>
+                      <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -161,11 +161,11 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("lastName")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="last-name" label="last name" completeWhen="lastNameFilled">
-  <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="last-name" label="last name" completeWhen="lastNameFilled">
+                    <FormControl>
+                      <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -176,15 +176,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("mobilePhone")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="mobile-phone" label="mobile phone" completeWhen="mobilePhoneFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="+11 1236 77 55"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="mobile-phone" label="mobile phone" completeWhen="mobilePhoneFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="+11 1236 77 55"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -196,15 +196,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("officePhone")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="office-phone-5" label="office phone" completeWhen="officePhone-5Filled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="+11 1236 77 55"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="office-phone-5" label="office phone" completeWhen="officePhone-5Filled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="+11 1236 77 55"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -215,15 +215,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="email-8" label="email" completeWhen="email-8Filled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="john@domain.com"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="email-8" label="email" completeWhen="email-8Filled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="john@domain.com"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -234,15 +234,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("personalEmail")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="personal-email" label="personal email" completeWhen="personalEmailFilled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="littlejohny@gmail.com"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="personal-email" label="personal email" completeWhen="personalEmailFilled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="littlejohny@gmail.com"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -253,15 +253,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("website")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="website-4" label="website" completeWhen="website-4Filled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="https://www.domain.com"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="website-4" label="website" completeWhen="website-4Filled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="https://www.domain.com"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -274,20 +274,22 @@ export function NewContactForm({
                   name="birthday_year"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t("year")} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="h-56">
-                          {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((year) => (
-                            <SelectItem key={year} value={year.toString()}>
-                              {year}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="birthday-year" label="birthday year" completeWhen="birthdayYearFilled">
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={t("year")} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="h-56">
+                            {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((year) => (
+                              <SelectItem key={year} value={year.toString()}>
+                                {year}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -297,33 +299,35 @@ export function NewContactForm({
                   name="birthday_month"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t("month")} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="h-56">
-                          {[
-                            { value: "1", label: t("january") },
-                            { value: "2", label: t("february") },
-                            { value: "3", label: t("march") },
-                            { value: "4", label: t("april") },
-                            { value: "5", label: t("may") },
-                            { value: "6", label: t("june") },
-                            { value: "7", label: t("july") },
-                            { value: "8", label: t("august") },
-                            { value: "9", label: t("september") },
-                            { value: "10", label: t("october") },
-                            { value: "11", label: t("november") },
-                            { value: "12", label: t("december") },
-                          ].map((month) => (
-                            <SelectItem key={month.value} value={month.value}>
-                              {month.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="birthday-month" label="birthday month" completeWhen="birthdayMonthFilled">
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={t("month")} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="h-56">
+                            {[
+                              { value: "1", label: t("january") },
+                              { value: "2", label: t("february") },
+                              { value: "3", label: t("march") },
+                              { value: "4", label: t("april") },
+                              { value: "5", label: t("may") },
+                              { value: "6", label: t("june") },
+                              { value: "7", label: t("july") },
+                              { value: "8", label: t("august") },
+                              { value: "9", label: t("september") },
+                              { value: "10", label: t("october") },
+                              { value: "11", label: t("november") },
+                              { value: "12", label: t("december") },
+                            ].map((month) => (
+                              <SelectItem key={month.value} value={month.value}>
+                                {month.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -333,20 +337,22 @@ export function NewContactForm({
                   name="birthday_day"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t("day")} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="h-56">
-                          {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
-                            <SelectItem key={day} value={day.toString()}>
-                              {day}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <SallyTarget id="birthday-day" label="birthday day" completeWhen="birthdayDayFilled">
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={t("day")} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="h-56">
+                            {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                              <SelectItem key={day} value={day.toString()}>
+                                {day}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -360,15 +366,15 @@ export function NewContactForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="description-8" label="description" completeWhen="description-8Filled">
-  <Textarea
-                      disabled={form.formState.isSubmitting}
-                      placeholder={t("descriptionPlaceholder")}
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="description-8" label="description" completeWhen="description-8Filled">
+                    <FormControl>
+                      <Textarea
+                        disabled={form.formState.isSubmitting}
+                        placeholder={t("descriptionPlaceholder")}
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -429,15 +435,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("position")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="position-3" label="position" completeWhen="position-3Filled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="CTO"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="position-3" label="position" completeWhen="position-3Filled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="CTO"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -498,15 +504,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("twitter")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-twitter" label="social twitter" completeWhen="socialTwitterFilled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.twitter.com/john"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-twitter" label="social twitter" completeWhen="socialTwitterFilled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.twitter.com/john"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -517,15 +523,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("facebook")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-facebook-3" label="social facebook" completeWhen="socialFacebook-3Filled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.facebook.com/john"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-facebook-3" label="social facebook" completeWhen="socialFacebook-3Filled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.facebook.com/john"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -536,15 +542,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("linkedin")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-linkedin-3" label="social linkedin" completeWhen="socialLinkedin-3Filled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.linkedin.com/john"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-linkedin-3" label="social linkedin" completeWhen="socialLinkedin-3Filled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.linkedin.com/john"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -555,15 +561,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("skype")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-skype" label="social skype" completeWhen="socialSkypeFilled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.skype.com/john"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-skype" label="social skype" completeWhen="socialSkypeFilled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.skype.com/john"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -574,15 +580,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("youtube")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-youtube" label="social youtube" completeWhen="socialYoutubeFilled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.youtube.com/nextcrmio"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-youtube" label="social youtube" completeWhen="socialYoutubeFilled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.youtube.com/nextcrmio"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -593,15 +599,15 @@ export function NewContactForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("tiktok")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="social-tiktok" label="social tiktok" completeWhen="socialTiktokFilled">
-  <Input
-                          disabled={form.formState.isSubmitting}
-                          placeholder="https://www.domain.com"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="social-tiktok" label="social tiktok" completeWhen="socialTiktokFilled">
+                        <FormControl>
+                          <Input
+                            disabled={form.formState.isSubmitting}
+                            placeholder="https://www.domain.com"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}

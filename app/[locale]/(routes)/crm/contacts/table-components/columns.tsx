@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Link from "next/link";
 import { ColumnDef } from "@tanstack/react-table";
@@ -17,19 +18,23 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     id: "select",
     header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
+      <SallyTarget id="select-all2" label="Select all" completeWhen="selectAll2Filled">
+        <Checkbox
+          checked={table.getIsAllPageRowsSelected()}
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      </SallyTarget>
     ),
     cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        onClick={(e) => e.stopPropagation()}
-      />
+      <SallyTarget id="select-row2" label="Select row" completeWhen="selectRow2Filled">
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </SallyTarget>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -89,9 +94,11 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
       <DataTableColumnHeader column={column} title="Sure name" />
     ),
     cell: ({ row }) => (
-      <Link href={`/crm/contacts/${row.original.id}`} data-testid="contact-row-name">
-        <div className="">{row.getValue("last_name")}</div>
-      </Link>
+      <SallyTarget id="row-getvalue-last-name" label={row.getValue("last_name")}>
+        <Link href={`/crm/contacts/${row.original.id}`} data-testid="contact-row-name">
+          <div className="">{row.getValue("last_name")}</div>
+        </Link>
+      </SallyTarget>
     ),
     enableSorting: true,
     enableHiding: true,
