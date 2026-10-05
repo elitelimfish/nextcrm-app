@@ -12,6 +12,7 @@ import { getTranslations } from "next-intl/server";
 import { AvatarProvider } from "@/context/avatar-context";
 import { CurrencyProvider } from "@/context/currency-context";
 import { getEnabledCurrencies, getDefaultCurrency } from "@/lib/currency";
+import { SallyHost } from "@/app/sally-host";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -103,6 +104,7 @@ export default async function AppLayout({
 
   //console.log(typeof build, "build");
   return (
+    <SallyHost>
     <AvatarProvider initialAvatar={user?.image}>
     <CurrencyProvider initialCurrency={displayCurrency} currencies={currencyList}>
     <SidebarProvider defaultOpen={sidebarOpen}>
@@ -133,5 +135,6 @@ export default async function AppLayout({
     </SidebarProvider>
     </CurrencyProvider>
     </AvatarProvider>
+    </SallyHost>
   );
 }

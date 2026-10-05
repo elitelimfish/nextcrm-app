@@ -1,0 +1,28 @@
+# Demo NextCRM. Sleeps when idle. Neon holds Postgres. No model keys.
+app = 'supportsally-demo'
+primary_region = 'ord'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[env]
+  PORT = '8080'
+  HOSTNAME = '0.0.0.0'
+  BETTER_AUTH_URL = 'https://demo.supportsally.com'
+  DEMO_PASSWORD_LOGIN = '1'
+  NEXT_PUBLIC_SALLY_STUDIO_URL = 'https://studio.supportsally.com'
+  NEXT_PUBLIC_APP_URL = 'https://demo.supportsally.com'
+  NEXT_PUBLIC_APP_NAME = 'NextCRM'
+  NEXT_PUBLIC_PASSWORD_LOGIN = 'true'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '1024'

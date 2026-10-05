@@ -66,7 +66,8 @@ export const auth = betterAuth({
   },
 
   emailAndPassword: {
-    enabled: process.env.NODE_ENV !== "production",
+    enabled:
+      process.env.DEMO_PASSWORD_LOGIN === "1" || process.env.NODE_ENV !== "production",
   },
 
   plugins: [

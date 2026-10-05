@@ -163,7 +163,7 @@ export function NewContactForm({
                   <FormLabel>{t("lastName")}</FormLabel>
                   <SallyTarget id="last-name" label="last name" completeWhen="lastNameFilled">
                     <FormControl>
-                      <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
+                      <Input aria-required="true" disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
                     </FormControl>
                   </SallyTarget>
                   <FormMessage />
@@ -622,6 +622,7 @@ export function NewContactForm({
               {form.formState.errors.root.serverError.message}
             </p>
           )}
+          <SallyTarget id="submit-contact" label={t("createButton")}>
           <Button disabled={form.formState.isSubmitting} type="submit" data-testid="contact-submit-btn">
             {form.formState.isSubmitting ? (
               <span className="flex items-center animate-pulse">
@@ -631,6 +632,7 @@ export function NewContactForm({
               t("createButton")
             )}
           </Button>
+          </SallyTarget>
         </div>
       </form>
     </Form>

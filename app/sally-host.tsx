@@ -2,12 +2,12 @@
 
 import { SallyProvider } from "@supportsally/react";
 import "@supportsally/react/styles.css";
-import { patchSallyWorkflows } from "@/lib/sally-workflow-patch";
-import { SallyActions } from "@/app/sally-actions";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import {
   useCallback,
+  useMemo,
+  useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -41,12 +41,24 @@ function buildAppContext(pathname: string) {
 
 const studioUrl = (process.env.NEXT_PUBLIC_SALLY_STUDIO_URL ?? "").trim();
 const apiKey = (process.env.NEXT_PUBLIC_SALLY_EMBED_KEY ?? "").trim();
-const hosted =
-  studioUrl && apiKey
-    ? { studioUrl, apiKey, patchWorkflows: patchSallyWorkflows }
-    : undefined;
+const DEMO_CODE_KEY = "sally-demo-code";
 
 export function SallyHost({ children }: { children: ReactNode }) {
+  // Sally's HUD is a client-only portal, so reading storage here cannot cause a hydration mismatch.
+  const [demoCode, setDemoCode] = useState(() =>
+    typeof window === "undefined" ? "" : (localStorage.getItem(DEMO_CODE_KEY) ?? ""),
+  );
+  const onDemoCode = useCallback((code: string) => {
+    localStorage.setItem(DEMO_CODE_KEY, code);
+    setDemoCode(code);
+  }, []);
+  const hosted = useMemo(
+    () =>
+      studioUrl && apiKey
+        ? { studioUrl, apiKey, demoCode, onDemoCode, maxSessionMs: 120_000 }
+        : undefined,
+    [demoCode, onDemoCode],
+  );
   const pathname = usePathname() || "/";
   const router = useRouter();
   const locale = useLocale();
@@ -81,7 +93,6 @@ export function SallyHost({ children }: { children: ReactNode }) {
       contextKey={contextKey}
       onNavigate={onNavigate}
     >
-      <SallyActions />
       {children}
     </SallyProvider>
   );

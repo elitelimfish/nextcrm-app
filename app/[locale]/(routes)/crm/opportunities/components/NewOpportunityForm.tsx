@@ -494,7 +494,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
-</SallyTarget>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -529,7 +529,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
-</SallyTarget>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
