@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { Button } from "@/components/ui/button";
 import ModalDocumentView from "../ui/modal-document-view";
@@ -50,9 +51,11 @@ const DocumentViewModal = ({
             )}
           </div>
           <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
-            <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
-            </Button>
+            <SallyTarget id="cancel20" label="Cancel">
+              <Button disabled={loading} variant={"outline"} onClick={onClose}>
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         </div>
       </ModalDocumentView>
@@ -72,9 +75,11 @@ const DocumentViewModal = ({
             src={document.document_file_url}
           />
           <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
-            <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
-            </Button>
+            <SallyTarget id="cancel21" label="Cancel">
+              <Button disabled={loading} variant={"outline"} onClick={onClose}>
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         </div>
       </ModalDocumentView>
@@ -84,13 +89,17 @@ const DocumentViewModal = ({
       <ModalDocumentView isOpen={isOpen} onClose={onClose}>
         <div className="flex flex-col h-full ">
           This format can not be previewed. Please download the file to view it.
-          <Button>
-            <Link href={document.document_file_url}> Download</Link>
-          </Button>
-          <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
-            <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
+          <SallyTarget id="download" label="Download">
+            <Button>
+              <Link href={document.document_file_url}> Download</Link>
             </Button>
+          </SallyTarget>
+          <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
+            <SallyTarget id="cancel22" label="Cancel">
+              <Button disabled={loading} variant={"outline"} onClick={onClose}>
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         </div>
       </ModalDocumentView>

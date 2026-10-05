@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import {
   Dialog,
@@ -44,17 +45,21 @@ const AlertModal = ({
         </DialogHeader>
 
         <DialogFooter>
-          <Button
-            type="button"
-            disabled={loading}
-            variant="outline"
-            onClick={onClose}
-          >
-            Cancel
-          </Button>
-          <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-            {loading ? <Icons.spinner className="animate-spin" /> : "Continue"}
-          </Button>
+          <SallyTarget id="cancel18" label="Cancel">
+            <Button
+              type="button"
+              disabled={loading}
+              variant="outline"
+              onClick={onClose}
+            >
+              Cancel
+            </Button>
+          </SallyTarget>
+          <SallyTarget id="continue" label={"Continue"}>
+            <Button disabled={loading} variant="destructive" onClick={onConfirm}>
+              {loading ? <Icons.spinner className="animate-spin" /> : "Continue"}
+            </Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>
