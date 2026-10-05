@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -78,27 +79,33 @@ export function AdminFilters({
       </Select>
 
       <div className="flex items-center gap-2">
-        <Input
-          type="date"
-          className="w-36"
-          value={dateFrom ?? ""}
-          onChange={(e) => apply({ dateFrom: e.target.value })}
-          placeholder="From"
-        />
+        <SallyTarget id="from" label="From" completeWhen="fromFilled">
+          <Input
+            type="date"
+            className="w-36"
+            value={dateFrom ?? ""}
+            onChange={(e) => apply({ dateFrom: e.target.value })}
+            placeholder="From"
+          />
+        </SallyTarget>
         <span className="text-muted-foreground text-sm">to</span>
-        <Input
-          type="date"
-          className="w-36"
-          value={dateTo ?? ""}
-          onChange={(e) => apply({ dateTo: e.target.value })}
-          placeholder="To"
-        />
+        <SallyTarget id="to3" label="to" completeWhen="to3Filled">
+          <Input
+            type="date"
+            className="w-36"
+            value={dateTo ?? ""}
+            onChange={(e) => apply({ dateTo: e.target.value })}
+            placeholder="To"
+          />
+        </SallyTarget>
       </div>
 
       {(entityType || action || dateFrom || dateTo) && (
-        <Button variant="ghost" size="sm" onClick={clear}>
-          Clear filters
-        </Button>
+        <SallyTarget id="clear-filters" label="Clear filters">
+          <Button variant="ghost" size="sm" onClick={clear}>
+            Clear filters
+          </Button>
+        </SallyTarget>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -53,27 +54,33 @@ export function ConfigEditDialog({ configType, id, currentName, currentStageKind
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-1">
             <Label htmlFor="edit-name">Name</Label>
-            <Input id="edit-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
+            <SallyTarget id="name7" label="Name" completeWhen="name7Filled">
+              <Input id="edit-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
+            </SallyTarget>
           </div>
           {configType === "salesStage" && (
             <div className="space-y-1">
               <Label>Automation trigger</Label>
-              <Select value={stageKind} onValueChange={setStageKind}>
-                <SelectTrigger>
-                  <SelectValue placeholder="None" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value={KIND_NONE}>None</SelectItem>
-                  {STAGE_KINDS.map((k) => (
-                    <SelectItem key={k} value={k}>{k}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SallyTarget id="automation-trigger2" label="Automation trigger" completeWhen="automationTrigger2Filled">
+                <Select value={stageKind} onValueChange={setStageKind}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={KIND_NONE}>None</SelectItem>
+                    {STAGE_KINDS.map((k) => (
+                      <SelectItem key={k} value={k}>{k}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </SallyTarget>
             </div>
           )}
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Saving…" : "Save"}
-          </Button>
+          <SallyTarget id="save6" label={"Save"}>
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? "Saving…" : "Save"}
+            </Button>
+          </SallyTarget>
         </form>
       </DialogContent>
     </Dialog>

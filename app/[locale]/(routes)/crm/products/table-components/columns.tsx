@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
@@ -41,12 +42,14 @@ export const columns: ColumnDef<Product>[] = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => (
-      <Link
-        href={`/crm/products/${row.original.id}`}
-        className="font-medium hover:underline"
-      >
-        {row.getValue("name")}
-      </Link>
+      <SallyTarget id="row-getvalue-name5" label={row.getValue("name")}>
+        <Link
+          href={`/crm/products/${row.original.id}`}
+          className="font-medium hover:underline"
+        >
+          {row.getValue("name")}
+        </Link>
+      </SallyTarget>
     ),
     enableSorting: true,
     enableHiding: false,

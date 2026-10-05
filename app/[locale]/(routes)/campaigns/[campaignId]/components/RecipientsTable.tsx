@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 
@@ -40,12 +41,14 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
     <div className="flex flex-col gap-3">
       <h2 className="text-lg font-semibold">Recipients</h2>
       <div className="flex gap-2">
-        <Input
-          placeholder="Search name or email..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="max-w-xs"
-        />
+        <SallyTarget id="search-name-or-email" label="Search name or email..." completeWhen="searchNameOrEmailFilled">
+          <Input
+            placeholder="Search name or email..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="max-w-xs"
+          />
+        </SallyTarget>
         <select
           className="h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
           value={statusFilter}

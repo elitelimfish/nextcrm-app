@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Link from "next/link";
 import { ColumnDef } from "@tanstack/react-table";
@@ -92,11 +93,13 @@ export const createColumns = (
     ),
 
     cell: ({ row }) => (
-      <Link href={`/crm/leads/${row.original.id}`} data-testid="lead-row-name">
-        <div>
-          {[row.original.firstName, row.original.lastName].filter(Boolean).join(" ")}
-        </div>
-      </Link>
+      <SallyTarget id="row-original-firstname-row-original-lastname-fil" label={[row.original.firstName, row.original.lastName].filter(Boolean).join(" ")}>
+        <Link href={`/crm/leads/${row.original.id}`} data-testid="lead-row-name">
+          <div>
+            {[row.original.firstName, row.original.lastName].filter(Boolean).join(" ")}
+          </div>
+        </Link>
+      </SallyTarget>
     ),
     enableSorting: false,
     enableHiding: true,

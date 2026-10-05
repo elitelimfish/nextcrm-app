@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useRouter } from "next/navigation";
 import {
@@ -34,12 +35,16 @@ export function NoApiKeyDialog({ open, onClose }: NoApiKeyDialogProps) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
-            Close
-          </Button>
-          <Button onClick={handleGoToSettings}>
-            Go to Settings
-          </Button>
+          <SallyTarget id="close3" label="Close">
+            <Button variant="outline" onClick={onClose}>
+              Close
+            </Button>
+          </SallyTarget>
+          <SallyTarget id="go-to-settings" label="Go to Settings">
+            <Button onClick={handleGoToSettings}>
+              Go to Settings
+            </Button>
+          </SallyTarget>
         </DialogFooter>
       </DialogContent>
     </Dialog>

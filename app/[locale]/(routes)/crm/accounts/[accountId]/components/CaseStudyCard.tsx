@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -46,42 +47,50 @@ const CaseStudyCard = ({ accountId, candidate, approved, canApprove }: Props) =>
         </CardTitle>
         <div className="flex gap-2">
           {candidate ? (
-            <Button
-              size="sm"
-              variant="outline"
-              disabled={busy}
-              onClick={() => run(() => setCaseStudyCandidate(accountId, false))}
-            >
-              Withdraw candidacy
-            </Button>
+            <SallyTarget id="withdraw-candidacy" label="Withdraw candidacy">
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={busy}
+                onClick={() => run(() => setCaseStudyCandidate(accountId, false))}
+              >
+                Withdraw candidacy
+              </Button>
+            </SallyTarget>
           ) : (
-            <Button
-              size="sm"
-              variant="outline"
-              disabled={busy}
-              onClick={() => run(() => setCaseStudyCandidate(accountId, true))}
-            >
-              Flag as candidate
-            </Button>
+            <SallyTarget id="flag-as-candidate" label="Flag as candidate">
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={busy}
+                onClick={() => run(() => setCaseStudyCandidate(accountId, true))}
+              >
+                Flag as candidate
+              </Button>
+            </SallyTarget>
           )}
           {canApprove && candidate && !approved && (
-            <Button
-              size="sm"
-              disabled={busy}
-              onClick={() => run(() => setCaseStudyApproved(accountId, true))}
-            >
-              Approve case study
-            </Button>
+            <SallyTarget id="approve-case-study" label="Approve case study">
+              <Button
+                size="sm"
+                disabled={busy}
+                onClick={() => run(() => setCaseStudyApproved(accountId, true))}
+              >
+                Approve case study
+              </Button>
+            </SallyTarget>
           )}
           {canApprove && approved && (
-            <Button
-              size="sm"
-              variant="outline"
-              disabled={busy}
-              onClick={() => run(() => setCaseStudyApproved(accountId, false))}
-            >
-              Revoke approval
-            </Button>
+            <SallyTarget id="revoke-approval" label="Revoke approval">
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={busy}
+                onClick={() => run(() => setCaseStudyApproved(accountId, false))}
+              >
+                Revoke approval
+              </Button>
+            </SallyTarget>
           )}
         </div>
       </CardHeader>

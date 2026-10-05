@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 
@@ -46,9 +47,11 @@ const TargetsView = ({ data }: any) => {
           <div className="flex space-x-2">
             <ImportTargetsModal />
             <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
-                <Button size="sm">+ New Target</Button>
-              </SheetTrigger>
+              <SallyTarget id="new-target" label="New target">
+                <SheetTrigger asChild>
+                  <Button size="sm">+ New Target</Button>
+                </SheetTrigger>
+              </SallyTarget>
               <SheetContent className="max-w-2xl overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>Create new Target</SheetTitle>

@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { HelpCircle } from "lucide-react";
@@ -17,27 +18,31 @@ const SupportComponent = () => {
       >
         <div className="flex w-full justify-between items-center gap-2">
           <span className="text-sm">Need help? Join us on</span>
-          <Button asChild variant={"secondary"}>
-            <Link
-              className="border rounded-md p-2"
-              href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || "#"}
-              target="_blank"
-            >
-              <DiscordLogoIcon />
-            </Link>
-          </Button>
+          <SallyTarget id="need-help-join-us-on" label="Need help? Join us on">
+            <Button asChild variant={"secondary"}>
+              <Link
+                className="border rounded-md p-2"
+                href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || "#"}
+                target="_blank"
+              >
+                <DiscordLogoIcon />
+              </Link>
+            </Button>
+          </SallyTarget>
         </div>
         <div className="flex w-full justify-between items-center gap-2">
           <span className="text-sm "> Find a bug? Create an issue on</span>
-          <Button asChild variant={"secondary"}>
-            <Link
-              className="border rounded-md p-2"
-              href={process.env.NEXT_PUBLIC_GITHUB_ISSUES_URL || "#"}
-              target="_blank"
-            >
-              <GitHubLogoIcon />
-            </Link>
-          </Button>
+          <SallyTarget id="find-a-bug-create-an-issue-on" label="Find a bug? Create an issue on">
+            <Button asChild variant={"secondary"}>
+              <Link
+                className="border rounded-md p-2"
+                href={process.env.NEXT_PUBLIC_GITHUB_ISSUES_URL || "#"}
+                target="_blank"
+              >
+                <GitHubLogoIcon />
+              </Link>
+            </Button>
+          </SallyTarget>
         </div>
       </PopoverContent>
     </Popover>

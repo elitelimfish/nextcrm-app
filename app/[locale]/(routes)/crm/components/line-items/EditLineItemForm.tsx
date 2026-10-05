@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -108,15 +109,17 @@ const EditLineItemForm = ({
               <label className="text-xs font-semibold text-neutral-700">
                 Discount Type
               </label>
-              <select
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={discountType}
-                onChange={(e) => setDiscountType(e.target.value)}
-              >
-                <option value="NONE">None</option>
-                <option value="PERCENTAGE">Percentage (%)</option>
-                <option value="FIXED">Fixed Amount</option>
-              </select>
+              <SallyTarget id="discount-type2" label="Discount Type" completeWhen="discountType2Filled">
+                <select
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={discountType}
+                  onChange={(e) => setDiscountType(e.target.value)}
+                >
+                  <option value="NONE">None</option>
+                  <option value="PERCENTAGE">Percentage (%)</option>
+                  <option value="FIXED">Fixed Amount</option>
+                </select>
+              </SallyTarget>
             </div>
 
             {discountType !== "NONE" && (

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
@@ -16,16 +17,20 @@ const FulltextSearch = () => {
 
   return (
     <div className="flex w-full max-w-sm items-center space-x-2">
-      <Input
-        type="text"
-        placeholder={"Search something ..."}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <Button type="submit" className="gap-2" onClick={handleSearch}>
-        <span className="hidden sm:flex">Search</span>
-        <SearchIcon />
-      </Button>
+      <SallyTarget id="search-something" label="&quot;Search something ...&quot;" completeWhen="searchSomethingFilled">
+        <Input
+          type="text"
+          placeholder={"Search something ..."}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </SallyTarget>
+      <SallyTarget id="search" label="Search">
+        <Button type="submit" className="gap-2" onClick={handleSearch}>
+          <span className="hidden sm:flex">Search</span>
+          <SearchIcon />
+        </Button>
+      </SallyTarget>
     </div>
   );
 };

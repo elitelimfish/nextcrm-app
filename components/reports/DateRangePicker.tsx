@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
@@ -54,12 +55,14 @@ export function DateRangePicker() {
         </Button>
       ))}
       <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline" size="sm">
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {t("customRange")}
-          </Button>
-        </PopoverTrigger>
+        <SallyTarget id="customrange" label={t("customRange")}>
+          <PopoverTrigger asChild>
+            <Button variant="outline" size="sm">
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {t("customRange")}
+            </Button>
+          </PopoverTrigger>
+        </SallyTarget>
         <PopoverContent className="w-auto p-0" align="start">
           <div className="flex gap-2 p-4">
             <div>

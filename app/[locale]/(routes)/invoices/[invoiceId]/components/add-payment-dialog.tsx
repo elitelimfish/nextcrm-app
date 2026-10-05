@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -76,11 +77,13 @@ export function AddPaymentDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          Add Payment
-        </Button>
-      </DialogTrigger>
+      <SallyTarget id="add-payment" label="Add Payment">
+        <DialogTrigger asChild>
+          <Button variant="outline" size="sm">
+            Add Payment
+          </Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
@@ -90,58 +93,70 @@ export function AddPaymentDialog({
         <div className="space-y-4">
           <div className="space-y-2">
             <Label>Amount</Label>
-            <Input
-              type="number"
-              step="0.01"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
+            <SallyTarget id="amount" label="Amount" completeWhen="amountFilled">
+              <Input
+                type="number"
+                step="0.01"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Date</Label>
-            <Input
-              type="date"
-              value={paidAt}
-              onChange={(e) => setPaidAt(e.target.value)}
-            />
+            <SallyTarget id="date" label="Date" completeWhen="dateFilled">
+              <Input
+                type="date"
+                value={paidAt}
+                onChange={(e) => setPaidAt(e.target.value)}
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Method</Label>
-            <Select value={method} onValueChange={setMethod}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {PAYMENT_METHODS.map((m) => (
-                  <SelectItem key={m} value={m}>
-                    {m}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SallyTarget id="method" label="Method" completeWhen="methodFilled">
+              <Select value={method} onValueChange={setMethod}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {PAYMENT_METHODS.map((m) => (
+                    <SelectItem key={m} value={m}>
+                      {m}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Reference</Label>
-            <Input
-              value={reference}
-              onChange={(e) => setReference(e.target.value)}
-              placeholder="Transaction reference"
-            />
+            <SallyTarget id="reference" label="Reference" completeWhen="referenceFilled">
+              <Input
+                value={reference}
+                onChange={(e) => setReference(e.target.value)}
+                placeholder="Transaction reference"
+              />
+            </SallyTarget>
           </div>
           <div className="space-y-2">
             <Label>Note</Label>
-            <Input
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              placeholder="Optional note"
-            />
+            <SallyTarget id="note" label="Note" completeWhen="noteFilled">
+              <Input
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Optional note"
+              />
+            </SallyTarget>
           </div>
-          <Button
-            onClick={handleSubmit}
-            disabled={saving || !amount || parseFloat(amount) <= 0}
-          >
-            {saving ? "Saving..." : "Record Payment"}
-          </Button>
+          <SallyTarget id="record-payment" label={"Record Payment"}>
+            <Button
+              onClick={handleSubmit}
+              disabled={saving || !amount || parseFloat(amount) <= 0}
+            >
+              {saving ? "Saving..." : "Record Payment"}
+            </Button>
+          </SallyTarget>
         </div>
       </DialogContent>
     </Dialog>

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { ColumnDef } from "@tanstack/react-table";
 
@@ -46,9 +47,11 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => (
-      <Link href={`/projects/boards/${row.original.id}`}>
-        <div className="w-[300px]">{row.getValue("title")}</div>
-      </Link>
+      <SallyTarget id="row-getvalue-title" label={row.getValue("title")}>
+        <Link href={`/projects/boards/${row.original.id}`}>
+          <div className="w-[300px]">{row.getValue("title")}</div>
+        </Link>
+      </SallyTarget>
     ),
   },
   {

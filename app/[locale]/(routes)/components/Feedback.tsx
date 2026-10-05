@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import {
   Popover,
   PopoverContent,
@@ -14,12 +15,14 @@ const Feedback = () => {
   const [open, setOpen] = useState(false);
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="hidden sm:flex">
-        <Button variant={"secondary"} onClick={() => setOpen(false)}>
-          <ChatBubbleIcon className="w-4 h-4 mr-2" />
-          Feedback
-        </Button>
-      </PopoverTrigger>
+      <SallyTarget id="feedback2" label="Feedback">
+        <PopoverTrigger asChild className="hidden sm:flex">
+          <Button variant={"secondary"} onClick={() => setOpen(false)}>
+            <ChatBubbleIcon className="w-4 h-4 mr-2" />
+            Feedback
+          </Button>
+        </PopoverTrigger>
+      </SallyTarget>
       <PopoverContent>
         <FeedbackForm setOpen={setOpen} />
       </PopoverContent>

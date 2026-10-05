@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { toast } from "sonner";
@@ -85,9 +86,11 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-medium">Contacts</h3>
         <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button variant="outline" size="sm">Add Contact</Button>
-          </DialogTrigger>
+          <SallyTarget id="add-contact" label="Add Contact">
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm">Add Contact</Button>
+            </DialogTrigger>
+          </SallyTarget>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Add Contact</DialogTitle>
@@ -95,44 +98,54 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
             <form onSubmit={handleAddContact} className="space-y-4">
               <div className="space-y-1">
                 <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  value={form.name}
-                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                  placeholder="Jane Smith"
-                />
+                <SallyTarget id="name5" label="Name" completeWhen="name5Filled">
+                  <Input
+                    id="name"
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                    placeholder="Jane Smith"
+                  />
+                </SallyTarget>
               </div>
               <div className="space-y-1">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                  placeholder="jane@acme.com"
-                />
+                <SallyTarget id="email4" label="Email" completeWhen="email4Filled">
+                  <Input
+                    id="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                    placeholder="jane@acme.com"
+                  />
+                </SallyTarget>
               </div>
               <div className="space-y-1">
                 <Label htmlFor="phone">Phone</Label>
-                <Input
-                  id="phone"
-                  value={form.phone}
-                  onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                  placeholder="+1 415 000 0000"
-                />
+                <SallyTarget id="phone2" label="Phone" completeWhen="phone2Filled">
+                  <Input
+                    id="phone"
+                    value={form.phone}
+                    onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                    placeholder="+1 415 000 0000"
+                  />
+                </SallyTarget>
               </div>
               <div className="space-y-1">
                 <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
-                <Input
-                  id="linkedinUrl"
-                  value={form.linkedinUrl}
-                  onChange={(e) => setForm((f) => ({ ...f, linkedinUrl: e.target.value }))}
-                  placeholder="https://linkedin.com/in/..."
-                />
+                <SallyTarget id="linkedin-url" label="LinkedIn URL" completeWhen="linkedinUrlFilled">
+                  <Input
+                    id="linkedinUrl"
+                    value={form.linkedinUrl}
+                    onChange={(e) => setForm((f) => ({ ...f, linkedinUrl: e.target.value }))}
+                    placeholder="https://linkedin.com/in/..."
+                  />
+                </SallyTarget>
               </div>
-              <Button type="submit" disabled={saving} className="w-full">
-                {saving ? "Adding…" : "Add Contact"}
-              </Button>
+              <SallyTarget id="add-contact3" label={saving ? "Adding…" : "Add Contact"}>
+                <Button type="submit" disabled={saving} className="w-full">
+                  {saving ? "Adding…" : "Add Contact"}
+                </Button>
+              </SallyTarget>
             </form>
           </DialogContent>
         </Dialog>

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import * as React from "react";
 import { Inbox, PenBox, Search, Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -163,7 +164,9 @@ export function MailComponent({
               <form>
                 <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search" className="pl-8" />
+                  <SallyTarget id="search3" label="Search" completeWhen="search3Filled">
+                    <Input placeholder="Search" className="pl-8" />
+                  </SallyTarget>
                 </div>
               </form>
             </div>

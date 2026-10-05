@@ -66,15 +66,15 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Send us a feedback</FormLabel>
-              <FormControl>
-                <SallyTarget id="feedback" label="feedback" completeWhen="feedbackFilled">
-  <Textarea
-                  placeholder="Your feedback"
-                  disabled={loading}
-                  {...field}
-                />
-</SallyTarget>
-              </FormControl>
+              <SallyTarget id="feedback" label="feedback" completeWhen="feedbackFilled">
+                <FormControl>
+                  <Textarea
+                    placeholder="Your feedback"
+                    disabled={loading}
+                    {...field}
+                  />
+                </FormControl>
+              </SallyTarget>
               <FormDescription className="text-xs text-muted-foreground">
                 We appreciate every feedback. Thank you for helping us make this
                 app better

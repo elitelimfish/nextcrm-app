@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -47,11 +48,13 @@ export function ConfigAddDialog({ configType, label }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm" variant="outline">
-          <Plus className="h-4 w-4 mr-1" /> Add {label}
-        </Button>
-      </DialogTrigger>
+      <SallyTarget id="add5" label="Add">
+        <DialogTrigger asChild>
+          <Button size="sm" variant="outline">
+            <Plus className="h-4 w-4 mr-1" /> Add {label}
+          </Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add {label}</DialogTitle>
@@ -59,27 +62,33 @@ export function ConfigAddDialog({ configType, label }: Props) {
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-1">
             <Label htmlFor="name">Name</Label>
-            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
+            <SallyTarget id="name6" label="Name" completeWhen="name6Filled">
+              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
+            </SallyTarget>
           </div>
           {configType === "salesStage" && (
             <div className="space-y-1">
               <Label>Automation trigger</Label>
-              <Select value={stageKind} onValueChange={setStageKind}>
-                <SelectTrigger>
-                  <SelectValue placeholder="None" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value={KIND_NONE}>None</SelectItem>
-                  {STAGE_KINDS.map((k) => (
-                    <SelectItem key={k} value={k}>{k}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SallyTarget id="automation-trigger" label="Automation trigger" completeWhen="automationTriggerFilled">
+                <Select value={stageKind} onValueChange={setStageKind}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={KIND_NONE}>None</SelectItem>
+                    {STAGE_KINDS.map((k) => (
+                      <SelectItem key={k} value={k}>{k}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </SallyTarget>
             </div>
           )}
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Adding…" : "Add"}
-          </Button>
+          <SallyTarget id="add6" label={loading ? "Adding…" : "Add"}>
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? "Adding…" : "Add"}
+            </Button>
+          </SallyTarget>
         </form>
       </DialogContent>
     </Dialog>

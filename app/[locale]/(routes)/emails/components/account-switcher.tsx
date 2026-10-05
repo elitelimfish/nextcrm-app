@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import * as React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -36,20 +37,22 @@ export function AccountSwitcher({
 
   return (
     <Select value={selectedAccount} onValueChange={switchAccount}>
-      <SelectTrigger
-        className={cn(
-          "flex flex-1 items-center gap-2 [&>span]:line-clamp-1 [&>span]:flex [&>span]:w-full [&>span]:items-center [&>span]:gap-1 [&>span]:truncate [&_svg]:h-4 [&_svg]:w-4 [&_svg]:shrink-0",
-          isCollapsed &&
-            "flex h-8 w-8 items-center justify-center p-0 [&>span]:w-auto [&>svg]:hidden"
-        )}
-        aria-label="Select account"
-      >
-        <SelectValue placeholder="Select an account">
-          <span className={cn("ml-2", isCollapsed && "hidden")}>
-            {accounts.find((account) => account.id === selectedAccount)?.label}
-          </span>
-        </SelectValue>
-      </SelectTrigger>
+      <SallyTarget id="select-account" label="Select account" completeWhen="selectAccountFilled">
+        <SelectTrigger
+          className={cn(
+            "flex flex-1 items-center gap-2 [&>span]:line-clamp-1 [&>span]:flex [&>span]:w-full [&>span]:items-center [&>span]:gap-1 [&>span]:truncate [&_svg]:h-4 [&_svg]:w-4 [&_svg]:shrink-0",
+            isCollapsed &&
+              "flex h-8 w-8 items-center justify-center p-0 [&>span]:w-auto [&>svg]:hidden"
+          )}
+          aria-label="Select account"
+        >
+          <SelectValue placeholder="Select an account">
+            <span className={cn("ml-2", isCollapsed && "hidden")}>
+              {accounts.find((account) => account.id === selectedAccount)?.label}
+            </span>
+          </SelectValue>
+        </SelectTrigger>
+      </SallyTarget>
       <SelectContent>
         {accounts.map((account) => (
           <SelectItem key={account.id} value={account.id}>

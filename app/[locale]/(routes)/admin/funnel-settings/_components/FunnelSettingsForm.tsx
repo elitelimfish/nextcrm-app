@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { toast } from "sonner";
@@ -72,9 +73,11 @@ const FunnelSettingsForm = ({ initial }: { initial: FunnelTimingSettings }) => {
             </div>
           </div>
         ))}
-        <Button onClick={save} disabled={saving}>
-          {saving ? "Saving…" : "Save settings"}
-        </Button>
+        <SallyTarget id="save-settings" label={"Save settings"}>
+          <Button onClick={save} disabled={saving}>
+            {saving ? "Saving…" : "Save settings"}
+          </Button>
+        </SallyTarget>
       </CardContent>
     </Card>
   );

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Link from "next/link";
 import { toast } from "sonner";
@@ -80,9 +81,11 @@ const AccountProductsView = ({
       <CardHeader className="pb-3">
         <div className="flex justify-between">
           <CardTitle>
-            <Link href="/crm/products" className="hover:underline">
-              Products
-            </Link>
+            <SallyTarget id="products" label="Products">
+              <Link href="/crm/products" className="hover:underline">
+                Products
+              </Link>
+            </SallyTarget>
           </CardTitle>
           <div className="flex space-x-2">
             <AssignProductForm

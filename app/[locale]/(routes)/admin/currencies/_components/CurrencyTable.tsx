@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { toast } from "sonner";
@@ -90,18 +91,28 @@ export function CurrencyTable({ currencies }: { currencies: CurrencyValue[] }) {
         </TableBody>
       </Table>
       <Dialog open={adding} onOpenChange={setAdding}>
-        <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="mt-4">+ Add Currency</Button>
-        </DialogTrigger>
+        <SallyTarget id="add-currency" label="+ Add Currency">
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="mt-4">+ Add Currency</Button>
+          </DialogTrigger>
+        </SallyTarget>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Add Currency</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
-            <Input placeholder="Code (e.g. GBP)" value={newCode} onChange={(e) => setNewCode(e.target.value.toUpperCase())} maxLength={3} />
-            <Input placeholder="Name (e.g. British Pound)" value={newName} onChange={(e) => setNewName(e.target.value)} />
-            <Input placeholder="Symbol (e.g. £)" value={newSymbol} onChange={(e) => setNewSymbol(e.target.value)} maxLength={5} />
-            <Button onClick={handleCreate} disabled={!newCode || !newName || !newSymbol}>Add</Button>
+            <SallyTarget id="code-e-g-gbp" label="Code (e.g. GBP)" completeWhen="codeEGGbpFilled">
+              <Input placeholder="Code (e.g. GBP)" value={newCode} onChange={(e) => setNewCode(e.target.value.toUpperCase())} maxLength={3} />
+            </SallyTarget>
+            <SallyTarget id="name-e-g-british-pound" label="Name (e.g. British Pound)" completeWhen="nameEGBritishPoundFilled">
+              <Input placeholder="Name (e.g. British Pound)" value={newName} onChange={(e) => setNewName(e.target.value)} />
+            </SallyTarget>
+            <SallyTarget id="symbol-e-g" label="Symbol (e.g. £)" completeWhen="symbolEGFilled">
+              <Input placeholder="Symbol (e.g. £)" value={newSymbol} onChange={(e) => setNewSymbol(e.target.value)} maxLength={5} />
+            </SallyTarget>
+            <SallyTarget id="add" label="Add">
+              <Button onClick={handleCreate} disabled={!newCode || !newName || !newSymbol}>Add</Button>
+            </SallyTarget>
           </div>
         </DialogContent>
       </Dialog>

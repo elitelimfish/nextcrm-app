@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useTransition } from "react";
 import type { ApiKeyProvider } from "@prisma/client";
@@ -110,37 +111,43 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
         {/* Edit / Remove for SYSTEM_SET */}
         {isSet && !editing && (
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setEditing(true)}
-              disabled={isPending}
-            >
-              Edit
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-destructive hover:text-destructive"
-              onClick={handleRemove}
-              disabled={isPending}
-            >
-              Remove
-            </Button>
+            <SallyTarget id="edit" label="Edit">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setEditing(true)}
+                disabled={isPending}
+              >
+                Edit
+              </Button>
+            </SallyTarget>
+            <SallyTarget id="remove2" label="Remove">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-destructive hover:text-destructive"
+                onClick={handleRemove}
+                disabled={isPending}
+              >
+                Remove
+              </Button>
+            </SallyTarget>
           </div>
         )}
 
         {/* Add key for NOT_CONFIGURED */}
         {isNotConfigured && !editing && (
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-dashed"
-            onClick={() => setEditing(true)}
-            disabled={isPending}
-          >
-            + Add key
-          </Button>
+          <SallyTarget id="add-key" label="+ Add key">
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-dashed"
+              onClick={() => setEditing(true)}
+              disabled={isPending}
+            >
+              + Add key
+            </Button>
+          </SallyTarget>
         )}
 
         {/* Inline edit input */}
@@ -161,20 +168,24 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
                 }
               }}
             />
-            <Button size="sm" onClick={handleSave} disabled={isPending || !keyValue.trim()}>
-              Save
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setEditing(false);
-                setKeyValue("");
-              }}
-              disabled={isPending}
-            >
-              Cancel
-            </Button>
+            <SallyTarget id="save3" label="Save">
+              <Button size="sm" onClick={handleSave} disabled={isPending || !keyValue.trim()}>
+                Save
+              </Button>
+            </SallyTarget>
+            <SallyTarget id="cancel7" label="Cancel">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setEditing(false);
+                  setKeyValue("");
+                }}
+                disabled={isPending}
+              >
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         )}
       </CardContent>

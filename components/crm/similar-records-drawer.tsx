@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
@@ -101,19 +102,21 @@ export function SimilarRecordsDrawer({
           {!isPending && result?.status === "error" && (
             <div className="text-sm text-destructive py-4 text-center space-y-2">
               <p>Failed to load similar records.</p>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setResult(null);
-                  startTransition(async () => {
-                    const data = await fetchSimilar(entityType, recordId);
-                    setResult(data);
-                  });
-                }}
-              >
-                Retry
-              </Button>
+              <SallyTarget id="retry5" label="Retry">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setResult(null);
+                    startTransition(async () => {
+                      const data = await fetchSimilar(entityType, recordId);
+                      setResult(data);
+                    });
+                  }}
+                >
+                  Retry
+                </Button>
+              </SallyTarget>
             </div>
           )}
 

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
@@ -125,111 +126,131 @@ export function ActivityForm({ open, onOpenChange, entityType, entityId, activit
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-1">
             <Label htmlFor="activity-type">Type</Label>
-            <Select value={type} onValueChange={(v) => setType(v as ActivityType)}>
-              <SelectTrigger id="activity-type">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="call">Call</SelectItem>
-                <SelectItem value="meeting">Meeting</SelectItem>
-                <SelectItem value="note">Note</SelectItem>
-                <SelectItem value="email">Email</SelectItem>
-              </SelectContent>
-            </Select>
+            <SallyTarget id="type2" label="Type" completeWhen="type2Filled">
+              <Select value={type} onValueChange={(v) => setType(v as ActivityType)}>
+                <SelectTrigger id="activity-type">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="call">Call</SelectItem>
+                  <SelectItem value="meeting">Meeting</SelectItem>
+                  <SelectItem value="note">Note</SelectItem>
+                  <SelectItem value="email">Email</SelectItem>
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
 
           <div className="space-y-1">
             <Label htmlFor="activity-title">Title *</Label>
-            <Input
-              id="activity-title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Brief description"
-              required
-            />
+            <SallyTarget id="title7" label="Title *" completeWhen="title7Filled">
+              <Input
+                id="activity-title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Brief description"
+                required
+              />
+            </SallyTarget>
           </div>
 
           <div className="space-y-1">
             <Label htmlFor="activity-date">Date & Time *</Label>
-            <Input
-              id="activity-date"
-              type="datetime-local"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              required
-            />
+            <SallyTarget id="date-time" label="Date &amp; Time *" completeWhen="dateTimeFilled">
+              <Input
+                id="activity-date"
+                type="datetime-local"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+              />
+            </SallyTarget>
           </div>
 
           <div className="space-y-1">
             <Label htmlFor="activity-status">Status</Label>
-            <Select value={status} onValueChange={(v) => setStatus(v as ActivityStatus)}>
-              <SelectTrigger id="activity-status">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="scheduled">Scheduled</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="cancelled">Cancelled</SelectItem>
-              </SelectContent>
-            </Select>
+            <SallyTarget id="status3" label="Status" completeWhen="status3Filled">
+              <Select value={status} onValueChange={(v) => setStatus(v as ActivityStatus)}>
+                <SelectTrigger id="activity-status">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="scheduled">Scheduled</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                  <SelectItem value="cancelled">Cancelled</SelectItem>
+                </SelectContent>
+              </Select>
+            </SallyTarget>
           </div>
 
           {showDuration && (
             <div className="space-y-1">
               <Label htmlFor="activity-duration">Duration (minutes)</Label>
-              <Input
-                id="activity-duration"
-                type="number"
-                min="1"
-                value={duration}
-                onChange={(e) => setDuration(e.target.value)}
-                placeholder="e.g. 30"
-              />
+              <SallyTarget id="duration-minutes" label="Duration (minutes)" completeWhen="durationMinutesFilled">
+                <Input
+                  id="activity-duration"
+                  type="number"
+                  min="1"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                  placeholder="e.g. 30"
+                />
+              </SallyTarget>
             </div>
           )}
 
           {showOutcome && (
             <div className="space-y-1">
               <Label htmlFor="activity-outcome">Outcome</Label>
-              <Input
-                id="activity-outcome"
-                value={outcome}
-                onChange={(e) => setOutcome(e.target.value)}
-                placeholder="Result of the call / meeting"
-              />
+              <SallyTarget id="outcome" label="Outcome" completeWhen="outcomeFilled">
+                <Input
+                  id="activity-outcome"
+                  value={outcome}
+                  onChange={(e) => setOutcome(e.target.value)}
+                  placeholder="Result of the call / meeting"
+                />
+              </SallyTarget>
             </div>
           )}
 
           {showEmailSubject && (
             <div className="space-y-1">
               <Label htmlFor="activity-email-subject">Email Subject</Label>
-              <Input
-                id="activity-email-subject"
-                value={emailSubject}
-                onChange={(e) => setEmailSubject(e.target.value)}
-                placeholder="Subject line"
-              />
+              <SallyTarget id="email-subject" label="Email Subject" completeWhen="emailSubjectFilled">
+                <Input
+                  id="activity-email-subject"
+                  value={emailSubject}
+                  onChange={(e) => setEmailSubject(e.target.value)}
+                  placeholder="Subject line"
+                />
+              </SallyTarget>
             </div>
           )}
 
           <div className="space-y-1">
             <Label htmlFor="activity-description">Notes</Label>
-            <Textarea
-              id="activity-description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Additional notes..."
-              rows={4}
-            />
+            <SallyTarget id="notes" label="Notes" completeWhen="notesFilled">
+              <Textarea
+                id="activity-description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Additional notes..."
+                rows={4}
+              />
+            </SallyTarget>
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
-            </Button>
-            <Button type="submit" disabled={saving}>
-              {saving ? "Saving..." : isEdit ? "Save changes" : "Log activity"}
-            </Button>
+            <SallyTarget id="cancel6" label="Cancel">
+              <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+                Cancel
+              </Button>
+            </SallyTarget>
+            <SallyTarget id="log-activity" label={isEdit ? "Save changes" : "Log activity"}>
+              <Button type="submit" disabled={saving}>
+                {saving ? "Saving..." : isEdit ? "Save changes" : "Log activity"}
+              </Button>
+            </SallyTarget>
           </div>
         </form>
       </SheetContent>

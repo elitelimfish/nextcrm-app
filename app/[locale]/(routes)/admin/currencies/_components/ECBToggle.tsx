@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { toast } from "sonner";
@@ -21,7 +22,9 @@ export function ECBToggle({ initialEnabled }: { initialEnabled: boolean }) {
   return (
     <div className="flex items-center gap-3">
       <span className="text-sm text-muted-foreground">ECB Auto-Update</span>
-      <Switch checked={enabled} onCheckedChange={handleToggle} />
+      <SallyTarget id="ecb-auto-update" label="ECB Auto-Update" completeWhen="ecbAutoUpdateFilled">
+        <Switch checked={enabled} onCheckedChange={handleToggle} />
+      </SallyTarget>
     </div>
   );
 }

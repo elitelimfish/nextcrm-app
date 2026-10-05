@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Image from "next/image";
 import { Users } from "@prisma/client";
@@ -82,12 +83,16 @@ export function ProfilePhotoForm({ data }: ProfileFormProps) {
         />
         {pendingAvatar !== null && (
           <div className="flex gap-2">
-            <Button onClick={handleSave} disabled={saving} size="sm">
-              {saving ? "Saving..." : "Save photo"}
-            </Button>
-            <Button onClick={handleCancel} variant="outline" size="sm" disabled={saving}>
-              Cancel
-            </Button>
+            <SallyTarget id="save-photo" label={"Save photo"}>
+              <Button onClick={handleSave} disabled={saving} size="sm">
+                {saving ? "Saving..." : "Save photo"}
+              </Button>
+            </SallyTarget>
+            <SallyTarget id="cancel3" label="Cancel">
+              <Button onClick={handleCancel} variant="outline" size="sm" disabled={saving}>
+                Cancel
+              </Button>
+            </SallyTarget>
           </div>
         )}
       </div>

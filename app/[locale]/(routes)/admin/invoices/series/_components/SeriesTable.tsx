@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -175,11 +176,13 @@ export function SeriesTable({ series }: SeriesTableProps) {
           if (!v) resetForm();
         }}
       >
-        <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="mt-4">
-            + Add Series
-          </Button>
-        </DialogTrigger>
+        <SallyTarget id="add-series" label="+ Add Series">
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="mt-4">
+              + Add Series
+            </Button>
+          </DialogTrigger>
+        </SallyTarget>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
@@ -189,37 +192,43 @@ export function SeriesTable({ series }: SeriesTableProps) {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label>Name</Label>
-              <Input
-                placeholder="e.g. Standard Invoices"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <SallyTarget id="name3" label="Name" completeWhen="name3Filled">
+                <Input
+                  placeholder="e.g. Standard Invoices"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </SallyTarget>
             </div>
             <div className="space-y-2">
               <Label>Prefix Template</Label>
-              <Input
-                placeholder="e.g. INV-{YYYY}-"
-                value={prefixTemplate}
-                onChange={(e) => setPrefixTemplate(e.target.value)}
-              />
+              <SallyTarget id="prefix-template" label="Prefix Template" completeWhen="prefixTemplateFilled">
+                <Input
+                  placeholder="e.g. INV-{YYYY}-"
+                  value={prefixTemplate}
+                  onChange={(e) => setPrefixTemplate(e.target.value)}
+                />
+              </SallyTarget>
               <p className="text-xs text-muted-foreground">
                 Use {"{YYYY}"} for year, {"{MM}"} for month
               </p>
             </div>
             <div className="space-y-2">
               <Label>Reset Policy</Label>
-              <Select value={resetPolicy} onValueChange={setResetPolicy}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {RESET_POLICIES.map((p) => (
-                    <SelectItem key={p} value={p}>
-                      {p}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SallyTarget id="reset-policy" label="Reset Policy" completeWhen="resetPolicyFilled">
+                <Select value={resetPolicy} onValueChange={setResetPolicy}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {RESET_POLICIES.map((p) => (
+                      <SelectItem key={p} value={p}>
+                        {p}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </SallyTarget>
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
@@ -229,12 +238,14 @@ export function SeriesTable({ series }: SeriesTableProps) {
               <Switch checked={active} onCheckedChange={setActive} />
               <Label>Active</Label>
             </div>
-            <Button
-              onClick={handleSave}
-              disabled={!name || !prefixTemplate}
-            >
-              {editId ? "Update" : "Create"}
-            </Button>
+            <SallyTarget id="create4" label={editId ? "Update" : "Create"}>
+              <Button
+                onClick={handleSave}
+                disabled={!name || !prefixTemplate}
+              >
+                {editId ? "Update" : "Create"}
+              </Button>
+            </SallyTarget>
           </div>
         </DialogContent>
       </Dialog>

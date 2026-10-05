@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -16,9 +17,11 @@ export function FindSimilarButton({ entityType, recordId }: FindSimilarButtonPro
 
   return (
     <>
-      <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
-        Find Similar
-      </Button>
+      <SallyTarget id="find-similar" label="Find Similar">
+        <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+          Find Similar
+        </Button>
+      </SallyTarget>
       <SimilarRecordsDrawer
         entityType={entityType}
         recordId={recordId}

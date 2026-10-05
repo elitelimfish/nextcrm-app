@@ -186,15 +186,15 @@ export function NewOpportunityForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("name")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="name-4" label="name" completeWhen="name-4Filled">
-  <Input
-                      disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="name-4" label="name" completeWhen="name-4Filled">
+                    <FormControl>
+                      <Input
+                        disabled={form.formState.isSubmitting}
+                        placeholder="New NextCRM functionality"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -287,15 +287,15 @@ export function NewOpportunityForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{c("description")}</FormLabel>
-                  <FormControl>
-                    <SallyTarget id="description-11" label="description" completeWhen="description-11Filled">
-  <Textarea
-                      disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
-                      {...field}
-                    />
-</SallyTarget>
-                  </FormControl>
+                  <SallyTarget id="description-11" label="description" completeWhen="description-11Filled">
+                    <FormControl>
+                      <Textarea
+                        disabled={form.formState.isSubmitting}
+                        placeholder="New NextCRM functionality"
+                        {...field}
+                      />
+                    </FormControl>
+                  </SallyTarget>
                   <FormMessage />
                 </FormItem>
               )}
@@ -366,16 +366,16 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("budget")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="budget" label="budget" completeWhen="budgetFilled">
-  <Input
-                          type="number"
-                          disabled={form.formState.isSubmitting}
-                          placeholder="1000000"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="budget" label="budget" completeWhen="budgetFilled">
+                        <FormControl>
+                          <Input
+                            type="number"
+                            disabled={form.formState.isSubmitting}
+                            placeholder="1000000"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -412,16 +412,16 @@ export function NewOpportunityForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{t("expectedRevenue")}</FormLabel>
-                      <FormControl>
-                        <SallyTarget id="expected-revenue" label="expected revenue" completeWhen="expectedRevenueFilled">
-  <Input
-                          type="number"
-                          disabled={form.formState.isSubmitting}
-                          placeholder="500000"
-                          {...field}
-                        />
-</SallyTarget>
-                      </FormControl>
+                      <SallyTarget id="expected-revenue" label="expected revenue" completeWhen="expectedRevenueFilled">
+                        <FormControl>
+                          <Input
+                            type="number"
+                            disabled={form.formState.isSubmitting}
+                            placeholder="500000"
+                            {...field}
+                          />
+                        </FormControl>
+                      </SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -494,10 +494,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
-</SallyTarget>lectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -532,10 +529,7 @@ export function NewOpportunityForm({
                           ))}
                         </SelectContent>
                       </Select>
-</SallyTarget>lectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+</SallyTarget>
                       <FormMessage />
                     </FormItem>
                   )}

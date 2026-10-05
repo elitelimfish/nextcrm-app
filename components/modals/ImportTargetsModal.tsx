@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -164,12 +165,14 @@ const ImportTargetsModal = () => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Upload className="h-4 w-4 mr-2" />
-          Import CSV / Excel
-        </Button>
-      </DialogTrigger>
+      <SallyTarget id="import-csv-excel" label="Import CSV / Excel">
+        <DialogTrigger asChild>
+          <Button variant="outline" size="sm">
+            <Upload className="h-4 w-4 mr-2" />
+            Import CSV / Excel
+          </Button>
+        </DialogTrigger>
+      </SallyTarget>
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
@@ -196,12 +199,14 @@ const ImportTargetsModal = () => {
                 onChange={handleFileChange}
                 className="hidden"
               />
-              <Button
-                variant="outline"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                Select file
-              </Button>
+              <SallyTarget id="select-file" label="Select file">
+                <Button
+                  variant="outline"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  Select file
+                </Button>
+              </SallyTarget>
               {selectedFile && (
                 <p className="mt-2 text-sm text-muted-foreground">
                   Selected: {selectedFile.name}
@@ -301,16 +306,20 @@ const ImportTargetsModal = () => {
 
         <DialogFooter className="flex gap-2 sm:gap-0">
           {step === "upload" && (
-            <Button variant="outline" onClick={() => handleOpenChange(false)}>
-              Cancel
-            </Button>
+            <SallyTarget id="cancel15" label="Cancel">
+              <Button variant="outline" onClick={() => handleOpenChange(false)}>
+                Cancel
+              </Button>
+            </SallyTarget>
           )}
 
           {step === "mapping" && (
             <>
-              <Button variant="outline" onClick={() => setStep("upload")}>
-                Back
-              </Button>
+              <SallyTarget id="back3" label="Back">
+                <Button variant="outline" onClick={() => setStep("upload")}>
+                  Back
+                </Button>
+              </SallyTarget>
               <Button
                 onClick={() => setStep("preview")}
                 disabled={isSuggesting}
@@ -322,9 +331,11 @@ const ImportTargetsModal = () => {
 
           {step === "preview" && (
             <>
-              <Button variant="outline" onClick={() => setStep("mapping")} disabled={isLoading}>
-                Back
-              </Button>
+              <SallyTarget id="back4" label="Back">
+                <Button variant="outline" onClick={() => setStep("mapping")} disabled={isLoading}>
+                  Back
+                </Button>
+              </SallyTarget>
               <Button
                 onClick={handleImport}
                 disabled={isLoading || !preview || preview.valid === 0}

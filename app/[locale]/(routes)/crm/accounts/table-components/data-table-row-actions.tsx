@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
@@ -119,24 +120,28 @@ export function DataTableRowActions<TData>({
       </Sheet>
 
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-          >
-            <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
+        <SallyTarget id="open-account-menu" label="Open menu">
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+            >
+              <DotsHorizontalIcon className="h-4 w-4" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+        </SallyTarget>
         <DropdownMenuContent align="end" className="w-[260px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/accounts/${account?.id}`)}
           >
             View
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
-          </DropdownMenuItem>
+          <SallyTarget id="update-account" label="Update">
+            <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
+              Update
+            </DropdownMenuItem>
+          </SallyTarget>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={onWatch}>
             <Eye className="mr-2 w-4 h-4" />

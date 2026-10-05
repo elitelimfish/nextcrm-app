@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import {
   Body,
   Button,
@@ -76,12 +77,14 @@ export const NewTaskCommentEmail = ({
               <strong>{`${process.env.NEXT_PUBLIC_APP_URL}/projects/tasks/viewtask/${taskId}`}</strong>
             </Text>
             <Section className="text-center mt-[32px] mb-[32px]">
-              <Button
-                className="bg-slate-800 rounded-md text-white  py-3 px-4 text-xs font-semibold no-underline text-center"
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/projects/tasks/viewtask/${taskId}`}
-              >
-                {userLanguage === "en" ? "View task detail" : "Zobrazit úkol"}
-              </Button>
+              <SallyTarget id="zobrazit-kol" label={userLanguage === "en" ? "View task detail" : "Zobrazit úkol"}>
+                <Button
+                  className="bg-slate-800 rounded-md text-white  py-3 px-4 text-xs font-semibold no-underline text-center"
+                  href={`${process.env.NEXT_PUBLIC_APP_URL}/projects/tasks/viewtask/${taskId}`}
+                >
+                  {userLanguage === "en" ? "View task detail" : "Zobrazit úkol"}
+                </Button>
+              </SallyTarget>
             </Section>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
             <Text className="text-[#666666] text-xs leading-[24px]">

@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -105,22 +106,26 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
           disabled={isPending}
           className="max-w-sm"
         />
-        <Button
-          size="sm"
-          onClick={handleSave}
-          disabled={isPending}
-        >
-          Save
-        </Button>
-        {status.source === "USER_SET" && (
+        <SallyTarget id="save5" label="Save">
           <Button
             size="sm"
-            variant="outline"
-            onClick={handleRemove}
+            onClick={handleSave}
             disabled={isPending}
           >
-            Remove
+            Save
           </Button>
+        </SallyTarget>
+        {status.source === "USER_SET" && (
+          <SallyTarget id="remove3" label="Remove">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleRemove}
+              disabled={isPending}
+            >
+              Remove
+            </Button>
+          </SallyTarget>
         )}
       </div>
     </div>

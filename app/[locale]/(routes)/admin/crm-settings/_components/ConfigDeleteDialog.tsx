@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -60,14 +61,18 @@ export function ConfigDeleteDialog({ configType, item, allValues, open, onOpenCh
           </div>
         )}
         <div className="flex gap-2 justify-end pt-2">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
-          <Button
-            variant="destructive"
-            onClick={handleDelete}
-            disabled={loading || (item.usageCount > 0 && !replacementId)}
-          >
-            {loading ? "Deleting…" : item.usageCount > 0 ? "Reassign & Delete" : "Delete"}
-          </Button>
+          <SallyTarget id="cancel11" label="Cancel">
+            <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
+          </SallyTarget>
+          <SallyTarget id="delete" label={loading ? "Deleting…" : item.usageCount > 0 ? "Reassign & Delete" : "Delete"}>
+            <Button
+              variant="destructive"
+              onClick={handleDelete}
+              disabled={loading || (item.usageCount > 0 && !replacementId)}
+            >
+              {loading ? "Deleting…" : item.usageCount > 0 ? "Reassign & Delete" : "Delete"}
+            </Button>
+          </SallyTarget>
         </div>
       </DialogContent>
     </Dialog>

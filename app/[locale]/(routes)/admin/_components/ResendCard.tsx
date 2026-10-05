@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -53,11 +54,17 @@ const ResendCard = async () => {
         <form action={setResendKey}>
           <div>
             <input type="hidden" name="id" value={resend_key?.id} />
-            <Input type="text" name="serviceKey" placeholder="Your API key" />
+            <SallyTarget id="servicekey" label="serviceKey" completeWhen="servicekeyFilled">
+              <Input type="text" name="serviceKey" placeholder="Your API key" />
+            </SallyTarget>
           </div>
           <div className="flex justify-end pt-2 gap-2">
-            <Button type={"reset"}>Reset</Button>
-            <Button type="submit">Set Resend key</Button>
+            <SallyTarget id="reset" label="Reset">
+              <Button type={"reset"}>Reset</Button>
+            </SallyTarget>
+            <SallyTarget id="set-resend-key" label="Set Resend key">
+              <Button type="submit">Set Resend key</Button>
+            </SallyTarget>
           </div>
         </form>
       </CardContent>

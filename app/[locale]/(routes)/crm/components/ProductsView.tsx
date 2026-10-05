@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import Link from "next/link";
 
@@ -29,9 +30,11 @@ const ProductsView = ({ data, categories, currencies }: ProductsViewProps) => {
       <CardHeader className="pb-3">
         <div className="flex justify-between">
           <CardTitle>
-            <Link href="/crm/products" className="hover:underline">
-              Product Catalog
-            </Link>
+            <SallyTarget id="product-catalog" label="Product Catalog">
+              <Link href="/crm/products" className="hover:underline">
+                Product Catalog
+              </Link>
+            </SallyTarget>
           </CardTitle>
 
           <div className="flex space-x-2">

@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import getNextVersion from "@/actions/system/get-next-version";
 import Link from "next/link";
 import { version } from "@/package.json";
@@ -9,11 +10,13 @@ const Footer = async () => {
   return (
     <footer className="flex flex-row h-8 justify-end items-center w-full text-xs text-muted-foreground p-5">
       <div className="hidden md:flex pr-5">
-        <Link href="/">
-          <h1 className="text-muted-foreground hover:text-foreground transition-colors">
-            {process.env.NEXT_PUBLIC_APP_NAME} - v{version}
-          </h1>
-        </Link>
+        <SallyTarget id="v" label="- v">
+          <Link href="/">
+            <h1 className="text-muted-foreground hover:text-foreground transition-colors">
+              {process.env.NEXT_PUBLIC_APP_NAME} - v{version}
+            </h1>
+          </Link>
+        </SallyTarget>
       </div>
       <div className="hidden md:flex space-x-2 pr-2">
         powered by Next.js
@@ -21,14 +24,18 @@ const Footer = async () => {
           {nextVersion.substring(1, 7) || process.env.NEXT_PUBLIC_NEXT_VERSION}
         </span>
         +
-        <Link href={"https://ui.shadcn.com/"}>
-          <span className="rounded-md mr-2 hover:text-foreground transition-colors">
-            shadcnUI
-          </span>
-        </Link>{" "}
+        <SallyTarget id="shadcnui" label="shadcnUI">
+          <Link href={"https://ui.shadcn.com/"}>
+            <span className="rounded-md mr-2 hover:text-foreground transition-colors">
+              shadcnUI
+            </span>
+          </Link>
+        </SallyTarget>{" "}
         hosted by:
         <span className="text-bold underline hover:text-foreground transition-colors">
-          <Link href="https://www.vercel.com">Vercel</Link>
+          <SallyTarget id="vercel" label="Vercel">
+            <Link href="https://www.vercel.com">Vercel</Link>
+          </SallyTarget>
         </span>
       </div>
     </footer>

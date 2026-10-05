@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 import { useState, useEffect } from "react";
 import { createApiToken, getApiTokens, deleteApiToken } from "@/actions/api-tokens";
 import { Button } from "@/components/ui/button";
@@ -89,12 +90,14 @@ export function ApiTokens() {
       <CardContent className="space-y-4">
         {/* Generate form */}
         <div className="flex gap-2">
-          <Input
-            placeholder="Token name (e.g. Claude Desktop)"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="max-w-xs"
-          />
+          <SallyTarget id="token-name-e-g-claude-desktop" label="Token name (e.g. Claude Desktop)" completeWhen="tokenNameEGClaudeDesktopFilled">
+            <Input
+              placeholder="Token name (e.g. Claude Desktop)"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="max-w-xs"
+            />
+          </SallyTarget>
           <Input
             type="date"
             value={expiresAt}
@@ -102,9 +105,11 @@ export function ApiTokens() {
             className="max-w-[160px]"
             title="Optional expiry date"
           />
-          <Button onClick={handleCreate} disabled={loading || !name.trim()}>
-            {loading ? "Generating…" : "Generate"}
-          </Button>
+          <SallyTarget id="generate2" label={loading ? "Generating…" : "Generate"}>
+            <Button onClick={handleCreate} disabled={loading || !name.trim()}>
+              {loading ? "Generating…" : "Generate"}
+            </Button>
+          </SallyTarget>
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
 
@@ -155,9 +160,11 @@ export function ApiTokens() {
               <code className="block break-all rounded bg-muted p-3 text-sm">
                 {newToken}
               </code>
-              <Button onClick={handleCopy} className="w-full">
-                {copied ? "Copied!" : "Copy to clipboard"}
-              </Button>
+              <SallyTarget id="copy-to-clipboard" label={copied ? "Copied!" : "Copy to clipboard"}>
+                <Button onClick={handleCopy} className="w-full">
+                  {copied ? "Copied!" : "Copy to clipboard"}
+                </Button>
+              </SallyTarget>
             </div>
           </DialogContent>
         </Dialog>

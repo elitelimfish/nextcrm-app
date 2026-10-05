@@ -1,3 +1,4 @@
+import { SallyTarget } from "@supportsally/react";
 import * as React from "react";
 import {
   Body,
@@ -53,12 +54,14 @@ export const CampaignLayout = ({
                 You are receiving this email from{" "}
                 <strong>{process.env.NEXT_PUBLIC_APP_NAME ?? "NextCRM"}</strong>
                 .{" "}
-                <Link
-                  href={unsubscribeUrl}
-                  className="text-slate-500 underline"
-                >
-                  Unsubscribe
-                </Link>
+                <SallyTarget id="unsubscribe" label="Unsubscribe">
+                  <Link
+                    href={unsubscribeUrl}
+                    className="text-slate-500 underline"
+                  >
+                    Unsubscribe
+                  </Link>
+                </SallyTarget>
               </Text>
             </Section>
           </Container>

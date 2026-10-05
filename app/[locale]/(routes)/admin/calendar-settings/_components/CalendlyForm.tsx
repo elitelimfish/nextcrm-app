@@ -1,4 +1,5 @@
 "use client";
+import { SallyTarget } from "@supportsally/react";
 
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
@@ -28,22 +29,26 @@ export function CalendlyForm(props: {
           </label>
           <Input name="signingKey" type="password" placeholder="Webhook signing key" />
         </div>
-        <Button type="submit">Save</Button>
+        <SallyTarget id="save" label="Save">
+          <Button type="submit">Save</Button>
+        </SallyTarget>
       </form>
 
       <div className="border-t pt-4">
-        <Button
-          variant="secondary"
-          disabled={pending || !props.hasToken}
-          onClick={() =>
-            startTransition(async () => {
-              const res = await subscribeCalendlyWebhook();
-              setMessage(res.ok ? "Webhook subscribed." : res.error ?? "Failed.");
-            })
-          }
-        >
-          {props.webhookUri ? "Re-subscribe webhook" : "Subscribe webhook"}
-        </Button>
+        <SallyTarget id="subscribe-webhook" label={props.webhookUri ? "Re-subscribe webhook" : "Subscribe webhook"}>
+          <Button
+            variant="secondary"
+            disabled={pending || !props.hasToken}
+            onClick={() =>
+              startTransition(async () => {
+                const res = await subscribeCalendlyWebhook();
+                setMessage(res.ok ? "Webhook subscribed." : res.error ?? "Failed.");
+              })
+            }
+          >
+            {props.webhookUri ? "Re-subscribe webhook" : "Subscribe webhook"}
+          </Button>
+        </SallyTarget>
         {props.webhookUri && (
           <p className="mt-2 break-all text-xs text-muted-foreground">
             Active subscription: {props.webhookUri}

@@ -38,14 +38,16 @@ export default async function InvoicesPage() {
   return (
     <Container title={t("title")} description={t("description")}>
       <div className="flex justify-end mb-4">
-        <Link href="/invoices/new">
-          <SallyTarget id="new-invoice" label="New invoice">
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              {t("new")}
-            </Button>
-          </SallyTarget>
-        </Link>
+        <SallyTarget id="new" label={t("new")}>
+          <Link href="/invoices/new">
+            <SallyTarget id="new-invoice" label="New invoice">
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
+                {t("new")}
+              </Button>
+            </SallyTarget>
+          </Link>
+        </SallyTarget>
       </div>
       <InvoicesTable
         invoices={JSON.parse(JSON.stringify(invoices))}
