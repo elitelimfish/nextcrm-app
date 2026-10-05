@@ -25,17 +25,24 @@ import {
 
 type Step = "email" | "otp";
 
-const passwordLogin = process.env.NEXT_PUBLIC_PASSWORD_LOGIN === "true";
-const localEmail = process.env.NEXT_PUBLIC_TEST_USER_EMAIL || "test@nextcrm.app";
-const localPassword = process.env.NEXT_PUBLIC_TEST_USER_PASSWORD || "sally-local";
-
-export function LoginComponent() {
+export function LoginComponent({
+  googleLogin = false,
+  passwordLogin = false,
+  demoEmail = "test@nextcrm.app",
+  demoPassword = "sally-local",
+}: {
+  googleLogin?: boolean;
+  passwordLogin?: boolean;
+  demoEmail?: string;
+  demoPassword?: string;
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState<Step>("email");
-  const [email, setEmail] = useState(passwordLogin ? localEmail : "");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(passwordLogin ? demoEmail : "");
+  const [password, setPassword] = useState(passwordLogin ? demoPassword : "");
   const [otp, setOtp] = useState("");
   const [devOtp, setDevOtp] = useState<string | null>(null);
+  const showGoogle = googleLogin && !passwordLogin;
 
   const loginWithGoogle = async () => {
     setIsLoading(true);
@@ -140,104 +147,139 @@ export function LoginComponent() {
     }
   };
 
+  const description = passwordLogin
+    ? "Use the demo account to sign in."
+    : showGoogle
+      ? "Continue with Google, or we'll email you a code."
+      : "We'll email you a 6-digit code.";
+
   return (
     <Card className="shadow-lg my-5">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Login</CardTitle>
-        <CardDescription>
-          {passwordLogin
-            ? "Use the local test account, or continue with email OTP."
-            : "Choose your sign-in method"}
-        </CardDescription>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         {passwordLogin && (
           <p className="rounded-md border bg-muted/50 p-3 text-sm text-muted-foreground">
-            Local test account: <strong>{localEmail}</strong> /{" "}
-            <strong>{localPassword}</strong>
+            Demo account: <strong>{demoEmail}</strong> /{" "}
+            <strong>{demoPassword}</strong>
           </p>
         )}
 
-        <SallyTarget id="continue-with-google" label="Continue with Google">
-          <Button
-            variant="outline"
-            onClick={loginWithGoogle}
-            disabled={isLoading}
-            className="w-full"
+        {showGoogle && (
+          <>
+            <SallyTarget id="continue-with-google" label="Continue with Google">
+              <Button
+                variant="outline"
+                onClick={loginWithGoogle}
+                disabled={isLoading}
+                className="w-full"
+              >
+                <Icons.google className="mr-2 h-4 w-4" />
+                Continue with Google
+              </Button>
+            </SallyTarget>
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with email
+                </span>
+              </div>
+            </div>
+          </>
+        )}
+
+        {passwordLogin && (
+          <form
+            className="grid gap-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              loginWithPassword();
+            }}
           >
-            <Icons.google className="mr-2 h-4 w-4" />
-            Continue with Google
-          </Button>
-        </SallyTarget>
-
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with email
-            </span>
-          </div>
-        </div>
-
-        {step === "email" && (
-          <div className="grid gap-3">
             <div className="grid gap-1.5">
               <Label htmlFor="email">Email</Label>
               <SallyTarget id="email3" label="Email" completeWhen="email3Filled">
                 <Input
                   id="email"
                   type="email"
+                  autoComplete="username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
+                />
+              </SallyTarget>
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+              />
+            </div>
+            <SallyTarget id="sign-in" label="Sign in">
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isLoading || !email || !password}
+              >
+                Sign in
+              </Button>
+            </SallyTarget>
+          </form>
+        )}
+
+        {!passwordLogin && step === "email" && (
+          <form
+            className="grid gap-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendOtp();
+            }}
+          >
+            <div className="grid gap-1.5">
+              <Label htmlFor="email">Email</Label>
+              <SallyTarget id="email3" label="Email" completeWhen="email3Filled">
+                <Input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
                   placeholder="name@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
-                  onKeyDown={(e) =>
-                    e.key === "Enter" &&
-                    (passwordLogin ? loginWithPassword() : sendOtp())
-                  }
                 />
               </SallyTarget>
             </div>
-            {passwordLogin && (
-              <div className="grid gap-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLoading}
-                  onKeyDown={(e) => e.key === "Enter" && loginWithPassword()}
-                />
-              </div>
-            )}
-            {passwordLogin && (
-              <SallyTarget id="sign-in" label="Sign in">
-                <Button
-                  onClick={loginWithPassword}
-                  disabled={isLoading || !email || !password}
-                >
-                  Sign in
-                </Button>
-              </SallyTarget>
-            )}
             <SallyTarget id="send-verification-code" label="Send verification code">
               <Button
-                variant={passwordLogin ? "outline" : "default"}
-                onClick={sendOtp}
+                type="submit"
+                className="w-full"
                 disabled={isLoading || !email}
               >
                 <MailIcon className="mr-2 h-4 w-4" />
                 Send verification code
               </Button>
             </SallyTarget>
-          </div>
+          </form>
         )}
 
-        {step === "otp" && (
-          <div className="grid gap-3">
+        {!passwordLogin && step === "otp" && (
+          <form
+            className="grid gap-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              verifyOtp();
+            }}
+          >
             <p className="text-sm text-muted-foreground">
               Enter the 6-digit code sent to <strong>{email}</strong>
             </p>
@@ -252,6 +294,7 @@ export function LoginComponent() {
                 value={otp}
                 onChange={setOtp}
                 disabled={isLoading}
+                autoComplete="one-time-code"
               >
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
@@ -264,14 +307,20 @@ export function LoginComponent() {
               </InputOTP>
             </div>
             <SallyTarget id="verify-and-sign-in" label="Verify and sign in">
-              <Button onClick={verifyOtp} disabled={isLoading || otp.length !== 6}>
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isLoading || otp.length !== 6}
+              >
                 Verify and sign in
               </Button>
             </SallyTarget>
             <SallyTarget id="use-a-different-email" label="Use a different email">
               <Button
+                type="button"
                 variant="ghost"
                 size="sm"
+                className="w-full"
                 onClick={() => {
                   setStep("email");
                   setOtp("");
@@ -282,7 +331,7 @@ export function LoginComponent() {
                 Use a different email
               </Button>
             </SallyTarget>
-          </div>
+          </form>
         )}
       </CardContent>
     </Card>
