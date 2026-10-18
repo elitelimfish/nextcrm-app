@@ -8,10 +8,14 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY .sally-pack .sally-pack
 RUN pnpm install --frozen-lockfile
-ARG NEXT_PUBLIC_SALLY_STUDIO_URL
+ARG NEXT_PUBLIC_SALLY_STUDIO_URL=https://studio.supportsally.com
 ARG NEXT_PUBLIC_SALLY_EMBED_KEY
 ENV NEXT_PUBLIC_SALLY_STUDIO_URL=$NEXT_PUBLIC_SALLY_STUDIO_URL
 ENV NEXT_PUBLIC_SALLY_EMBED_KEY=$NEXT_PUBLIC_SALLY_EMBED_KEY
+RUN case "$NEXT_PUBLIC_SALLY_STUDIO_URL" in \
+      https://studio.supportsally.com) ;; \
+      *) echo "Fly images must use https://studio.supportsally.com (local .env.local stays on localhost)" >&2; exit 1 ;; \
+    esac
 ENV NEXT_PUBLIC_APP_URL=https://demo.supportsally.com
 ENV NEXT_PUBLIC_APP_NAME=NextCRM
 ENV NEXT_PUBLIC_PASSWORD_LOGIN=true
