@@ -5,6 +5,11 @@ primary_region = 'ord'
 [build]
   dockerfile = 'Dockerfile'
 
+  [build.args]
+    # Baked into the client. [env] below does not change an already-built bundle.
+    # Local `next dev` still reads .env.local (localhost:3001).
+    NEXT_PUBLIC_SALLY_STUDIO_URL = 'https://studio.supportsally.com'
+
 [env]
   PORT = '8080'
   HOSTNAME = '0.0.0.0'
