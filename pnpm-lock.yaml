@@ -5,12 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@supportsally/core': file:./.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
-  '@supportsally/react': file:./.sally-pack/supportsally-react-0.1.0-alpha.0.tgz
-  '@supportsally/telemetry': file:./.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz
-  '@supportsally/voice-realtime': file:./.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz
-  '@supportsally/web': file:./.sally-pack/supportsally-web-0.1.0-alpha.0.tgz
-  '@supportsally/workflows': file:./.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz
+  '@supportsally/core': file:./.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
+  '@supportsally/react': file:./.sally-pack/supportsally-react-0.1.0-alpha.1.tgz
+  '@supportsally/telemetry': file:./.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz
+  '@supportsally/voice-realtime': file:./.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz
+  '@supportsally/web': file:./.sally-pack/supportsally-web-0.1.0-alpha.1.tgz
+  '@supportsally/workflows': file:./.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz
   kysely: ^0.28.17
   '@types/react': npm:types-react@19.0.0-rc.1
   '@types/react-dom': npm:types-react-dom@19.0.0-rc.1
@@ -207,23 +207,23 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2(react@19.2.4)
       '@supportsally/core':
-        specifier: file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
+        specifier: file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
       '@supportsally/react':
-        specifier: file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: file:.sally-pack/supportsally-react-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-react-0.1.0-alpha.1.tgz(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@supportsally/telemetry':
-        specifier: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz
+        specifier: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz
       '@supportsally/voice-realtime':
-        specifier: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz
+        specifier: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz
       '@supportsally/web':
-        specifier: file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz
+        specifier: file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz
       '@supportsally/workflows':
-        specifier: file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz
-        version: file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz
+        specifier: file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz
+        version: file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz
       '@tailwindcss/postcss':
         specifier: ^4.2.1
         version: 4.2.1
@@ -3887,31 +3887,31 @@ packages:
   '@standard-schema/utils@0.3.0':
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
-  '@supportsally/core@file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-mct2sY+cnCob8ZWyNIAi8mv6IGrRTQX/itFhePYXFhSs1jc9nB2k4HcfxABDmSSHUyjkEWkMOb1yZV/91l6TNw==, tarball: file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz}
+  '@supportsally/core@file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-wJzpwRNzV0/2dW+P931n/PDjsKhUKhoQOALg5zRn/hos7oropKB+wwrmRUeoVxraRIkh94sQW47/9RtmSrEQkw==, tarball: file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
 
-  '@supportsally/react@file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-4rPmWMUDU1ailFBE28Wm/PnXs/sEqmtr+2yAqsxkZ9hkpSBVdUlJQbfCWTNfOMTXqE3KklEO9A2l3MAtwzQHJw==, tarball: file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz}
+  '@supportsally/react@file:.sally-pack/supportsally-react-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-ioHhuSKHVEfIZM+sdjN4QOxbqMZfOuXIxVIO0SFH6Dzh7bZhR5qBLIx4T7VJhwwTRT0W9dbRQQ5nbjYYVKPc6g==, tarball: file:.sally-pack/supportsally-react-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  '@supportsally/telemetry@file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-VKnOfYSWCvq40jU97bm9IO3Gm0J3STtsCJbBmhNVCODyvUUCXWbMVWOdDGrbcshhqDomVUjU19KItovSA90iWQ==, tarball: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz}
+  '@supportsally/telemetry@file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-VKnOfYSWCvq40jU97bm9IO3Gm0J3STtsCJbBmhNVCODyvUUCXWbMVWOdDGrbcshhqDomVUjU19KItovSA90iWQ==, tarball: file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
 
-  '@supportsally/voice-realtime@file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-nMMAMuubVyUgP1HwQXXFRJXAvgrXtpMythX/dtsCPM2d32QJHPAiv8SOzMEdUc/MiqXPIILYhYLG7z4/SwiZGQ==, tarball: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz}
+  '@supportsally/voice-realtime@file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-MdIqjW4tm8CXiyE2BYC+RTjuUZNnChX3iMzci63or3Foz1NfBawxIO+BJN07qbab+Yfdk6j/H8bJOVKrINfL/Q==, tarball: file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
 
-  '@supportsally/web@file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-+fy9IqA0vWNk4t+wffeVqbE5S7Xd/wETDgNf+AqPOVkp0QmrFtL4wzRX9SwBi1k8Ea6Rx1TAhIl9MB9N9hr2OQ==, tarball: file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz}
+  '@supportsally/web@file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-+fy9IqA0vWNk4t+wffeVqbE5S7Xd/wETDgNf+AqPOVkp0QmrFtL4wzRX9SwBi1k8Ea6Rx1TAhIl9MB9N9hr2OQ==, tarball: file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
 
-  '@supportsally/workflows@file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz':
-    resolution: {integrity: sha512-4tMC8KPHfJKMtDUdkg8b804LfVzProd5wCIFiouUVYpzUSMoXFNQH2eIJRKARstfR4dN4v347g4YbJax131O1Q==, tarball: file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz}
+  '@supportsally/workflows@file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz':
+    resolution: {integrity: sha512-4tMC8KPHfJKMtDUdkg8b804LfVzProd5wCIFiouUVYpzUSMoXFNQH2eIJRKARstfR4dN4v347g4YbJax131O1Q==, tarball: file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz}
     version: 0.1.0-alpha.1
 
   '@swc/core-darwin-arm64@1.15.11':
@@ -13450,31 +13450,31 @@ snapshots:
 
   '@standard-schema/utils@0.3.0': {}
 
-  '@supportsally/core@file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz':
+  '@supportsally/core@file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz':
     dependencies:
-      '@supportsally/workflows': file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz
+      '@supportsally/workflows': file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz
 
-  '@supportsally/react@file:.sally-pack/supportsally-react-0.1.0-alpha.0.tgz(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@supportsally/react@file:.sally-pack/supportsally-react-0.1.0-alpha.1.tgz(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
-      '@supportsally/telemetry': file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz
-      '@supportsally/voice-realtime': file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz
-      '@supportsally/web': file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz
-      '@supportsally/workflows': file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz
+      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
+      '@supportsally/telemetry': file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz
+      '@supportsally/voice-realtime': file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz
+      '@supportsally/web': file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz
+      '@supportsally/workflows': file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
-  '@supportsally/telemetry@file:.sally-pack/supportsally-telemetry-0.1.0-alpha.0.tgz':
+  '@supportsally/telemetry@file:.sally-pack/supportsally-telemetry-0.1.0-alpha.1.tgz':
     dependencies:
-      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
+      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
 
-  '@supportsally/voice-realtime@file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.0.tgz':
+  '@supportsally/voice-realtime@file:.sally-pack/supportsally-voice-realtime-0.1.0-alpha.1.tgz':
     dependencies:
-      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.0.tgz
+      '@supportsally/core': file:.sally-pack/supportsally-core-0.1.0-alpha.1.tgz
 
-  '@supportsally/web@file:.sally-pack/supportsally-web-0.1.0-alpha.0.tgz': {}
+  '@supportsally/web@file:.sally-pack/supportsally-web-0.1.0-alpha.1.tgz': {}
 
-  '@supportsally/workflows@file:.sally-pack/supportsally-workflows-0.1.0-alpha.0.tgz': {}
+  '@supportsally/workflows@file:.sally-pack/supportsally-workflows-0.1.0-alpha.1.tgz': {}
 
   '@swc/core-darwin-arm64@1.15.11':
     optional: true
